@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Free Fall Fighters"
+config/name="Free Fall Fighters Vf"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="Free Fall Fighters"
+project/assembly_name="Free Fall Fighters Vf"
