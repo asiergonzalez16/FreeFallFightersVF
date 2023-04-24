@@ -1,0 +1,5 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dy3jas12u85cl"]
+
+[resource]
+outline_size = 3
+outline_color = Color(0.0862745, 0.0862745, 0.0862745, 1)

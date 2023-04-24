@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Free Fall Fighters Vf"
-run/main_scene="res://Player/world.tscn"
+run/main_scene="res://Maps/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global.tscn"
 
 [display]
 
@@ -26,6 +30,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="Free Fall Fighters Vf"
+
+[layer_names]
+
+2d_physics/layer_1="player"
 
 [rendering]
 

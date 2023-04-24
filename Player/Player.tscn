@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cioeiq2ketrp7"]
+[gd_scene load_steps=17 format=3 uid="uid://cioeiq2ketrp7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nuxl"]
 [ext_resource type="Texture2D" uid="uid://bei7x67psb4c4" path="res://Assets_PixelAdventure/Main Characters/Mask Dude.png" id="1_l7j8x"]
 [ext_resource type="Script" path="res://Player/Camera2D.gd" id="3_7ed6p"]
+[ext_resource type="LabelSettings" uid="uid://dy3jas12u85cl" path="res://Player/GUIText.tres" id="4_tq876"]
+[ext_resource type="StyleBox" uid="uid://cfmcfoujbkyek" path="res://Personajes/EnemigoCerdito/HPGUI.tres" id="5_kb5hi"]
+[ext_resource type="AudioStream" uid="uid://ba2hxqf376lg" path="res://Assets_PixelAdventure/Sounds/Jump.ogg" id="6_un7wi"]
+[ext_resource type="AudioStream" uid="uid://bk01bmd5p2v58" path="res://Assets_PixelAdventure/Sounds/Hit.ogg" id="7_fh7c2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slqit"]
-size = Vector2(19, 22)
+size = Vector2(20.5, 22)
 
 [sub_resource type="Animation" id="Animation_b2sne"]
 length = 0.001
@@ -88,27 +92,58 @@ tracks/0/keys = {
 "values": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 }
 
+[sub_resource type="Animation" id="Animation_66jn0"]
+resource_name = "herido"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 38, 39, 40, 41, 42]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mmrfl"]
 _data = {
 "RESET": SubResource("Animation_b2sne"),
 "fall": SubResource("Animation_nmmhq"),
+"herido": SubResource("Animation_66jn0"),
 "idle": SubResource("Animation_lr257"),
 "jump": SubResource("Animation_pyewa"),
 "walk": SubResource("Animation_2tv2a")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krwt3"]
+bg_color = Color(0.32549, 0.101961, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32549, 0.101961, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 6
 script = ExtResource("1_1nuxl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(22, -16)
+position = Vector2(0, -15)
 texture = ExtResource("1_l7j8x")
 hframes = 11
 vframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(23.5, -12)
+position = Vector2(1, -12)
 shape = SubResource("RectangleShape2D_slqit")
 one_way_collision_margin = 0.0
 
@@ -120,3 +155,58 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(22, -13)
 script = ExtResource("3_7ed6p")
+
+[node name="PlayerGUI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrutasLabel2" type="Label" parent="PlayerGUI/HBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+text = "Frutas: "
+label_settings = ExtResource("4_tq876")
+
+[node name="FrutasLabel" type="Label" parent="PlayerGUI/HBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("4_tq876")
+
+[node name="HPProgressBar" type="ProgressBar" parent="PlayerGUI"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 58.0
+offset_bottom = 9.0
+theme_override_styles/background = SubResource("StyleBoxFlat_krwt3")
+theme_override_styles/fill = ExtResource("5_kb5hi")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="RaycastDmg" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="RaycastDmg"]
+target_position = Vector2(0, 23)
+collision_mask = 2
+
+[node name="RayCast2D2" type="RayCast2D" parent="RaycastDmg"]
+position = Vector2(5, 0)
+target_position = Vector2(0, 23)
+collision_mask = 2
+
+[node name="RayCast2D3" type="RayCast2D" parent="RaycastDmg"]
+position = Vector2(-5, 0)
+target_position = Vector2(0, 23)
+collision_mask = 2
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="AudioSalto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_un7wi")
+
+[node name="AudioHerirse" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fh7c2")
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
