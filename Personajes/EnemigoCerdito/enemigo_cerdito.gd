@@ -1,6 +1,12 @@
 extends Personajes
 
-var direccion = -1
+var direccion = -1:
+	set(value):
+		if value != direccion:
+			darseVuelta()
+		direccion = value
+		
+
 @onready var raySuelo : RayCast2D = $Raycasts/RayCastSuelo
 @onready var rayMuro : RayCast2D = $Raycasts/RayCastMuro
 @onready var rayos := $Raycasts
@@ -11,7 +17,16 @@ var player
 var canChangeDirection = true
 
 enum estados {ANGRY,PATRULLAR, MORIRSE}
-var estadoActual = estados.PATRULLAR
+var estadoActual = estados.PATRULLAR :
+	set(value):
+		estadoActual = value
+		match value:
+			estados.ANGRY:
+				anim.play("runAngry")
+				speed = 90
+			estados.PATRULLAR:
+				anim.play("walk")
+				speed = 60
 
 func _ready():
 	anim.play("walk")
@@ -19,13 +34,9 @@ func _ready():
 	
 func _physics_process(delta):
 	velocity.x = direccion * speed
-	
 	if !is_on_floor():
 		velocity.y += 9
-		
 	move_and_slide()
-
-
 
 
 func _process(delta):
@@ -43,15 +54,10 @@ func _process(delta):
 			direccion = -1
 		elif  directionPlayer.x > 0:
 			direccion = 1
-		$Sprite2D.flip_h = true if direccion == 1 else false
 	
 	if estadoActual == estados.PATRULLAR:
 		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()):
-			canChangeDirection = false
-			$Raycasts/RayTimer.start()
-			direccion *= -1
-			rayos.scale.x *= -1
-			
+			direccion*=-1
 	$Sprite2D.flip_h = true if direccion == 1 else false
 	
 func takeDmg(damage):
@@ -63,19 +69,18 @@ func takeDmg(damage):
 		anim.play("hurt")
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
-	
 		queue_free()
 
 func _on_ray_timer_timeout():
 	canChangeDirection = true
-	pass # Replace with function body.
 
+func darseVuelta():
+	canChangeDirection = false
+	$Raycasts/RayTimer.start()
+	rayos.scale.x *= -1
+	raycastPlayer.scale.x *=-1
 
-
-
-func _on_dmg_player_body_entered(body):
-	if body is Player:
-		body.takeDamage(dmg)
-		vida-=dmg
-	pass # Replace with function body.
-
+func _on_dmg_player_he_hecho_danio():
+	estadoActual = estados.PATRULLAR
+	player = null
+	direccion *=-1

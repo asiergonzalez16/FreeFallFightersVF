@@ -91,6 +91,5 @@ texture = ExtResource("7_itr0e")
 position = Vector2(214, 121)
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/FullScreen" to="." method="_on_full_screen_pressed"]
