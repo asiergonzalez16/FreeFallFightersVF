@@ -1,7 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cioeiq2ketrp7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nuxl"]
-[ext_resource type="Texture2D" uid="uid://bei7x67psb4c4" path="res://Assets_PixelAdventure/Main Characters/Mask Dude.png" id="1_l7j8x"]
 [ext_resource type="Script" path="res://Player/StateMachine/stateMachine.gd" id="2_owes5"]
 [ext_resource type="Script" path="res://Player/Idle.gd" id="3_0eqv6"]
 [ext_resource type="Script" path="res://Player/Camera2D.gd" id="3_7ed6p"]
@@ -14,6 +13,7 @@
 [ext_resource type="Script" path="res://Player/wallSlide.gd" id="7_y6nw0"]
 [ext_resource type="Script" path="res://Player/wallJump.gd" id="8_cqk2a"]
 [ext_resource type="Script" path="res://Player/dash.gd" id="9_b34bb"]
+[ext_resource type="Texture2D" uid="uid://b0fkypq6l6nb1" path="res://Assets_PixelAdventure/Main Characters/Virtual Guy.png" id="10_fd7wr"]
 [ext_resource type="Texture2D" uid="uid://ckaore37h130l" path="res://Assets_PixelAdventure/Menu/UI/lifebar-1.png" id="12_1et8m"]
 [ext_resource type="Texture2D" uid="uid://c6c4rsfbmm6v4" path="res://Assets_PixelAdventure/Items/Fruits/StrawberrySola.png" id="12_2t8j7"]
 [ext_resource type="Texture2D" uid="uid://53mh0rvj54b1" path="res://Assets_PixelAdventure/Menu/UI/lifebar-2.png" id="13_bivo4"]
@@ -277,7 +277,7 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
-texture = ExtResource("1_l7j8x")
+texture = ExtResource("10_fd7wr")
 hframes = 11
 vframes = 4
 frame = 2
