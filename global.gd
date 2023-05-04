@@ -10,8 +10,10 @@ var frutas := 0 :
 		return frutas
 
 var vidas : int
+var hola
+
+
 
 func _ready():
 	await Save.ready
 	vidas = Save.game_data.VidasJugador
-	
