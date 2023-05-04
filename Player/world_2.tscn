@@ -224,32 +224,33 @@ position = Vector2(741, -60)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(-2.20557, 3.71389)
+position = Vector2(-3, 25.4409)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 7336.17
+rotation = 10843.9
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-2.27132, 5.06214)
-progress = 53.9775
+position = Vector2(-3, 26.8124)
+rotation = -1.5708
+progress = 32.2782
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(818, -59)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
-position = Vector2(2, -19.7124)
+position = Vector2(-0.363525, 49.6654)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
-rotation = 7336.17
+rotation = 10843.9
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(2, -18.1934)
-rotation = -1.5708
-progress = 77.3272
+position = Vector2(-0.450254, 50.9371)
+rotation = -1.50272
+progress = 7.97267
 
 [editable path="FallDamage"]
 [editable path="Sierra"]

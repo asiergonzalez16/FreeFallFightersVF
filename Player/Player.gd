@@ -7,13 +7,19 @@ var direccion := 0.0
 var jump := 250
 const gravity := 9
 var damage = 1
+var canDash = true
+var vidasMaximas = 10
 
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
 @onready var frutasLabel := $PlayerGUI/HBoxContainer/FrutasLabel
 @onready var raycastDmg := $RaycastDmg
 @onready var state_machine := $StateMachine
-@onready var dmgColision := $CollisionShape2D
+@onready var dmgColision := $RecibirDanio/CollisionShape2D
+@onready var gui_animation_player = $PlayerGUI/GUIAnimationPlayer
+@onready var vidas_label = $PlayerGUI/VidasHBoxContainer/VidasLabel
+
+
 
 #enum estados {NORMAL, HERIDO}
 #var estadoActual = estados.NORMAL
@@ -25,8 +31,10 @@ var vida := 10 :
 		$PlayerGUI/HPProgressBar.value = vida
 
 func _ready():
+	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
+	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
-	Global.player = self
+	Global.connect("fruitCollected",actualizaInterfazFrutas)
 	
 func reiniciaSaltos():
 	numSaltos = 2
@@ -42,6 +50,8 @@ func _process(delta):
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
+	if is_on_floor() or is_on_wall():
+		canDash = true
 
 #func _physics_process(delta):
 #	if estadoActual == estados.NORMAL:
@@ -78,4 +88,31 @@ func takeDamage(dmg):
 		morir()
 	
 func morir():
-	get_tree().reload_current_scene()
+	
+	Global.vidas -= 1
+	Save.game_data.VidasJugador -= 1
+	Save.save_data()
+	
+	if Save.game_data.VidasJugador <= 0:
+		Save.game_data.VidasJugador = vidasMaximas
+		Save.save_data()
+		transition_to_scene("res://Maps/main_menu.tscn")
+	
+	else:
+		gui_animation_player.play_backwards("TransitionAnim")
+		get_tree().paused = true
+		await(gui_animation_player.animation_finished)
+		get_tree().paused = false
+		get_tree().reload_current_scene()
+	
+
+	
+
+func transition_to_scene(scene : String):
+	gui_animation_player.play_backwards("TransitionAnim")
+	get_tree().paused = true
+	await(gui_animation_player.animation_finished)
+	get_tree().paused = false
+	get_tree().change_scene_to_file(scene)
+	
+	

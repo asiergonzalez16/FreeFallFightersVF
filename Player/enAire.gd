@@ -50,6 +50,8 @@ func state_physics_process(delta):
 		state_machine.transition_to("enAire",{Salto = true})
 	elif Input.is_action_just_pressed("ui_accept"):
 		$BufferJumpTimer.start()
+	elif Input.is_action_just_pressed("dash") and player.canDash:
+		state_machine.transition_to("dash")
 		
 
 func state_exit():

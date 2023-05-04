@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgfj1vdss4ypd"]
+[gd_scene load_steps=11 format=3 uid="uid://bgfj1vdss4ypd"]
 
 [ext_resource type="Script" path="res://Maps/main_menu.gd" id="1_r2ov7"]
 [ext_resource type="FontFile" uid="uid://6kevsfysjxx2" path="res://Assets_PixelAdventure/Fonts/NokiaCellphoneFC.ttf" id="2_siv8g"]
@@ -7,12 +7,25 @@
 [ext_resource type="Texture2D" uid="uid://cqgs3aseyvj8m" path="res://Assets_PixelAdventure/Parallax/parallax-02.png" id="5_cpij2"]
 [ext_resource type="Texture2D" uid="uid://cvngflsps17db" path="res://Assets_PixelAdventure/Parallax/parallax-03.png" id="6_j52c1"]
 [ext_resource type="Texture2D" uid="uid://owlwdggvbxt3" path="res://Assets_PixelAdventure/Parallax/parallax-04.png" id="7_itr0e"]
+[ext_resource type="Script" path="res://Maps/SettingsCanvasLayer.gd" id="8_qnpos"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4qte"]
 font = ExtResource("2_siv8g")
-font_size = 20
+font_size = 12
 outline_size = 6
 outline_color = Color(0.121569, 0.113725, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju523"]
+bg_color = Color(0.247059, 0.607843, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.992157, 0.988235, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Main_Menu" type="Node"]
 script = ExtResource("1_r2ov7")
@@ -39,9 +52,9 @@ text = "START "
 layout_mode = 2
 text = "EXIT"
 
-[node name="FullScreen" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "FULL SCREEN"
+text = "SETTINGS"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_offset = Vector2(0, 100)
@@ -90,6 +103,180 @@ texture = ExtResource("7_itr0e")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(214, 121)
 
+[node name="SettingsCanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_qnpos")
+
+[node name="Panel" type="Panel" parent="SettingsCanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -119.0
+offset_right = 134.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ju523")
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -111.0
+offset_right = 38.5
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -82.0
+offset_right = 122.5
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Video"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="FullScreenHBoxContainer2" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreenLabel" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/FullScreenHBoxContainer2"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="SettingsCanvasLayer/Panel/VBoxContainer/FullScreenHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="WindowSizeHBoxContainer3" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="WindowSizeScreenLabel" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/WindowSizeHBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Window Size"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="WindowSizeCheckBox" type="OptionButton" parent="SettingsCanvasLayer/Panel/VBoxContainer/WindowSizeHBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+item_count = 4
+selected = 1
+popup/item_0/text = "640 x 360"
+popup/item_0/id = 0
+popup/item_1/text = "1280 x 720"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+popup/item_3/text = "1840 x 2160"
+popup/item_3/id = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Sound"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="SoundHBoxContainer" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "SFX"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="SFXHSlider" type="HSlider" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 5.0
+value = -10.0
+
+[node name="SoundHBoxContainer2" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Music"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="MusicHSlider" type="HSlider" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 5.0
+value = -10.0
+
+[node name="SoundHBoxContainer3" type="HBoxContainer" parent="SettingsCanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Master"
+label_settings = SubResource("LabelSettings_e4qte")
+
+[node name="MasterHSlider" type="HSlider" parent="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 5.0
+value = -10.0
+
+[node name="ConfirmButton" type="Button" parent="SettingsCanvasLayer/Panel"]
+layout_mode = 2
+offset_left = 91.0
+offset_top = 214.0
+offset_right = 158.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 10
+text = "Confirm"
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="VBoxContainer/FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="SettingsCanvasLayer/Panel/VBoxContainer/FullScreenHBoxContainer2/FullScreenCheckBox" to="SettingsCanvasLayer" method="_on_full_screen_check_box_pressed"]
+[connection signal="item_selected" from="SettingsCanvasLayer/Panel/VBoxContainer/WindowSizeHBoxContainer3/WindowSizeCheckBox" to="SettingsCanvasLayer" method="_on_window_size_check_box_item_selected"]
+[connection signal="value_changed" from="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer/SFXHSlider" to="SettingsCanvasLayer" method="_on_sfxh_slider_value_changed"]
+[connection signal="value_changed" from="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer2/MusicHSlider" to="SettingsCanvasLayer" method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="SettingsCanvasLayer/Panel/VBoxContainer/SoundHBoxContainer3/MasterHSlider" to="SettingsCanvasLayer" method="_on_master_h_slider_value_changed"]
+[connection signal="pressed" from="SettingsCanvasLayer/Panel/ConfirmButton" to="SettingsCanvasLayer" method="_on_confirm_button_pressed"]

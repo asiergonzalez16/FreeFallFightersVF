@@ -1,7 +1,9 @@
 extends Node
+@onready var settings_canvas_layer = $SettingsCanvasLayer
 
 
 func _ready():
+	settings_canvas_layer.hide()
 	pass
 
 func _process(delta):
@@ -15,5 +17,9 @@ func _on_start_pressed():
 func _on_exit_pressed():
 	get_tree().quit()
 
-func _on_full_screen_pressed():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+
+func _on_settings_pressed():
+	settings_canvas_layer.show()
+	pass # Replace with function body.
