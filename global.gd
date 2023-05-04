@@ -10,7 +10,6 @@ var frutas := 0 :
 		return frutas
 
 var vidas : int
-var hola
 
 
 
