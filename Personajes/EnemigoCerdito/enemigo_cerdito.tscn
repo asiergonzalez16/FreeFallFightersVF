@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgej"]
 
 [node name="EnemigoCerdito" groups=["Enemigos"] instance=ExtResource("1_3ja0e")]
+process_mode = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_31ica")
