@@ -54,7 +54,7 @@ func _process(delta):
 			direccion = -1
 		elif  directionPlayer.x > 0:
 			direccion = 1
-	
+		
 	if estadoActual == estados.PATRULLAR:
 		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()):
 			direccion*=-1

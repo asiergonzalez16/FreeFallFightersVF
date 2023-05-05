@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cioeiq2ketrp7"]
+[gd_scene load_steps=38 format=3 uid="uid://cioeiq2ketrp7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nuxl"]
 [ext_resource type="Script" path="res://Player/StateMachine/stateMachine.gd" id="2_owes5"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" path="res://Player/wallSlide.gd" id="7_y6nw0"]
 [ext_resource type="Script" path="res://Player/wallJump.gd" id="8_cqk2a"]
 [ext_resource type="Script" path="res://Player/dash.gd" id="9_b34bb"]
-[ext_resource type="Texture2D" uid="uid://b0fkypq6l6nb1" path="res://Assets_PixelAdventure/Main Characters/Virtual Guy.png" id="10_fd7wr"]
+[ext_resource type="Texture2D" uid="uid://bvkajrdp7d7s7" path="res://Assets_PixelAdventure/Main Characters/Pink Man.png" id="10_n7gsu"]
 [ext_resource type="Texture2D" uid="uid://ckaore37h130l" path="res://Assets_PixelAdventure/Menu/UI/lifebar-1.png" id="12_1et8m"]
 [ext_resource type="Texture2D" uid="uid://c6c4rsfbmm6v4" path="res://Assets_PixelAdventure/Items/Fruits/StrawberrySola.png" id="12_2t8j7"]
 [ext_resource type="Texture2D" uid="uid://53mh0rvj54b1" path="res://Assets_PixelAdventure/Menu/UI/lifebar-2.png" id="13_bivo4"]
 [ext_resource type="Texture2D" uid="uid://b2jwv8tob1pmw" path="res://Assets_PixelAdventure/Main Characters/Virtual.png" id="14_5l50n"]
 [ext_resource type="Shader" path="res://Player/TransitionShader.gdshader" id="15_5lxgt"]
+[ext_resource type="Script" path="res://Maps/pausemenu.gd" id="20_cm4ay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slqit"]
 size = Vector2(20.5, 22)
@@ -221,6 +222,7 @@ _data = {
 size = Vector2(21, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_mode = 1
 collision_mask = 6
 script = ExtResource("1_1nuxl")
 
@@ -277,7 +279,7 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
-texture = ExtResource("10_fd7wr")
+texture = ExtResource("10_n7gsu")
 hframes = 11
 vframes = 4
 frame = 2
@@ -391,6 +393,57 @@ position = Vector2(2, -12)
 shape = SubResource("RectangleShape2D_smqo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("20_cm4ay")
+
+[node name="pausemenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 38.0
+offset_right = -56.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/pausemenu"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 180.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/pausemenu/CenterContainer"]
+custom_minimum_size = Vector2(280, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return Main Menu"
+
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/takeDamage" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="CanvasLayer" method="_on_resume_button_pressed" flags=18]
+[connection signal="pressed" from="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0u4umswpcb4r"]
+
+[ext_resource type="Script" path="res://Maps/pausemenu.gd" id="1_1g5xo"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1g5xo")
+
+[node name="pausemenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 38.0
+offset_right = -56.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="pausemenu"]
+custom_minimum_size = Vector2(240, 180)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_right = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.160784, 0.329412, 0.152941)
+
+[node name="CenterContainer" type="CenterContainer" parent="pausemenu"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 180.0
+
+[node name="PanelContainer" type="PanelContainer" parent="pausemenu/CenterContainer"]
+custom_minimum_size = Vector2(280, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="pausemenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pausemenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return Main Menu"
+
+[connection signal="pressed" from="pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
