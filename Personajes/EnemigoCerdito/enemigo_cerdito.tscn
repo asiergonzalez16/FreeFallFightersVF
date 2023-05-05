@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://k0v8y3q6b8li"]
+[gd_scene load_steps=7 format=3 uid="uid://k0v8y3q6b8li"]
 
 [ext_resource type="PackedScene" uid="uid://c8epl6vq0bor8" path="res://Personajes/personajes.tscn" id="1_3ja0e"]
 [ext_resource type="Script" path="res://Personajes/EnemigoCerdito/enemigo_cerdito.gd" id="2_31ica"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://sqxbpo7m6rht" path="res://Trampas/dmg_player.tscn" id="4_hc4a4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o0uh"]
+size = Vector2(31, 29.5)
 
 [node name="EnemigoCerdito" groups=["Enemigos"] instance=ExtResource("1_3ja0e")]
 process_mode = 1
@@ -43,7 +46,8 @@ target_position = Vector2(-50, 0)
 [node name="dmgPlayer" parent="." index="5" instance=ExtResource("4_hc4a4")]
 
 [node name="CollisionShape2D" parent="dmgPlayer" index="0"]
-position = Vector2(0, 2)
+position = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_8o0uh")
 
 [connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
 [connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
