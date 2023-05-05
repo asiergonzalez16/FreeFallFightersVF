@@ -1,7 +1,5 @@
 extends CharacterBody2D
 class_name Player
-
-
 var speed := 120
 var direccion := 0.0
 var jump := 250
@@ -115,4 +113,8 @@ func transition_to_scene(scene : String):
 	get_tree().paused = false
 	get_tree().change_scene_to_file(scene)
 	
+	
+
+
+
 	
