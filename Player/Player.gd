@@ -115,6 +115,6 @@ func transition_to_scene(scene : String):
 
 
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed(): #boton para volver al menu principal
 	Global.frutas = 0
 	transition_to_scene("res://Maps/main_menu.tscn")
