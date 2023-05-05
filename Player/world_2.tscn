@@ -249,7 +249,7 @@ rotation = 29446.6
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(2, -7.5425)
+position = Vector2(2, -7.54247)
 rotation = -1.5708
 progress = 66.6446
 
