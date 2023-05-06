@@ -225,6 +225,7 @@ position = Vector2(741, -60)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
+<<<<<<< Updated upstream
 position = Vector2(-2.23859, 4.39086)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
@@ -233,24 +234,48 @@ rotation = 29543.0
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
 position = Vector2(-2.30392, 5.73044)
 progress = 53.3092
+=======
+position = Vector2(-3, 35.8523)
+
+[node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
+rotation = 30874.3
+
+[node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
+position = Vector2(-3, 34.4997)
+rotation = -1.5708
+progress = 24.4817
+>>>>>>> Stashed changes
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(818, -59)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
+<<<<<<< Updated upstream
 position = Vector2(0.188354, 41.5708)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
 rotation = 29543.0
+=======
+position = Vector2(1.82721, 17.5345)
+
+[node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
+rotation = 30874.3
+>>>>>>> Stashed changes
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
+<<<<<<< Updated upstream
 position = Vector2(0.094184, 42.952)
 rotation = -1.50272
 progress = 16.1087
+=======
+position = Vector2(1.92907, 16.0912)
+rotation = -1.50272
+progress = 42.7726
+>>>>>>> Stashed changes
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("12_05umd")]
 position = Vector2(239, 132)
