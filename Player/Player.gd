@@ -1,5 +1,7 @@
 extends CharacterBody2D
 class_name Player
+
+
 var speed := 120
 var direccion := 0.0
 var jump := 250
@@ -48,11 +50,9 @@ func _process(delta):
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
-				break
-
 	if is_on_floor() or is_on_wall():
 		canDash = true
-
+	
 #func _physics_process(delta):
 #	if estadoActual == estados.NORMAL:
 #		procesarNormal(delta)
@@ -104,9 +104,6 @@ func morir():
 		await(gui_animation_player.animation_finished)
 		get_tree().paused = false
 		get_tree().reload_current_scene()
-	
-
-	
 
 func transition_to_scene(scene : String):
 	gui_animation_player.play_backwards("TransitionAnim")
@@ -114,9 +111,10 @@ func transition_to_scene(scene : String):
 	await(gui_animation_player.animation_finished)
 	get_tree().paused = false
 	get_tree().change_scene_to_file(scene)
-	
-	
 
 
 
-	
+
+func _on_quit_button_pressed(): #boton para volver al menu principal
+	Global.frutas = 0
+	transition_to_scene("res://Maps/main_menu.tscn")
