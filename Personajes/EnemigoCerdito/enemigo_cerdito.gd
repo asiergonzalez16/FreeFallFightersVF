@@ -29,7 +29,7 @@ var estadoActual = estados.PATRULLAR :
 				speed = 60
 
 func _ready():
-	anim.play("walk")
+	anim.play("walk") #animacion de caminar
 	speed = 60
 	
 func _physics_process(delta):
