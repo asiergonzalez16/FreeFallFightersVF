@@ -50,6 +50,7 @@ func _process(delta):
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
+				break
 	if is_on_floor() or is_on_wall():
 		canDash = true
 	
