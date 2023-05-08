@@ -1,5 +1,8 @@
 extends Node
 
+var inicio = true
+var bandera = true
+
 signal fruitCollected
 var frutas := 0 :
 	set(val):

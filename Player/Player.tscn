@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ckaore37h130l" path="res://Assets_PixelAdventure/Menu/UI/lifebar-1.png" id="12_1et8m"]
 [ext_resource type="Texture2D" uid="uid://c6c4rsfbmm6v4" path="res://Assets_PixelAdventure/Items/Fruits/StrawberrySola.png" id="12_2t8j7"]
 [ext_resource type="Texture2D" uid="uid://53mh0rvj54b1" path="res://Assets_PixelAdventure/Menu/UI/lifebar-2.png" id="13_bivo4"]
-[ext_resource type="Texture2D" uid="uid://b2jwv8tob1pmw" path="res://Assets_PixelAdventure/Main Characters/Virtual.png" id="14_5l50n"]
+[ext_resource type="Texture2D" uid="uid://bg3msc341myox" path="res://Assets_PixelAdventure/Main Characters/PinkGUI.png" id="14_s4ki2"]
 [ext_resource type="Shader" path="res://Player/TransitionShader.gdshader" id="15_5lxgt"]
 [ext_resource type="Script" path="res://Maps/pausemenu.gd" id="20_cm4ay"]
 
@@ -324,7 +324,7 @@ offset_bottom = 58.0
 [node name="VidasTexture" type="TextureRect" parent="PlayerGUI/VidasHBoxContainer"]
 texture_filter = 2
 layout_mode = 2
-texture = ExtResource("14_5l50n")
+texture = ExtResource("14_s4ki2")
 
 [node name="VidasLabel" type="Label" parent="PlayerGUI/VidasHBoxContainer"]
 layout_mode = 2
