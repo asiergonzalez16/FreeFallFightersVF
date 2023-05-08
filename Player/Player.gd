@@ -31,6 +31,9 @@ var vida := 5 :
 		$PlayerGUI/HPProgressBar.value = vida
 
 func _ready():
+	if !Global.inicio:
+		position.x = 1152
+		position.y = -127
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
@@ -91,6 +94,7 @@ func takeDamage(dmg):
 func morir():
 	
 	Global.vidas -= 1
+	Global.bandera = true
 	Save.game_data.VidasJugador -= 1
 	Save.save_data()
 	
@@ -118,4 +122,6 @@ func transition_to_scene(scene : String):
 
 func _on_quit_button_pressed(): #boton para volver al menu principal
 	Global.frutas = 0
+	Global.inicio = true
+	Global.bandera = true
 	transition_to_scene("res://Maps/main_menu.tscn")

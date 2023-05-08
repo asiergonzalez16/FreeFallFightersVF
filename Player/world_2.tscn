@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://7rmf6fjkgucc"]
 
 [ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="1_o5u5y"]
-[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="2_tlbrd"]
+[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/player.tscn" id="2_tlbrd"]
 [ext_resource type="PackedScene" uid="uid://cmorxyc7o6ckr" path="res://fin_de_nivel.tscn" id="3_11fq6"]
 [ext_resource type="PackedScene" uid="uid://upn1wlqjfobh" path="res://Personajes/MovingPlatform/platform.tscn" id="4_xymls"]
 [ext_resource type="Texture2D" uid="uid://cx1qsqa4qwsus" path="res://Assets_PixelAdventure/Parallax/parallax-00.png" id="5_x020f"]
@@ -226,33 +226,33 @@ position = Vector2(741, -60)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(-3.00635, 20.4846)
+position = Vector2(-2.9184, 18.3269)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 93467.9
+rotation = 93641.9
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-3.00545, 20.6618)
-rotation = -1.5708
-progress = 38.1749
+position = Vector2(-2.98976, 19.6789)
+rotation = -1.56031
+progress = 39.3796
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(818, -59)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
-position = Vector2(2, 11.3157)
+position = Vector2(1.54437, 21.6827)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
-rotation = 93467.9
+rotation = 93641.9
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(2, 11.5865)
-rotation = -1.5708
-progress = 47.6232
+position = Vector2(1.44605, 23.1246)
+rotation = -1.50272
+progress = 36.0664
 
 [node name="Rhino" parent="." instance=ExtResource("12_81i8s")]
 position = Vector2(257, 128)
