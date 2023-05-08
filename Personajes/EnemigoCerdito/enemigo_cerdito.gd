@@ -15,6 +15,7 @@ var direccion = -1:
 
 var player
 var canChangeDirection = true
+var gravity = 9
 
 enum estados {ANGRY,PATRULLAR, MORIRSE}
 var estadoActual = estados.PATRULLAR :
@@ -35,7 +36,7 @@ func _ready():
 func _physics_process(delta):
 	velocity.x = direccion * speed
 	if !is_on_floor():
-		velocity.y += 9
+		velocity.y += gravity
 	move_and_slide()
 
 
@@ -61,6 +62,7 @@ func _process(delta):
 	$Sprite2D.flip_h = true if direccion == 1 else false
 	
 func takeDmg(damage):
+	player = null
 	vida -= damage
 	print (vida)
 	if vida <= 0:
@@ -70,6 +72,14 @@ func takeDmg(damage):
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
 		queue_free()
+	else:
+		gravity = 0
+		$CollisionShape2D.set_deferred("disabled",true)
+		anim.play("hurt")
+		await (anim.animation_finished)
+		$CollisionShape2D.set_deferred("disabled",false)
+		gravity = 9
+		estadoActual = estados.PATRULLAR
 
 func _on_ray_timer_timeout():
 	canChangeDirection = true

@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://Maps/pausemenu.gd" id="20_cm4ay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slqit"]
-size = Vector2(20.5, 22)
+size = Vector2(19.25, 22)
 
 [sub_resource type="Animation" id="Animation_b2sne"]
 length = 0.001
@@ -219,7 +219,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smqo0"]
-size = Vector2(21, 22)
+size = Vector2(19.5, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 1
@@ -285,7 +285,7 @@ vframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -12)
+position = Vector2(1.375, -12)
 shape = SubResource("RectangleShape2D_slqit")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -339,8 +339,8 @@ offset_right = 90.0
 offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxTexture_au0ps")
 theme_override_styles/fill = SubResource("StyleBoxTexture_oiwt2")
-max_value = 10.0
-value = 7.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 
 [node name="TransitionColorRect" type="ColorRect" parent="PlayerGUI"]
@@ -362,16 +362,17 @@ libraries = {
 [node name="RaycastDmg" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="RaycastDmg"]
+position = Vector2(0, -1)
 target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="RayCast2D2" type="RayCast2D" parent="RaycastDmg"]
-position = Vector2(5, 0)
+position = Vector2(8, -1)
 target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="RayCast2D3" type="RayCast2D" parent="RaycastDmg"]
-position = Vector2(-5, 0)
+position = Vector2(-7, -1)
 target_position = Vector2(0, 10)
 collision_mask = 2
 
@@ -389,7 +390,7 @@ stream = ExtResource("7_fh7c2")
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RecibirDanio"]
-position = Vector2(2, -12)
+position = Vector2(1.25, -12)
 shape = SubResource("RectangleShape2D_smqo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
