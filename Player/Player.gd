@@ -8,7 +8,7 @@ var jump := 250
 const gravity := 9
 var damage = 1
 var canDash = true
-var vidasMaximas = 10
+var vidasMaximas = 5
 
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
@@ -25,7 +25,7 @@ var vidasMaximas = 10
 #var estadoActual = estados.NORMAL
 var numSaltos = 2
 
-var vida := 10 : 
+var vida := 1 : 
 	set(val):
 		vida = val
 		$PlayerGUI/HPProgressBar.value = vida

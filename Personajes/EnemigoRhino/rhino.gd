@@ -24,7 +24,7 @@ var estadoActual = estados.IDLE :
 		match value:
 			estados.ANGRY:
 				anim.play("runAngry")
-				speed = 150
+				speed = 300
 			estados.IDLE:
 				anim.play("idle")
 				speed = 0
@@ -61,6 +61,7 @@ func darseVuelta():
 	ray_cast_2d_wall.scale.x *=-1
 	direccion *= -1
 	$dmgPlayer/CollisionShape2D.position.x *= -1
+	$CollisionShape2D.position.x *= -1
 	estadoActual = estados.IDLE
 	player = null
 	$Timer.start()
@@ -77,6 +78,7 @@ func takeDmg(damage):
 		await (anim.animation_finished)
 		queue_free()
 	else:
+		speed = 0
 		gravity = 0
 		$CollisionShape2D.set_deferred("disabled",true)
 		anim.play("hurt")

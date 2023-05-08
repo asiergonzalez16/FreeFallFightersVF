@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var rayUpRight = $Raycast/RayCast2DUpRight
 @onready var raycast = $Raycast
 
-var vida := 2
+var vida := 1
 
 
 
