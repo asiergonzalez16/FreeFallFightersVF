@@ -9,7 +9,7 @@ func state_enter_state(msg := {}):
 		player.numSaltos-=1
 		$"../../AudioSalto".play()
 		anim_player.play("jump")
-		player.velocity.y = - player.jump
+		player.velocity.y = - player.jump +50
 		if player.numSaltos == 0:
 			anim_player.play("doubleJump")
 	else:
