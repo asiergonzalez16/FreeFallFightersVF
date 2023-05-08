@@ -25,7 +25,7 @@ var vidasMaximas = 5
 #var estadoActual = estados.NORMAL
 var numSaltos = 2
 
-var vida := 1 : 
+var vida := 5 : 
 	set(val):
 		vida = val
 		$PlayerGUI/HPProgressBar.value = vida
