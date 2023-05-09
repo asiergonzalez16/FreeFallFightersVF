@@ -43,6 +43,12 @@ func reiniciaSaltos():
 	numSaltos = 2
 	
 func _process(delta):
+	if Global.frutas >= 10:
+		Global.frutas = 0
+		Global.vidas += 1
+		Save.game_data.VidasJugador += 1
+		Save.save_data()
+		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	$LabelState.text = $StateMachine.state.name
 	if is_on_floor() and numSaltos != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()
@@ -94,12 +100,14 @@ func takeDamage(dmg):
 func morir():
 	
 	Global.vidas -= 1
+	Global.frutas = 0
 	Global.bandera = true
 	Save.game_data.VidasJugador -= 1
 	Save.save_data()
 	
 	if Save.game_data.VidasJugador <= 0:
 		Save.game_data.VidasJugador = vidasMaximas
+		Global.inicio = true
 		Save.save_data()
 		transition_to_scene("res://Maps/main_menu.tscn")
 	
