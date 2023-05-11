@@ -19,7 +19,7 @@ func _ready():
 
 func load_data():
 	var file = FileAccess.open(SAVEFILE,FileAccess.READ)
-	print(file)
+#	print(file)
 	if file == null:
 		save_data()
 	else:
