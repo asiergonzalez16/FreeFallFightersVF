@@ -32,6 +32,9 @@ var vida := 5 :
 		$PlayerGUI/HPProgressBar.value = vida
 
 func _ready():
+	if !Global.inicio:
+		position.x = 1152
+		position.y = -127
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
@@ -41,6 +44,12 @@ func reiniciaSaltos():
 	numSaltos = 2
 	
 func _process(delta):
+	if Global.frutas >= 10:
+		Global.frutas = 0
+		Global.vidas += 1
+		Save.game_data.VidasJugador += 1
+		Save.save_data()
+		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	$LabelState.text = $StateMachine.state.name
 	if is_on_floor() and numSaltos != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()
@@ -96,11 +105,14 @@ func pushback(pushback_force):
 func morir():
 	
 	Global.vidas -= 1
+	Global.frutas = 0
+	Global.bandera = true
 	Save.game_data.VidasJugador -= 1
 	Save.save_data()
 	
 	if Save.game_data.VidasJugador <= 0:
 		Save.game_data.VidasJugador = vidasMaximas
+		Global.inicio = true
 		Save.save_data()
 		transition_to_scene("res://Maps/main_menu.tscn")
 	
@@ -123,4 +135,6 @@ func transition_to_scene(scene : String):
 
 func _on_quit_button_pressed(): #boton para volver al menu principal
 	Global.frutas = 0
+	Global.inicio = true
+	Global.bandera = true
 	transition_to_scene("res://Maps/main_menu.tscn")

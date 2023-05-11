@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://7rmf6fjkgucc"]
 
 [ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="1_o5u5y"]
-[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="2_tlbrd"]
+[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/player.tscn" id="2_tlbrd"]
 [ext_resource type="PackedScene" uid="uid://cmorxyc7o6ckr" path="res://fin_de_nivel.tscn" id="3_11fq6"]
 [ext_resource type="PackedScene" uid="uid://upn1wlqjfobh" path="res://Personajes/MovingPlatform/platform.tscn" id="4_xymls"]
 [ext_resource type="Texture2D" uid="uid://cx1qsqa4qwsus" path="res://Assets_PixelAdventure/Parallax/parallax-00.png" id="5_x020f"]

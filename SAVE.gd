@@ -3,7 +3,7 @@ extends Node
 const SAVEFILE = "user://SAVEFILE.save"
 signal date_loaded
 var game_data = { #Solo funciona cuando no existe el archivo de guardado
-	"VidasJugador" : 10,
+	"VidasJugador" : 5,
 	"MonedaExtra" : 0,
 	#Settings
 	"fullscreen_on" : true,
@@ -19,7 +19,7 @@ func _ready():
 
 func load_data():
 	var file = FileAccess.open(SAVEFILE,FileAccess.READ)
-	print(file)
+#	print(file)
 	if file == null:
 		save_data()
 	else:
