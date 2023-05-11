@@ -10,6 +10,7 @@ var damage = 1
 var canDash = true
 var vidasMaximas = 5
 
+
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
 @onready var frutasLabel := $PlayerGUI/HBoxContainer/FrutasLabel
@@ -87,6 +88,10 @@ func takeDamage(dmg):
 	state_machine.transition_to("takeDamage")
 	if vida <= 0:
 		morir()
+		
+func pushback(pushback_force):
+	var pushback_vector = Vector2(-direccion, -1).normalized() * pushback_force
+	velocity = pushback_vector
 	
 func morir():
 	

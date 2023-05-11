@@ -226,33 +226,33 @@ position = Vector2(741, -60)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(-3.00635, 20.4846)
+position = Vector2(-3, 56.51)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 93467.9
+rotation = 126746.0
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-3.00545, 20.6618)
+position = Vector2(-3, 56.21)
 rotation = -1.5708
-progress = 38.1749
+progress = 2.94687
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(818, -59)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
-position = Vector2(2, 11.3157)
+position = Vector2(2, 3.40354)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
-rotation = 93467.9
+rotation = 126746.0
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(2, 11.5865)
+position = Vector2(2, 3.08503)
 rotation = -1.5708
-progress = 47.6232
+progress = 56.0207
 
 [node name="Rhino" parent="." instance=ExtResource("12_81i8s")]
 position = Vector2(257, 128)

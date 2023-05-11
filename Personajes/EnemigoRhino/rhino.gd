@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Rhino
 @onready var anim = $AnimationPlayer
 @onready var ray_casts = $RayCasts
 @onready var ray_cast_2d_player_2_right = $RayCasts/RayCast2DPlayer2Right
@@ -10,7 +11,7 @@ extends CharacterBody2D
 
 
 var direccion = -1
-enum estados {ANGRY,IDLE, MORIRSE}
+enum estados {ANGRY,IDLE,MORIRSE,WALKING}
 var player
 var canChangeDirection = true
 var gravity = 9
@@ -24,10 +25,11 @@ var estadoActual = estados.IDLE :
 		match value:
 			estados.ANGRY:
 				anim.play("runAngry")
-				speed = 300
+				speed = 250
 			estados.IDLE:
 				anim.play("idle")
 				speed = 0
+			
 				
 func _ready():
 	anim.play("idle")
@@ -85,8 +87,10 @@ func takeDmg(damage):
 		await (anim.animation_finished)
 		$CollisionShape2D.set_deferred("disabled",false)
 		gravity = 9
-		estadoActual = estados.IDLE
+		estadoActual = estados.WALKING
 		
+
+
 
 func _on_dmg_player_he_hecho_danio():
 	darseVuelta()
