@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-var player
 var canChangeDirection = true
 var gravity = 9
 var speed = 0
 var vida = 2
-var posGolpeo = 0
 const snailWithoutShell = preload("res://Personajes/EnemigoCaracol/snailwithoutshell.tscn")
 
 var direccion = -1:
@@ -55,10 +53,6 @@ func _process(delta):
 			direccion*=-1
 	$Sprite2D.flip_h = true if direccion == 1 else false
 	
-#	if spritecaracolsin.visible:
-#		spritecaracolsin.position.y += 2
-#		spritecaracolsin.rotate(deg_to_rad(200*delta))
-	
 	if estadoActual == estados.CAPARAZON:
 		speed -= 0.5
 		if speed <= 0:
@@ -76,7 +70,6 @@ func _on_ray_timer_timeout():
 	canChangeDirection = true
 	
 func takeDmg(damage):
-	player = null
 	vida -= damage
 	
 	if vida <= 0:
@@ -90,7 +83,6 @@ func takeDmg(damage):
 		babosa = snailWithoutShell.instantiate()
 		add_child(babosa)
 		babosa.global_position = self.global_position
-		babosa.speed = 0
 		babosa.position.x = 0
 		babosa.move_and_slide()
 		gravity = 0
@@ -102,7 +94,8 @@ func takeDmg(damage):
 		gravity = 9
 
 func _on_dmg_player_he_hecho_danio():
-	player = null
+	if estadoActual == estados.CAPARAZON:
+		anim.play("hurtShell")
 	rayMuro.scale.x *=-1
 	direccion *=-1
 	darseVuelta()
