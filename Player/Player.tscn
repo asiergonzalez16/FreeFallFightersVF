@@ -261,6 +261,10 @@ one_shot = true
 script = ExtResource("6_60hgi")
 anim_player_path = NodePath("../../AnimationPlayer")
 
+[node name="Timer" type="Timer" parent="StateMachine/takeDamage"]
+wait_time = 0.5
+one_shot = true
+
 [node name="wallSlide" type="Node" parent="StateMachine"]
 script = ExtResource("7_y6nw0")
 anim_player_path = NodePath("../../AnimationPlayer")
@@ -443,6 +447,7 @@ text = "RESUME"
 layout_mode = 2
 text = "Return Main Menu"
 
+[connection signal="timeout" from="StateMachine/takeDamage/Timer" to="StateMachine/takeDamage" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/takeDamage" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

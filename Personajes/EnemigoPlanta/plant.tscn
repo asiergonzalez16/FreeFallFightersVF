@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs8i6jsra2v4c"]
+
+[ext_resource type="Script" path="res://Personajes/EnemigoPlanta/plant.gd" id="1_rf5j4"]
+[ext_resource type="Texture2D" uid="uid://c0mmstqtf1vy0" path="res://Assets_PixelAdventure/Enemies/Plant/planta.png" id="2_rqmae"]
+
+[sub_resource type="Animation" id="Animation_jqbsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_wqw17"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_7xvtx"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+}
+
+[sub_resource type="Animation" id="Animation_eevg7"]
+resource_name = "shoot"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disparar"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvjsm"]
+_data = {
+"RESET": SubResource("Animation_jqbsp"),
+"hurt": SubResource("Animation_wqw17"),
+"idle": SubResource("Animation_7xvtx"),
+"shoot": SubResource("Animation_eevg7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ud5s"]
+radius = 16.0312
+
+[node name="Plant" type="CharacterBody2D" groups=["Enemigos"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_rf5j4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rqmae")
+hframes = 11
+vframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rvjsm")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -1)
+shape = SubResource("CircleShape2D_1ud5s")
+
+[node name="raycasts" type="Node2D" parent="."]
+
+[node name="RayCast2D2Right" type="RayCast2D" parent="raycasts"]
+position = Vector2(4, 0)
+target_position = Vector2(150, 0)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="raycasts"]
+position = Vector2(1, 0)
+target_position = Vector2(-150, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
