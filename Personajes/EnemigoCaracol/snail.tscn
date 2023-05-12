@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbtb2mnhniuw1"]
+[gd_scene load_steps=14 format=3 uid="uid://dbtb2mnhniuw1"]
 
 [ext_resource type="Texture2D" uid="uid://b2awtri2j1qdq" path="res://Assets_PixelAdventure/Enemies/Snail/snail.png" id="1_actnr"]
+[ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_d8aj0"]
+[ext_resource type="PackedScene" uid="uid://sqxbpo7m6rht" path="res://Trampas/dmg_player.tscn" id="3_uabnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijkho"]
-size = Vector2(29, 18.5)
+size = Vector2(26, 18)
 
 [sub_resource type="Animation" id="Animation_enbjj"]
 length = 0.001
@@ -20,6 +22,54 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_gwkql"]
+resource_name = "hitWall"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [75, 76, 77, 78]
+}
+
+[sub_resource type="Animation" id="Animation_s3kfi"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [45, 46, 47, 48, 49]
+}
+
+[sub_resource type="Animation" id="Animation_nbomk"]
+resource_name = "hurtShell"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64]
+}
+
 [sub_resource type="Animation" id="Animation_2qvh8"]
 resource_name = "idle"
 length = 1.6
@@ -34,6 +84,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_dg2cx"]
+resource_name = "shell"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 34, 35]
 }
 
 [sub_resource type="Animation" id="Animation_hpu5g"]
@@ -53,71 +119,6 @@ tracks/0/keys = {
 "values": [16, 17, 18, 19, 20, 21, 22, 23, 24]
 }
 
-[sub_resource type="Animation" id="Animation_dg2cx"]
-resource_name = "shell"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [30, 31, 32, 33, 34, 34, 35]
-}
-
-[sub_resource type="Animation" id="Animation_s3kfi"]
-resource_name = "hurt"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [45, 46, 47, 48, 49]
-}
-
-[sub_resource type="Animation" id="Animation_gwkql"]
-resource_name = "hitWall"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [75, 76, 77, 78]
-}
-
-[sub_resource type="Animation" id="Animation_nbomk"]
-resource_name = "hurtShell"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [60, 61, 62, 63, 64]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_igisj"]
 _data = {
 "RESET": SubResource("Animation_enbjj"),
@@ -129,7 +130,14 @@ _data = {
 "walk": SubResource("Animation_hpu5g")
 }
 
-[node name="Snail" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg58f"]
+size = Vector2(26, 17.5)
+
+[node name="Snail" type="CharacterBody2D" groups=["Enemigos"]]
+process_mode = 1
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_d8aj0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_actnr")
@@ -138,10 +146,34 @@ vframes = 7
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 2.25)
+position = Vector2(3, 2)
 shape = SubResource("RectangleShape2D_ijkho")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_igisj")
 }
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="RayCastSuelo" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, 20)
+collision_mask = 4
+
+[node name="RayCastMuro" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-20, 0)
+collision_mask = 4
+
+[node name="RayTimer" type="Timer" parent="Raycasts"]
+wait_time = 0.1
+
+[node name="dmgPlayer" parent="." instance=ExtResource("3_uabnt")]
+
+[node name="CollisionShape2D" parent="dmgPlayer" index="0"]
+position = Vector2(3, 2.25)
+shape = SubResource("RectangleShape2D_qg58f")
+
+[connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
+[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
+
+[editable path="dmgPlayer"]

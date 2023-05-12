@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Trampas/dmg_player.gd" id="1_4tblw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2svb"]
-size = Vector2(26, 24)
+size = Vector2(16.25, 17.5)
 
 [node name="dmgPlayer" type="Area2D"]
 collision_layer = 2
