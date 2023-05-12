@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bs7xtpp0feh50"]
 
-[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/player.tscn" id="1_wrdt8"]
+[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="1_wrdt8"]
 [ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="2_80tbi"]
 [ext_resource type="Texture2D" uid="uid://cx1qsqa4qwsus" path="res://Assets_PixelAdventure/Parallax/parallax-00.png" id="3_0r1i5"]
 [ext_resource type="Texture2D" uid="uid://d02l7nnnfajd3" path="res://Assets_PixelAdventure/Parallax/parallax-01.png" id="4_dno2x"]

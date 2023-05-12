@@ -3,12 +3,13 @@ class_name Player
 
 
 var speed := 120
-var direccion := 0.0
+var direccion := 0
 var jump := 250
 const gravity := 9
 var damage = 1
 var canDash = true
 var vidasMaximas = 5
+
 
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
@@ -92,8 +93,16 @@ func actualizaInterfazFrutas():
 	frutasLabel.text = str(Global.frutas)
 
 func takeDamage(dmg):
+	print(vida)
 	vida-=dmg
 	state_machine.transition_to("takeDamage")
+	if vida <= 0:
+		morir()
+		
+
+func takeDamageRhino(dmg,side):
+	vida-=dmg
+	state_machine.transition_to("takeDamage",{Empuje = true, Lado = side})
 	if vida <= 0:
 		morir()
 	
@@ -125,6 +134,8 @@ func transition_to_scene(scene : String):
 	get_tree().paused = false
 	get_tree().change_scene_to_file(scene)
 
+
+	
 
 
 

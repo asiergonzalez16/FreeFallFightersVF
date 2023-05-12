@@ -1,5 +1,4 @@
 extends Personajes
-
 var direccion = -1:
 	set(value):
 		if value != direccion:

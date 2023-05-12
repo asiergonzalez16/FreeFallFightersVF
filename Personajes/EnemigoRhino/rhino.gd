@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Rhino
 @onready var anim = $AnimationPlayer
 @onready var ray_casts = $RayCasts
 @onready var ray_cast_2d_player_2_right = $RayCasts/RayCast2DPlayer2Right
@@ -10,7 +11,7 @@ extends CharacterBody2D
 
 
 var direccion = -1
-enum estados {ANGRY,IDLE, MORIRSE}
+enum estados {ANGRY,IDLE,MORIRSE,WALKING}
 var player
 var canChangeDirection = true
 var gravity = 9
@@ -24,10 +25,13 @@ var estadoActual = estados.IDLE :
 		match value:
 			estados.ANGRY:
 				anim.play("runAngry")
-				speed = 300
+				speed = 250
 			estados.IDLE:
 				anim.play("idle")
 				speed = 0
+			estados.WALKING:
+				anim.play("runAngry")
+				speed = 60
 				
 func _ready():
 	anim.play("idle")
@@ -51,6 +55,10 @@ func _process(delta):
 		anim.play("hitWall")
 		await anim.animation_finished
 		darseVuelta()
+	if $RayCasts/RayCast2DPlayer2Right.is_colliding() and direccion == -1:
+		darseVuelta()
+	elif $RayCasts/RayCast2DPlayerLeft.is_colliding() and direccion == 1:
+		darseVuelta()
 		
 	$Sprite2D.flip_h = true if direccion == 1 else false
 
@@ -62,9 +70,14 @@ func darseVuelta():
 	direccion *= -1
 	$dmgPlayer/CollisionShape2D.position.x *= -1
 	$CollisionShape2D.position.x *= -1
-	estadoActual = estados.IDLE
 	player = null
+	$Timer2.start()
+	$Sprite2D.flip_h = true if direccion == 1 else false
+	estadoActual = estados.WALKING
+	$RayCasts/RayCast2DPlayer2Right.enabled = false
+	$RayCasts/RayCast2DPlayerLeft.enabled = false
 	$Timer.start()
+	
 
 func takeDmg(damage):
 	player = null
@@ -76,7 +89,7 @@ func takeDmg(damage):
 		anim.play("hurt")
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
-		queue_free()
+		morir()
 	else:
 		speed = 0
 		gravity = 0
@@ -88,10 +101,24 @@ func takeDmg(damage):
 		estadoActual = estados.IDLE
 		
 
+
+
 func _on_dmg_player_he_hecho_danio():
-	darseVuelta()
+	$Timer2.start()
+	estadoActual = estados.WALKING
+	$RayCasts/RayCast2DPlayer2Right.enabled = false
+	$RayCasts/RayCast2DPlayerLeft.enabled = false
+	
 
 
 
 func _on_timer_timeout():
 	canChangeDirection = true
+
+
+func _on_timer_2_timeout():
+	estadoActual = estados.IDLE
+	$RayCasts/RayCast2DPlayer2Right.enabled = true
+	$RayCasts/RayCast2DPlayerLeft.enabled = true
+func morir():
+	queue_free()
