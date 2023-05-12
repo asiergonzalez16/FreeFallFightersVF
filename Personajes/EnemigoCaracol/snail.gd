@@ -5,7 +5,8 @@ var canChangeDirection = true
 var gravity = 9
 var speed = 0
 var vida = 2
-var snailWithoutShell = load("res://Personajes/EnemigoCaracol/snailwithoutshell.tscn")
+var posGolpeo = 0
+const snailWithoutShell = preload("res://Personajes/EnemigoCaracol/snailwithoutshell.tscn")
 
 var direccion = -1:
 	set(value):
@@ -18,6 +19,7 @@ var direccion = -1:
 @onready var rayos := $Raycasts
 @onready var anim = $AnimationPlayer
 @onready var spritecaracolsin = $Area2D/Sprite2D
+@onready var babosa = null
 
 
 
@@ -58,9 +60,11 @@ func _process(delta):
 #		spritecaracolsin.rotate(deg_to_rad(200*delta))
 	
 	if estadoActual == estados.CAPARAZON:
-		speed -= 1
-		if speed < 0:
+		speed -= 0.5
+		if speed <= 0:
 			speed = 0
+			$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
+			
 	
 	
 func darseVuelta():
@@ -74,6 +78,7 @@ func _on_ray_timer_timeout():
 func takeDmg(damage):
 	player = null
 	vida -= damage
+	
 	if vida <= 0:
 		speed = 0
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
@@ -82,15 +87,18 @@ func takeDmg(damage):
 		await (anim.animation_finished)
 		queue_free()
 	else:
-		var babosa = snailWithoutShell.instantiate()
+		babosa = snailWithoutShell.instantiate()
 		add_child(babosa)
 		babosa.global_position = self.global_position
-		estadoActual = estados.CAPARAZON
+		babosa.speed = 0
+		babosa.position.x = 0
+		babosa.move_and_slide()
 		gravity = 0
 		$CollisionShape2D.set_deferred("disabled",true)
-		anim.play("hurt")
+		anim.play("hurtShell")
 		await (anim.animation_finished)
 		$CollisionShape2D.set_deferred("disabled",false)
+		estadoActual = estados.CAPARAZON
 		gravity = 9
 
 func _on_dmg_player_he_hecho_danio():
