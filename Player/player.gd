@@ -9,7 +9,6 @@ const gravity := 9
 var damage = 1
 var canDash = true
 var vidasMaximas = 5
-var score = 0
 
 
 @onready var anim := $AnimationPlayer
@@ -34,8 +33,8 @@ var vida := 5 :
 
 func _ready():
 	if !Global.inicio:
-		position.x = Global.checkX
-		position.y = Global.checkY
+		position.x = 1152
+		position.y = -127
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
@@ -59,7 +58,6 @@ func _process(delta):
 			var colision = ray.get_collider()
 			if colision.is_in_group("Enemigos") and colision.has_method("takeDmg"):
 				colision.takeDmg(damage)
-				score+=10
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
 				break
@@ -95,7 +93,7 @@ func actualizaInterfazFrutas():
 	frutasLabel.text = str(Global.frutas)
 
 func takeDamage(dmg):
-#	print(vida)
+	print(vida)
 	vida-=dmg
 	state_machine.transition_to("takeDamage")
 	if vida <= 0:
