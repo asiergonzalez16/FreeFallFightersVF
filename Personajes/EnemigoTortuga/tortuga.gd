@@ -24,28 +24,27 @@ func _process(delta):
 		if player == null and ray.is_colliding():
 			var colision = ray.get_collider()
 			if colision.is_in_group("Player"):
+				animation_player.play("spikesOut")
+				await(animation_player.animation_finished)
+				$dmgPlayer/CollisionShape2D.set_deferred("disabled",false)
 				$ActivarSpikes.start()
 				player = colision
 				estadoActual = estados.ACTIVARSPIKES
-				animation_player.play("spikesOut")
-				await(animation_player.animation_finished)
 				estadoActual = estados.REPOSO2
-				$dmgPlayer/CollisionShape2D.set_deferred("disabled",false)
-				$CollisionShape2D.set_deferred("disabled",true)
 				animation_player.play("idle2")
 			
 			
 func takeDmg(damage):
-	$CollisionShape2D.set_deferred("disabled",true)
-	vida -= damage
-	print (vida)
-	animation_player.play("hurt")
-	await (animation_player.animation_finished)
-	if vida <= 0:
-		estadoActual = estados.MORIR
-		$CollisionShape2D.set_deferred("disabled",true)
-		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-		queue_free()
+	if $dmgPlayer/CollisionShape2D.disabled == true:
+		vida -= damage
+		print (vida)
+		animation_player.play("hurt")
+		await (animation_player.animation_finished)
+		if vida <= 0:
+			estadoActual = estados.MORIR
+			$CollisionShape2D.set_deferred("disabled",true)
+			$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
+			queue_free()
 
 
 
@@ -53,9 +52,8 @@ func takeDmg(damage):
 func _on_activar_spikes_timeout():
 	animation_player.play("spikesIn")
 	await(animation_player.animation_finished)
-	estadoActual = estados.REPOSO
-	$CollisionShape2D.set_deferred("disabled",false)
 	$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
+	estadoActual = estados.REPOSO
 	animation_player.play("idle1")
 	$DesactivarSpikes.start()
 
