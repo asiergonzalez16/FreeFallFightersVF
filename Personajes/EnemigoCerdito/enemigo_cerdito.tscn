@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://sqxbpo7m6rht" path="res://Trampas/dmg_player.tscn" id="4_hc4a4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgej"]
-size = Vector2(20, 18)
 
 [node name="EnemigoCerdito" groups=["Enemigos"] instance=ExtResource("1_3ja0e")]
 process_mode = 1
@@ -21,7 +20,6 @@ vframes = 6
 frame = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_3lgej")
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -45,7 +43,7 @@ target_position = Vector2(-50, 0)
 [node name="dmgPlayer" parent="." index="5" instance=ExtResource("4_hc4a4")]
 
 [node name="CollisionShape2D" parent="dmgPlayer" index="0"]
-position = Vector2(-0.5, 1)
+position = Vector2(0, 0)
 
 [connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
 [connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]

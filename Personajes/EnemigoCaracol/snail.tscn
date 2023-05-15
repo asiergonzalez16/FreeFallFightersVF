@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbtb2mnhniuw1"]
+[gd_scene load_steps=12 format=3 uid="uid://dbtb2mnhniuw1"]
 
 [ext_resource type="Texture2D" uid="uid://b2awtri2j1qdq" path="res://Assets_PixelAdventure/Enemies/Snail/snail.png" id="1_actnr"]
-[ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_d8aj0"]
-[ext_resource type="Script" path="res://Trampas/dmg_player.gd" id="3_83850"]
+[ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_emlf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijkho"]
-size = Vector2(26, 18)
+size = Vector2(29, 18.5)
 
 [sub_resource type="Animation" id="Animation_enbjj"]
 length = 0.001
@@ -89,6 +88,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_dg2cx"]
 resource_name = "shell"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,14 +130,8 @@ _data = {
 "walk": SubResource("Animation_hpu5g")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v51o"]
-size = Vector2(23, 16)
-
-[node name="Snail" type="CharacterBody2D" groups=["Enemigos"]]
-process_mode = 1
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("1_d8aj0")
+[node name="Snail" type="CharacterBody2D"]
+script = ExtResource("1_emlf6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_actnr")
@@ -146,35 +140,10 @@ vframes = 7
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 2)
+position = Vector2(1.5, 2.25)
 shape = SubResource("RectangleShape2D_ijkho")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_igisj")
 }
-
-[node name="Raycasts" type="Node2D" parent="."]
-
-[node name="RayCastSuelo" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(0, 20)
-collision_mask = 4
-
-[node name="RayCastMuro" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(-20, 0)
-collision_mask = 4
-
-[node name="RayTimer" type="Timer" parent="Raycasts"]
-wait_time = 0.1
-
-[node name="dmgPlayer" type="Area2D" parent="."]
-collision_layer = 2
-script = ExtResource("3_83850")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dmgPlayer"]
-position = Vector2(1.5, 2)
-shape = SubResource("RectangleShape2D_1v51o")
-
-[connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
-[connection signal="area_entered" from="dmgPlayer" to="dmgPlayer" method="_on_area_entered"]
-[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]

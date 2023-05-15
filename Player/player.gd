@@ -52,7 +52,6 @@ func _process(delta):
 		Save.save_data()
 		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	$LabelState.text = $StateMachine.state.name
-	$PlayerGUI/HBoxContainer2/puntuacion.text = str(score)
 	if is_on_floor() and numSaltos != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()
 	for ray in raycastDmg.get_children():
