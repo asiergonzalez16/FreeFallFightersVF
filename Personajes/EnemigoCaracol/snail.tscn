@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbtb2mnhniuw1"]
+[gd_scene load_steps=14 format=3 uid="uid://dbtb2mnhniuw1"]
 
 [ext_resource type="Texture2D" uid="uid://b2awtri2j1qdq" path="res://Assets_PixelAdventure/Enemies/Snail/snail.png" id="1_actnr"]
 [ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_emlf6"]
+[ext_resource type="PackedScene" uid="uid://sqxbpo7m6rht" path="res://Trampas/dmg_player.tscn" id="3_w4xua"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijkho"]
-size = Vector2(29, 18.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ym0"]
+size = Vector2(29, 15.5)
 
 [sub_resource type="Animation" id="Animation_enbjj"]
 length = 0.001
@@ -130,7 +131,12 @@ _data = {
 "walk": SubResource("Animation_hpu5g")
 }
 
-[node name="Snail" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wehs"]
+size = Vector2(29, 15)
+
+[node name="Snail" type="CharacterBody2D" groups=["Enemigos"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_emlf6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -140,10 +146,34 @@ vframes = 7
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 2.25)
-shape = SubResource("RectangleShape2D_ijkho")
+position = Vector2(1.5, 3.75)
+shape = SubResource("RectangleShape2D_d0ym0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_igisj")
 }
+
+[node name="rayos" type="Node2D" parent="."]
+
+[node name="raysuelo" type="RayCast2D" parent="rayos"]
+target_position = Vector2(0, 20)
+collision_mask = 4
+
+[node name="raymuro" type="RayCast2D" parent="rayos"]
+target_position = Vector2(-20, 0)
+collision_mask = 4
+
+[node name="RayTimer" type="Timer" parent="rayos"]
+wait_time = 0.1
+
+[node name="dmgPlayer" parent="." instance=ExtResource("3_w4xua")]
+
+[node name="CollisionShape2D" parent="dmgPlayer" index="0"]
+position = Vector2(1.5, 3.5)
+shape = SubResource("RectangleShape2D_4wehs")
+
+[connection signal="timeout" from="rayos/RayTimer" to="." method="_on_ray_timer_timeout"]
+[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
+
+[editable path="dmgPlayer"]

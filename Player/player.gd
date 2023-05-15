@@ -33,8 +33,8 @@ var vida := 5 :
 
 func _ready():
 	if !Global.inicio:
-		position.x = 1152
-		position.y = -127
+		position.x = Global.checkX
+		position.y = Global.checkY
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
