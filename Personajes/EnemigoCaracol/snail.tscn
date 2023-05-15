@@ -1,7 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dbtb2mnhniuw1"]
 
 [ext_resource type="Texture2D" uid="uid://b2awtri2j1qdq" path="res://Assets_PixelAdventure/Enemies/Snail/snail.png" id="1_actnr"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_emlf6"]
+=======
+[ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snail.gd" id="1_d8aj0"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijkho"]
 size = Vector2(29, 18.5)
@@ -130,8 +134,16 @@ _data = {
 "walk": SubResource("Animation_hpu5g")
 }
 
+<<<<<<< Updated upstream
 [node name="Snail" type="CharacterBody2D"]
 script = ExtResource("1_emlf6")
+=======
+[node name="Snail" type="CharacterBody2D" groups=["Enemigos"]]
+process_mode = 1
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_d8aj0")
+>>>>>>> Stashed changes
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_actnr")
