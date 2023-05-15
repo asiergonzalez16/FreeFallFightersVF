@@ -16,7 +16,6 @@ var direccion = -1:
 @onready var rayMuro : RayCast2D = $Raycasts/RayCastMuro
 @onready var rayos := $Raycasts
 @onready var anim = $AnimationPlayer
-@onready var spritecaracolsin = $Area2D/Sprite2D
 @onready var babosa = null
 
 
@@ -35,7 +34,6 @@ var estadoActual = estados.PATRULLAR :
 
 
 func _ready():
-	snailWithoutShell.instantiate()
 	anim.play("walk")
 	speed = 40
 	
@@ -80,6 +78,7 @@ func takeDmg(damage):
 		await (anim.animation_finished)
 		queue_free()
 	else:
+		snailWithoutShell.instantiate()
 		babosa = snailWithoutShell.instantiate()
 		add_child(babosa)
 		babosa.global_position = self.global_position

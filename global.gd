@@ -1,5 +1,6 @@
 extends Node
-
+var checkX = 0
+var checkY = 0
 var inicio = true
 var bandera = true
 

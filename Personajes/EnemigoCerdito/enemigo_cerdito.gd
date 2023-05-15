@@ -63,7 +63,7 @@ func _process(delta):
 func takeDmg(damage):
 	player = null
 	vida -= damage
-	print (vida)
+#	print (vida)
 	if vida <= 0:
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
 		estadoActual = estados.MORIRSE

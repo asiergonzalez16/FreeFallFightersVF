@@ -231,7 +231,6 @@ offset_left = -22.0
 offset_top = -51.0
 offset_right = 108.0
 offset_bottom = -25.0
-text = "aaaaaaaaaaaaaa"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_owes5")
@@ -362,6 +361,22 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_bf28t")
 }
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerGUI"]
+offset_left = 8.0
+offset_top = 47.0
+offset_right = 65.0
+offset_bottom = 73.0
+
+[node name="score" type="Label" parent="PlayerGUI/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Score: "
+
+[node name="puntuacion" type="Label" parent="PlayerGUI/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "0"
 
 [node name="RaycastDmg" type="Node2D" parent="."]
 

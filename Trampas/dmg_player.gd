@@ -7,6 +7,7 @@ signal heHechoDanio
 @export var side = 0
 
 func _on_area_entered(area):
+	print("entra en el area")
 	var parent = get_node_or_null("..")
 	if parent is Rhino and area.is_in_group("AreaPlayer"):
 		if area.owner.global_position.x < global_position.x:

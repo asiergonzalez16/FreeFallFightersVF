@@ -3,6 +3,7 @@ extends Control
 var webApiKey = "AIzaSyApRPf0C2CGtUJhDhuIk1YmdwxSFhwgf6o"
 var signupURL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
 var loginURL = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
+var postdb = "https://freefallfighters.firebaseio.com/message_list.json"
 #login and signup function
 
 func _loginSignup(url: String, email: String, password : String):
@@ -17,6 +18,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	#si la respuesta es correcta
 	if (response_code == 200):
+		
 		print(response)
 		get_tree().change_scene_to_file("res://Maps/main_menu.tscn")
 	else:
