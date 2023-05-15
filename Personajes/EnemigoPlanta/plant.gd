@@ -47,7 +47,13 @@ func _on_timer_timeout():
 	
 func disparar():
 	add_child(bullet)
-	bullet.global_position = self.global_position
+	if direccion == -1:
+		bullet.global_position.x = self.global_position.x-20
+		bullet.global_position.y = self.global_position.y-4
+	else:
+		bullet.global_position.x = self.global_position.x+20
+		bullet.global_position.y = self.global_position.y-4
+		
 	bullet.move_and_slide()
 func takeDmg(damage):
 	vida -= damage

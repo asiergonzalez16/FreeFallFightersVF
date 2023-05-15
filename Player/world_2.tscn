@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7rmf6fjkgucc"]
+[gd_scene load_steps=17 format=3 uid="uid://7rmf6fjkgucc"]
 
 [ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="1_o5u5y"]
 [ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="2_tlbrd"]
@@ -11,8 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://owlwdggvbxt3" path="res://Assets_PixelAdventure/Parallax/parallax-04.png" id="9_m6c5u"]
 [ext_resource type="PackedScene" uid="uid://bkrrqk7ernt45" path="res://Personajes/MovingPlatform/fall_damage.tscn" id="10_4ax3t"]
 [ext_resource type="PackedScene" uid="uid://bqa7wm4t7grb2" path="res://Trampas/sierra.tscn" id="11_4ic2k"]
-[ext_resource type="PackedScene" uid="uid://bs8i6jsra2v4c" path="res://Personajes/EnemigoPlanta/plant.tscn" id="13_o70pa"]
-[ext_resource type="PackedScene" uid="uid://cqhalswss0ob8" path="res://Personajes/EnemigoTortuga/tortuga.tscn" id="13_oosu5"]
+[ext_resource type="PackedScene" uid="uid://p5b7fplx00td" path="res://Trampas/spikeHead.tscn" id="12_81hc5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6md7a"]
 texture = ExtResource("1_o5u5y")
@@ -225,39 +224,36 @@ position = Vector2(717, -56)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(-2.98816, 19.6398)
+position = Vector2(-3, 34.0665)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 259257.0
+rotation = 276101.0
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-2.96345, 19.168)
-rotation = -1.54196
-progress = 40.0435
+position = Vector2(-3, 36.1406)
+rotation = -1.5708
+progress = 22.8557
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(852, -54)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
-position = Vector2(2, 1.4734)
+position = Vector2(0.244812, 40.7426)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
-rotation = 259257.0
+rotation = 276101.0
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(2, 2.09792)
-rotation = -1.5708
-progress = 57.0229
+position = Vector2(0.100121, 42.8649)
+rotation = -1.50272
+progress = 16.1954
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("13_oosu5")]
-position = Vector2(777, 20)
-
-[node name="Plant" parent="." instance=ExtResource("13_o70pa")]
-position = Vector2(270, 125)
+[node name="spikeHead" parent="." instance=ExtResource("12_81hc5")]
+position = Vector2(313, 34)
 
 [editable path="FallDamage"]
 [editable path="Sierra"]
