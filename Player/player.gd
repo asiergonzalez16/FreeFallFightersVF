@@ -9,6 +9,7 @@ const gravity := 9
 var damage = 1
 var canDash = true
 var vidasMaximas = 5
+var contadorNivelesDesbloqueados = 0
 
 
 @onready var anim := $AnimationPlayer
