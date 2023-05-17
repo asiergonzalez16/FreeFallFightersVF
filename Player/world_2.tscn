@@ -160,6 +160,7 @@ position = Vector2(29, 144)
 
 [node name="FinDeNivel" parent="." instance=ExtResource("3_11fq6")]
 position = Vector2(981, 0)
+siguienteNivel = "res://Maps/main_menu.tscn"
 
 [node name="Platform" parent="." instance=ExtResource("4_xymls")]
 position = Vector2(425, 140)
@@ -224,33 +225,32 @@ position = Vector2(717, -56)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(-3, 34.0665)
+position = Vector2(-1.55737, -9.57378)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 276101.0
+rotation = 278377.0
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-3, 36.1406)
-rotation = -1.5708
-progress = 22.8557
+position = Vector2(-1.49291, -10.8953)
+progress = 69.9071
 
 [node name="Sierra2" parent="." instance=ExtResource("11_4ic2k")]
 position = Vector2(852, -54)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra2" index="0"]
-position = Vector2(0.244812, 40.7426)
+position = Vector2(2, -2.45158)
 
 [node name="Sprite2D" parent="Sierra2/SierraVerdadera" index="0"]
-rotation = 276101.0
+rotation = 278377.0
 
 [node name="Path2D" parent="Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Sierra2/Path2D" index="0"]
-position = Vector2(0.100121, 42.8649)
-rotation = -1.50272
-progress = 16.1954
+position = Vector2(2, -3.82577)
+rotation = -1.5708
+progress = 62.9281
 
 [node name="spikeHead" parent="." instance=ExtResource("12_81hc5")]
 position = Vector2(313, 34)

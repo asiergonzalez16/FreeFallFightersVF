@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddv3g2q87atcv"
-path="res://.godot/imported/Gray.png-edd07e4bd0bf3fdf5db3641c9fb71390.ctex"
+uid="uid://bp5mqauej3m24"
+path="res://.godot/imported/Pink.png-a0795fe8ee68e6e32e825229f121dfb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Background/Gray.png"
-dest_files=["res://.godot/imported/Gray.png-edd07e4bd0bf3fdf5db3641c9fb71390.ctex"]
+source_file="res://Assets_PixelAdventure/Enemies/Background/Pink.png"
+dest_files=["res://.godot/imported/Pink.png-a0795fe8ee68e6e32e825229f121dfb2.ctex"]
 
 [params]
 

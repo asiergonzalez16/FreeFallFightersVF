@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsc67m2xw01gr"
-path="res://.godot/imported/Blue.png-0150a3d1d71d6b30fa81381725175a86.ctex"
+uid="uid://b5xqiw0ee187l"
+path="res://.godot/imported/Blue700x700.png-4285ff74091fb2819b552fe7a1e203e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Background/Blue.png"
-dest_files=["res://.godot/imported/Blue.png-0150a3d1d71d6b30fa81381725175a86.ctex"]
+source_file="res://Assets_PixelAdventure/Enemies/Background/Blue700x700.png"
+dest_files=["res://.godot/imported/Blue700x700.png-4285ff74091fb2819b552fe7a1e203e7.ctex"]
 
 [params]
 

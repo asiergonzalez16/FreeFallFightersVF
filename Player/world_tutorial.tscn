@@ -1,0 +1,539 @@
+[gd_scene load_steps=24 format=3 uid="uid://i1pap3in50ti"]
+
+[ext_resource type="Script" path="res://Player/world_tutorial.gd" id="1_u4f30"]
+[ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="1_v1f2n"]
+[ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="2_8py4l"]
+[ext_resource type="Texture2D" uid="uid://bsloktd478txp" path="res://Assets_PixelAdventure/Parallax/definitiveimage.png" id="3_fo24a"]
+[ext_resource type="Texture2D" uid="uid://d02l7nnnfajd3" path="res://Assets_PixelAdventure/Parallax/parallax-01.png" id="4_enmhq"]
+[ext_resource type="Texture2D" uid="uid://cqgs3aseyvj8m" path="res://Assets_PixelAdventure/Parallax/parallax-02.png" id="5_yff0c"]
+[ext_resource type="Texture2D" uid="uid://cvngflsps17db" path="res://Assets_PixelAdventure/Parallax/parallax-03.png" id="6_i7xxd"]
+[ext_resource type="Texture2D" uid="uid://owlwdggvbxt3" path="res://Assets_PixelAdventure/Parallax/parallax-04.png" id="7_vyx0e"]
+[ext_resource type="Texture2D" uid="uid://c4v14fe6sw3sw" path="res://Assets_PixelAdventure/Menu/keyboard/kb_arrow_left.png" id="10_cj8sr"]
+[ext_resource type="Texture2D" uid="uid://dibej0u4h3lfy" path="res://Assets_PixelAdventure/Menu/Buttons/Close.png" id="11_i5pkx"]
+[ext_resource type="Texture2D" uid="uid://bky4be887ki11" path="res://Assets_PixelAdventure/Menu/keyboard/kb_arrow_right.png" id="11_vjdli"]
+[ext_resource type="Texture2D" uid="uid://bahcvv56uoioi" path="res://Assets_PixelAdventure/Parallax/sign.png" id="12_atcrt"]
+[ext_resource type="Texture2D" uid="uid://bnjxvjgw3o5a4" path="res://Assets_PixelAdventure/Menu/keyboard/kb_space.png" id="12_pm7bw"]
+[ext_resource type="PackedScene" uid="uid://cmorxyc7o6ckr" path="res://fin_de_nivel.tscn" id="13_1qb8c"]
+[ext_resource type="Texture2D" uid="uid://qh4778c8molj" path="res://Assets_PixelAdventure/Enemies/AngryPig/angryPig.png" id="15_5smuf"]
+[ext_resource type="PackedScene" uid="uid://k0v8y3q6b8li" path="res://Personajes/EnemigoCerdito/enemigo_cerdito.tscn" id="15_tt1tv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6md7a"]
+texture = ExtResource("2_8py4l")
+0:8/0 = 0
+0:8/0/terrain_set = 0
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:8/0/terrains_peering_bit/bottom_right_corner = 0
+1:8/0 = 0
+1:8/0/terrain_set = 0
+1:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:8/0/physics_layer_0/angular_velocity = 0.0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:8/0/terrains_peering_bit/bottom_right_corner = 0
+1:8/0/terrains_peering_bit/bottom_side = 0
+1:8/0/terrains_peering_bit/bottom_left_corner = 0
+2:8/0 = 0
+2:8/0/terrain_set = 0
+2:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:8/0/physics_layer_0/angular_velocity = 0.0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:8/0/terrains_peering_bit/bottom_left_corner = 0
+3:8/0 = 0
+3:8/0/terrain_set = 0
+3:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:8/0/physics_layer_0/angular_velocity = 0.0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:8/0/terrains_peering_bit/bottom_left_corner = 0
+3:8/0/terrains_peering_bit/left_side = 0
+3:8/0/terrains_peering_bit/top_left_corner = 0
+3:8/0/terrains_peering_bit/top_side = 0
+3:8/0/terrains_peering_bit/top_right_corner = 0
+4:8/0 = 0
+4:8/0/terrain_set = 0
+4:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:8/0/physics_layer_0/angular_velocity = 0.0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:8/0/terrains_peering_bit/right_side = 0
+4:8/0/terrains_peering_bit/bottom_right_corner = 0
+4:8/0/terrains_peering_bit/top_left_corner = 0
+4:8/0/terrains_peering_bit/top_side = 0
+4:8/0/terrains_peering_bit/top_right_corner = 0
+3:9/0 = 0
+3:9/0/terrain_set = 0
+3:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:9/0/physics_layer_0/angular_velocity = 0.0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:9/0/terrains_peering_bit/bottom_right_corner = 0
+3:9/0/terrains_peering_bit/bottom_side = 0
+3:9/0/terrains_peering_bit/bottom_left_corner = 0
+3:9/0/terrains_peering_bit/left_side = 0
+3:9/0/terrains_peering_bit/top_left_corner = 0
+4:9/0 = 0
+4:9/0/terrain_set = 0
+4:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:9/0/physics_layer_0/angular_velocity = 0.0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:9/0/terrains_peering_bit/right_side = 0
+4:9/0/terrains_peering_bit/bottom_right_corner = 0
+4:9/0/terrains_peering_bit/bottom_side = 0
+4:9/0/terrains_peering_bit/bottom_left_corner = 0
+4:9/0/terrains_peering_bit/top_right_corner = 0
+4:10/0 = 0
+4:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:10/0/physics_layer_0/angular_velocity = 0.0
+3:10/0 = 0
+3:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:10/0/physics_layer_0/angular_velocity = 0.0
+2:10/0 = 0
+2:10/0/terrain_set = 0
+2:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:10/0/physics_layer_0/angular_velocity = 0.0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:10/0/terrains_peering_bit/top_left_corner = 0
+1:10/0 = 0
+1:10/0/terrain_set = 0
+1:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:10/0/physics_layer_0/angular_velocity = 0.0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:10/0/terrains_peering_bit/top_left_corner = 0
+1:10/0/terrains_peering_bit/top_side = 0
+1:10/0/terrains_peering_bit/top_right_corner = 0
+2:9/0 = 0
+2:9/0/terrain_set = 0
+2:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:9/0/physics_layer_0/angular_velocity = 0.0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:9/0/terrains_peering_bit/bottom_left_corner = 0
+2:9/0/terrains_peering_bit/left_side = 0
+2:9/0/terrains_peering_bit/top_left_corner = 0
+1:9/0 = 0
+1:9/0/terrain_set = 0
+1:9/0/terrain = 0
+1:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:9/0/physics_layer_0/angular_velocity = 0.0
+1:9/0/terrains_peering_bit/right_side = 0
+1:9/0/terrains_peering_bit/bottom_right_corner = 0
+1:9/0/terrains_peering_bit/bottom_side = 0
+1:9/0/terrains_peering_bit/bottom_left_corner = 0
+1:9/0/terrains_peering_bit/left_side = 0
+1:9/0/terrains_peering_bit/top_left_corner = 0
+1:9/0/terrains_peering_bit/top_side = 0
+1:9/0/terrains_peering_bit/top_right_corner = 0
+0:9/0 = 0
+0:9/0/terrain_set = 0
+0:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:9/0/physics_layer_0/angular_velocity = 0.0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:9/0/terrains_peering_bit/right_side = 0
+0:9/0/terrains_peering_bit/bottom_right_corner = 0
+0:9/0/terrains_peering_bit/top_right_corner = 0
+0:10/0 = 0
+0:10/0/terrain_set = 0
+0:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:10/0/physics_layer_0/angular_velocity = 0.0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:10/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_np6c8"]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 7
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_6md7a")
+
+[sub_resource type="Animation" id="Animation_j3m4m"]
+resource_name = "popup"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlo6d"]
+_data = {
+"popup": SubResource("Animation_j3m4m")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc34c"]
+size = Vector2(18, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3787f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yykxr"]
+size = Vector2(16, 23)
+
+[node name="world_tutorial" type="Node"]
+script = ExtResource("1_u4f30")
+
+[node name="TileMap" type="TileMap" parent="." groups=["Mapa"]]
+tile_set = SubResource("TileSet_np6c8")
+format = 2
+layer_0/tile_data = PackedInt32Array(524285, 65536, 9, 524286, 65536, 9, 589822, 65536, 9, 589821, 65536, 9, 589820, 65536, 9, 524284, 65536, 9, 458748, 65536, 8, 458749, 65536, 8, 458750, 65536, 8, 524287, 65536, 9, 589823, 65536, 9, 458751, 65536, 8, 458752, 65536, 9, 524288, 65536, 9, 393216, 65536, 8, 458753, 65536, 9, 524289, 65536, 9, 393217, 65536, 8, 458754, 65536, 9, 524290, 65536, 9, 393218, 65536, 8, 458755, 65536, 9, 524291, 65536, 9, 393219, 65536, 8, 458756, 65536, 9, 524292, 65536, 9, 393220, 65536, 8, 458757, 65536, 9, 524293, 65536, 9, 393221, 65536, 8, 458758, 65536, 9, 524294, 65536, 9, 393222, 65536, 8, 458759, 65536, 9, 524295, 65536, 9, 393223, 65536, 8, 458760, 65536, 9, 524296, 65536, 9, 393224, 65536, 8, 589832, 65536, 10, 589831, 65536, 10, 589830, 65536, 10, 524297, 65536, 9, 589833, 65536, 10, 458761, 65536, 9, 524298, 65536, 9, 589834, 65536, 10, 458762, 65536, 9, 393225, 65536, 8, 393226, 65536, 8, 589829, 65536, 10, 589828, 65536, 10, 589827, 65536, 10, 589826, 65536, 10, 589825, 65536, 10, 589824, 65536, 10, 655359, 65536, 10, 655358, 65536, 10, 655357, 65536, 10, 655356, 65536, 10, 655355, 65536, 10, 589819, 65536, 9, 524283, 65536, 9, 655354, 65536, 10, 589818, 65536, 9, 524282, 65536, 9, 655353, 65536, 10, 589817, 65536, 9, 524281, 65536, 9, 458745, 65536, 8, 458746, 65536, 8, 458747, 65536, 8, 524304, 65536, 9, 524305, 65536, 9, 589841, 65536, 10, 589840, 65536, 10, 589839, 65536, 10, 524303, 65536, 9, 458767, 65536, 9, 458768, 65536, 9, 458769, 65536, 9, 524306, 65536, 9, 589842, 65536, 10, 458770, 65536, 9, 393232, 65536, 8, 393233, 65536, 8, 393234, 65536, 8, 393231, 65536, 8, 524302, 65536, 9, 458766, 65536, 9, 393230, 65536, 8, 589838, 65536, 10, 458771, 65536, 9, 524307, 65536, 9, 393235, 65536, 8, 458772, 65536, 9, 524308, 65536, 9, 393236, 65536, 8, 589844, 65536, 10, 589843, 65536, 10, 458763, 65536, 9, 524299, 65536, 9, 393227, 65536, 8, 458764, 65536, 9, 524300, 65536, 9, 393228, 65536, 8, 589836, 65536, 10, 589835, 65536, 10, 524301, 65536, 9, 589837, 65536, 10, 458765, 65536, 9, 393229, 65536, 8, 458773, 65536, 9, 524309, 65536, 9, 393237, 65536, 8, 458774, 65536, 9, 524310, 65536, 9, 393238, 65536, 8, 589846, 65536, 10, 589845, 65536, 10, 524311, 65536, 9, 589847, 65536, 10, 458775, 65536, 9, 393239, 65536, 8, 458776, 65536, 9, 524312, 65536, 9, 393240, 65536, 8, 458777, 131072, 9, 524313, 131072, 9, 393241, 131072, 8, 589849, 131072, 10, 589848, 65536, 10, 524319, 65536, 9, 524320, 65536, 9, 589856, 65536, 10, 589855, 65536, 10, 589854, 0, 10, 524318, 0, 9, 458782, 0, 9, 458783, 65536, 9, 458784, 65536, 9, 524321, 65536, 9, 589857, 65536, 10, 458785, 65536, 9, 393247, 65536, 8, 393248, 65536, 8, 393249, 65536, 8, 458786, 131072, 9, 524322, 131072, 9, 393250, 131072, 8, 393246, 0, 8, 589858, 131072, 10, 458792, 65536, 9, 458793, 65536, 9, 524329, 65536, 9, 524328, 65536, 9, 524327, 0, 9, 458791, 0, 9, 393255, 0, 8, 393256, 65536, 8, 393257, 65536, 8, 589865, 65536, 10, 589864, 65536, 10, 589863, 0, 10, 524330, 65536, 9, 589866, 65536, 10, 458794, 65536, 9, 524331, 131072, 9, 589867, 131072, 10, 458795, 131072, 9, 393258, 65536, 8, 393259, 131072, 8, 458801, 65536, 9, 458802, 65536, 9, 524338, 65536, 9, 524337, 65536, 9, 524336, 0, 9, 458800, 0, 9, 393264, 0, 8, 393265, 65536, 8, 393266, 65536, 8, 589874, 65536, 10, 589873, 65536, 10, 589872, 0, 10, 524339, 65536, 9, 589875, 65536, 10, 458803, 65536, 9, 393267, 65536, 8, 458804, 131072, 9, 524340, 131072, 9, 393268, 131072, 8, 589876, 131072, 10, 524346, 65536, 9, 524347, 65536, 9, 589883, 65536, 10, 589882, 65536, 10, 589881, 0, 10, 524345, 0, 9, 458809, 0, 9, 458810, 65536, 9, 458811, 65536, 9, 393273, 0, 8, 393274, 65536, 8, 393275, 65536, 8, 458812, 65536, 9, 524348, 65536, 9, 393276, 65536, 8, 458813, 65536, 9, 524349, 65536, 9, 393277, 65536, 8, 458814, 65536, 9, 524350, 65536, 9, 393278, 65536, 8, 458815, 65536, 9, 524351, 65536, 9, 393279, 65536, 8, 458816, 65536, 9, 524352, 65536, 9, 393280, 65536, 8, 589888, 65536, 10, 589887, 65536, 10, 589886, 65536, 10, 589885, 65536, 10, 589884, 65536, 10, 458817, 65536, 9, 524353, 65536, 9, 393281, 65536, 8, 458818, 65536, 9, 524354, 65536, 9, 393282, 65536, 8, 458819, 65536, 9, 524355, 65536, 9, 393283, 65536, 8, 458820, 65536, 9, 524356, 65536, 9, 393284, 65536, 8, 458821, 65536, 9, 524357, 65536, 9, 393285, 65536, 8, 458822, 65536, 9, 524358, 65536, 9, 393286, 65536, 8, 458823, 131072, 9, 524359, 131072, 9, 393287, 131072, 8, 589895, 131072, 10, 589894, 65536, 10, 589893, 65536, 10, 589892, 65536, 10, 589891, 65536, 10, 589890, 65536, 10, 589889, 65536, 10, 655352, 65536, 10, 589816, 65536, 9, 524280, 65536, 9, 655351, 65536, 10, 589815, 65536, 9, 524279, 65536, 9, 458743, 65536, 8, 458744, 65536, 8, 589814, 65536, 9, 524278, 65536, 9, 458742, 65536, 8, 589813, 65536, 9, 524277, 65536, 9, 458741, 65536, 8, 589812, 65536, 9, 524276, 65536, 9, 458740, 65536, 8, 655350, 65536, 10, 655349, 65536, 10, 655348, 65536, 10, 655347, 65536, 10, 589811, 65536, 9, 524275, 65536, 9, 655346, 65536, 10, 589810, 65536, 9, 524274, 65536, 9, 458738, 196608, 9, 458739, 65536, 8, 589809, 65536, 9, 524273, 65536, 9, 458737, 65536, 9, 655345, 65536, 10, 655344, 0, 10, 589808, 0, 9, 524272, 0, 9, 458736, 0, 9, 393200, 0, 9, 393201, 65536, 9, 393202, 131072, 9, 327664, 0, 9, 327665, 65536, 9, 327666, 131072, 9, 262128, 0, 9, 262129, 65536, 9, 262130, 131072, 9, 196592, 0, 9, 196593, 65536, 9, 196594, 131072, 9, 131056, 0, 9, 131057, 65536, 9, 131058, 131072, 9, 65520, 0, 9, 65521, 65536, 9, 65522, 131072, 9, -16, 0, 9, -15, 65536, 9, -14, 131072, 9, -65552, 0, 9, -65551, 65536, 9, -65550, 131072, 9, -131088, 0, 9, -131087, 65536, 9, -131086, 131072, 9, -196624, 0, 8, -196623, 65536, 8, -196622, 131072, 8, 393294, 0, 10, 262222, 0, 8, 327759, 65536, 9, 393295, 65536, 10, 262223, 65536, 8, 327760, 65536, 9, 393296, 65536, 10, 262224, 65536, 8, 327761, 65536, 9, 393297, 65536, 10, 262225, 65536, 8, 327762, 65536, 9, 393298, 65536, 10, 262226, 65536, 8, 327763, 65536, 9, 393299, 65536, 10, 262227, 65536, 8, 327764, 65536, 9, 393300, 65536, 10, 262228, 65536, 8, 327765, 65536, 9, 393301, 65536, 10, 262229, 65536, 8, 327766, 65536, 9, 393302, 65536, 10, 262230, 65536, 8, 327767, 65536, 9, 393303, 65536, 10, 262231, 65536, 8, 327768, 65536, 9, 393304, 65536, 10, 262232, 65536, 8, 327769, 65536, 9, 393305, 65536, 10, 262233, 65536, 8, 327770, 65536, 9, 393306, 65536, 10, 262234, 65536, 8, 327771, 65536, 9, 393307, 65536, 10, 262235, 65536, 8, 327772, 65536, 9, 393308, 65536, 10, 262236, 65536, 8, 327773, 65536, 9, 393309, 65536, 10, 262237, 65536, 8, 327774, 65536, 9, 393310, 65536, 10, 262238, 65536, 8, 327775, 65536, 9, 393311, 65536, 10, 262239, 65536, 8, 327776, 65536, 9, 393312, 65536, 10, 262240, 65536, 8, 327777, 65536, 9, 393313, 65536, 10, 262241, 65536, 8, 327778, 65536, 9, 393314, 65536, 10, 262242, 65536, 8, 327779, 65536, 9, 393315, 65536, 10, 262243, 65536, 8, 327780, 65536, 9, 393316, 65536, 10, 262244, 65536, 8, 327781, 65536, 9, 393317, 65536, 10, 262245, 65536, 8, 327782, 65536, 9, 393318, 65536, 10, 262246, 262144, 9, 327783, 65536, 9, 327784, 65536, 9, 393320, 65536, 10, 393319, 65536, 10, 262247, 65536, 9, 262248, 65536, 9, 196710, 0, 9, 196711, 65536, 9, 196712, 65536, 9, 131174, 0, 9, 131175, 65536, 9, 131176, 65536, 9, 65638, 0, 9, 65639, 65536, 9, 65640, 65536, 9, 102, 0, 9, 103, 65536, 9, 104, 65536, 9, -65434, 0, 9, -65433, 65536, 9, -65432, 65536, 9, 105, 131072, 9, 65641, 131072, 9, -65431, 131072, 9, -130969, 65536, 9, -130968, 65536, 9, -130967, 131072, 9, -196505, 65536, 9, -196504, 65536, 9, -196503, 131072, 9, -262041, 65536, 9, -262040, 65536, 9, -262039, 131072, 9, -327577, 65536, 9, -327576, 65536, 9, -327575, 196608, 8, -130970, 0, 9, -196506, 0, 9, -262042, 0, 9, -327578, 0, 9, -393114, 0, 9, -393113, 65536, 9, -393112, 65536, 9, 131177, 131072, 9, 196713, 131072, 9, 262249, 131072, 9, 327785, 131072, 9, 393321, 131072, 10, -393111, 65536, 9, -458649, 65536, 8, -458648, 65536, 8, -458647, 65536, 8, -458650, 0, 8, -393110, 65536, 9, -393109, 65536, 9, -327573, 65536, 10, -327574, 65536, 10, -458646, 65536, 8, -458645, 65536, 8, -393108, 131072, 9, -327572, 131072, 10, -458644, 131072, 8, -393103, 65536, 9, -393102, 65536, 9, -327566, 65536, 10, -327567, 65536, 10, -327568, 0, 10, -393104, 0, 9, -458640, 0, 8, -458639, 65536, 8, -458638, 65536, 8, -393101, 65536, 9, -327565, 65536, 10, -458637, 65536, 8, -393100, 65536, 9, -327564, 65536, 10, -458636, 65536, 8, -393099, 65536, 9, -327563, 65536, 10, -458635, 65536, 8, -393098, 65536, 9, -327562, 65536, 10, -458634, 65536, 8, -393097, 65536, 9, -327561, 65536, 10, -458633, 65536, 8, -393096, 131072, 9, -327560, 131072, 10, -458632, 131072, 8, -393088, 65536, 9, -393087, 131072, 9, -327551, 131072, 10, -327552, 65536, 10, -327553, 65536, 10, -393089, 65536, 9, -458625, 65536, 8, -458624, 65536, 8, -458623, 131072, 8, -327554, 0, 10, -393090, 0, 9, -458626, 0, 8, 327758, 0, 9)
+
+[node name="Player" parent="." instance=ExtResource("1_v1f2n")]
+position = Vector2(-87, -11)
+
+[node name="FinDeNivel" parent="." instance=ExtResource("13_1qb8c")]
+position = Vector2(2048, -143)
+siguienteNivel = "res://Player/world.tscn"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FinDeNivel"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="FinDeNivel"]
+
+[node name="EnemigoCerdito" parent="." instance=ExtResource("15_tt1tv")]
+position = Vector2(1869, -132)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_offset = Vector2(0, 100)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(601, -735.055)
+scale = Vector2(1.52639, 1.89444)
+texture = ExtResource("3_fo24a")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1008, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(107.5, -129.499)
+scale = Vector2(0.817361, 1.41945)
+texture = ExtResource("4_enmhq")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1008, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(155.002, -123.5)
+scale = Vector2(0.702776, 1.43611)
+texture = ExtResource("5_yff0c")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1008, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(-4.00038, -142)
+scale = Vector2(0.701389, 1.48889)
+texture = ExtResource("6_i7xxd")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(1, 1)
+motion_mirroring = Vector2(1008, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(98.4999, -17)
+scale = Vector2(0.853472, 0.757813)
+texture = ExtResource("7_vyx0e")
+
+[node name="WelcomePopUp" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -173.0
+offset_top = -36.0
+offset_right = 119.0
+offset_bottom = 69.0
+
+[node name="Panel" type="Panel" parent="WelcomePopUp"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 251.0
+offset_bottom = 86.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WelcomePopUp/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 228.0
+offset_bottom = 58.0
+theme_override_font_sizes/normal_font_size = 9
+text = "Use the following keys to move to the sides"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WelcomePopUp/Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_rlo6d")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="WelcomePopUp/Panel"]
+position = Vector2(69, 49)
+scale = Vector2(0.179687, 0.15625)
+texture = ExtResource("10_cj8sr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="WelcomePopUp/Panel"]
+position = Vector2(103, 49)
+scale = Vector2(0.172851, 0.142578)
+texture = ExtResource("11_vjdli")
+
+[node name="TextureButton" type="TextureButton" parent="WelcomePopUp/Panel"]
+layout_mode = 0
+offset_left = 237.0
+offset_right = 252.0
+offset_bottom = 16.0
+texture_normal = ExtResource("11_i5pkx")
+
+[node name="JumpPopUp" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_top = -36.0
+offset_right = 450.0
+offset_bottom = 69.0
+
+[node name="Panel" type="Panel" parent="JumpPopUp"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 26.0
+offset_right = 187.0
+offset_bottom = 86.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="JumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 152.0
+offset_bottom = 58.0
+theme_override_font_sizes/normal_font_size = 9
+text = "Use the following key for jump!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JumpPopUp/Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_rlo6d")
+}
+
+[node name="BotonFinalizar" type="TextureButton" parent="JumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 172.0
+offset_right = 187.0
+offset_bottom = 16.0
+texture_normal = ExtResource("11_i5pkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="JumpPopUp/Panel"]
+position = Vector2(41, 43)
+scale = Vector2(0.326172, 0.191406)
+texture = ExtResource("12_pm7bw")
+
+[node name="DoubleJumpPopUp" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 951.0
+offset_top = -4.0
+offset_right = 1243.0
+offset_bottom = 101.0
+
+[node name="Panel" type="Panel" parent="DoubleJumpPopUp"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 251.0
+offset_bottom = 86.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DoubleJumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 228.0
+offset_bottom = 58.0
+theme_override_font_sizes/normal_font_size = 9
+text = "If you press the key for jump two times, you will make it double!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoubleJumpPopUp/Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_rlo6d")
+}
+
+[node name="ClosePopUp" type="TextureButton" parent="DoubleJumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 237.0
+offset_right = 252.0
+offset_bottom = 16.0
+texture_normal = ExtResource("11_i5pkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoubleJumpPopUp/Panel"]
+position = Vector2(141, 52)
+scale = Vector2(0.289063, 0.203125)
+texture = ExtResource("12_pm7bw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DoubleJumpPopUp/Panel"]
+visible = false
+position = Vector2(198, 52)
+scale = Vector2(0.289063, 0.203125)
+texture = ExtResource("12_pm7bw")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="DoubleJumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 40.0
+offset_right = 188.0
+offset_bottom = 64.0
+text = "x2"
+
+[node name="WallJumpPopUp" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1290.0
+offset_top = -64.0
+offset_right = 1455.0
+offset_bottom = 11.0
+
+[node name="Panel" type="Panel" parent="WallJumpPopUp"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 165.0
+offset_bottom = 77.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WallJumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 24.0
+theme_override_font_sizes/normal_font_size = 9
+text = "Try to climb the wall"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WallJumpPopUp/Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_rlo6d")
+}
+
+[node name="ClosePopUpWall" type="TextureButton" parent="WallJumpPopUp/Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 163.0
+offset_bottom = 16.0
+texture_normal = ExtResource("11_i5pkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="WallJumpPopUp/Panel"]
+position = Vector2(65, 47)
+scale = Vector2(0.289063, 0.203125)
+texture = ExtResource("12_pm7bw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="WallJumpPopUp/Panel"]
+position = Vector2(100, 48)
+scale = Vector2(0.183594, 0.109375)
+texture = ExtResource("11_vjdli")
+
+[node name="CerditoPopUp2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1615.0
+offset_top = -229.0
+offset_right = 1780.0
+offset_bottom = -154.0
+
+[node name="Panel" type="Panel" parent="CerditoPopUp2"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 165.0
+offset_bottom = 77.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CerditoPopUp2/Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 30.0
+theme_override_font_sizes/normal_font_size = 9
+text = "Legend say that pigs don't like people."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CerditoPopUp2/Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_rlo6d")
+}
+
+[node name="CloseCerdito" type="TextureButton" parent="CerditoPopUp2/Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 163.0
+offset_bottom = 16.0
+texture_normal = ExtResource("11_i5pkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CerditoPopUp2/Panel"]
+position = Vector2(148, 45)
+scale = Vector2(0.808379, 0.817448)
+texture = ExtResource("15_5smuf")
+hframes = 9
+vframes = 6
+
+[node name="AreaWelcome" type="Area2D" parent="."]
+position = Vector2(-173, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaWelcome"]
+position = Vector2(84, 86)
+shape = SubResource("RectangleShape2D_uc34c")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaWelcome"]
+position = Vector2(84, 81)
+texture = ExtResource("12_atcrt")
+
+[node name="AreaJump" type="Area2D" parent="."]
+position = Vector2(259, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaJump"]
+position = Vector2(85, 87)
+shape = SubResource("RectangleShape2D_3787f")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaJump"]
+position = Vector2(84, 82)
+texture = ExtResource("12_atcrt")
+
+[node name="AreaDobleJump" type="Area2D" parent="."]
+position = Vector2(1040, 82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDobleJump"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_yykxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaDobleJump"]
+position = Vector2(0, -1)
+texture = ExtResource("12_atcrt")
+
+[node name="WallJump" type="Area2D" parent="."]
+position = Vector2(1390, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJump"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_yykxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="WallJump"]
+position = Vector2(0, -1)
+texture = ExtResource("12_atcrt")
+
+[node name="CerditoPopUp" type="Area2D" parent="."]
+position = Vector2(1676, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CerditoPopUp"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_yykxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="CerditoPopUp"]
+position = Vector2(0, -1)
+texture = ExtResource("12_atcrt")
+
+[connection signal="pressed" from="WelcomePopUp/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="JumpPopUp/Panel/BotonFinalizar" to="." method="_on_boton_finalizar_pressed"]
+[connection signal="pressed" from="DoubleJumpPopUp/Panel/ClosePopUp" to="." method="_on_close_pop_up_pressed"]
+[connection signal="pressed" from="WallJumpPopUp/Panel/ClosePopUpWall" to="." method="_on_close_pop_up_wall_pressed"]
+[connection signal="pressed" from="CerditoPopUp2/Panel/CloseCerdito" to="." method="_on_close_cerdito_pressed"]
+[connection signal="body_entered" from="AreaWelcome" to="." method="_on_area_welcome_body_entered"]
+[connection signal="body_entered" from="AreaJump" to="." method="_on_area_jump_body_entered"]
+[connection signal="body_entered" from="AreaDobleJump" to="." method="_on_area_doble_jump_body_entered"]
+[connection signal="body_entered" from="WallJump" to="." method="_on_wall_jump_body_entered"]
+[connection signal="body_entered" from="CerditoPopUp" to="." method="_on_cerdito_pop_up_body_entered"]

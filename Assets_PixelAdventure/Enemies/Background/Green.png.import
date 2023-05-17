@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j78co0s00tcl"
-path="res://.godot/imported/Brown.png-8a1969ef4a1716a2178550093296822d.ctex"
+uid="uid://dpi8bqqmoiw8h"
+path="res://.godot/imported/Green.png-0c7781e03aac1acf35df73944ea371ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Background/Brown.png"
-dest_files=["res://.godot/imported/Brown.png-8a1969ef4a1716a2178550093296822d.ctex"]
+source_file="res://Assets_PixelAdventure/Enemies/Background/Green.png"
+dest_files=["res://.godot/imported/Green.png-0c7781e03aac1acf35df73944ea371ad.ctex"]
 
 [params]
 

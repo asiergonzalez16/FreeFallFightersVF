@@ -136,9 +136,6 @@ func transition_to_scene(scene : String):
 	get_tree().change_scene_to_file(scene)
 
 
-	
-
-
 
 func _on_quit_button_pressed(): #boton para volver al menu principal
 	Global.frutas = 0
