@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://i1pap3in50ti"]
+[gd_scene load_steps=26 format=3 uid="uid://i1pap3in50ti"]
 
 [ext_resource type="Script" path="res://Player/world_tutorial.gd" id="1_u4f30"]
 [ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="1_v1f2n"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cmorxyc7o6ckr" path="res://fin_de_nivel.tscn" id="13_1qb8c"]
 [ext_resource type="Texture2D" uid="uid://qh4778c8molj" path="res://Assets_PixelAdventure/Enemies/AngryPig/angryPig.png" id="15_5smuf"]
 [ext_resource type="PackedScene" uid="uid://k0v8y3q6b8li" path="res://Personajes/EnemigoCerdito/enemigo_cerdito.tscn" id="15_tt1tv"]
+[ext_resource type="Script" path="res://Player/fallDmgTuto.gd" id="17_x1eoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6md7a"]
 texture = ExtResource("2_8py4l")
@@ -171,6 +172,9 @@ size = Vector2(18, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yykxr"]
 size = Vector2(16, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je2tj"]
+size = Vector2(3224, 39)
 
 [node name="world_tutorial" type="Node"]
 script = ExtResource("1_u4f30")
@@ -527,6 +531,13 @@ shape = SubResource("RectangleShape2D_yykxr")
 position = Vector2(0, -1)
 texture = ExtResource("12_atcrt")
 
+[node name="Morir" type="Area2D" parent="."]
+script = ExtResource("17_x1eoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Morir"]
+position = Vector2(986, 209.5)
+shape = SubResource("RectangleShape2D_je2tj")
+
 [connection signal="pressed" from="WelcomePopUp/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="JumpPopUp/Panel/BotonFinalizar" to="." method="_on_boton_finalizar_pressed"]
 [connection signal="pressed" from="DoubleJumpPopUp/Panel/ClosePopUp" to="." method="_on_close_pop_up_pressed"]
@@ -537,3 +548,4 @@ texture = ExtResource("12_atcrt")
 [connection signal="body_entered" from="AreaDobleJump" to="." method="_on_area_doble_jump_body_entered"]
 [connection signal="body_entered" from="WallJump" to="." method="_on_wall_jump_body_entered"]
 [connection signal="body_entered" from="CerditoPopUp" to="." method="_on_cerdito_pop_up_body_entered"]
+[connection signal="body_entered" from="Morir" to="Morir" method="_on_body_entered"]

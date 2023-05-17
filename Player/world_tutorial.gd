@@ -50,7 +50,7 @@ func _on_wall_jump_body_entered(body):
 
 
 func _on_close_cerdito_pressed():
-	$CerditoPopUp.hide()
+	$CerditoPopUp2.hide()
 	$WallJumpPopUp.hide()
 	$DoubleJumpPopUp.hide()
 	$JumpPopUp.hide()
@@ -60,5 +60,5 @@ func _on_close_cerdito_pressed():
 func _on_cerdito_pop_up_body_entered(body):
 	if body is Player:
 		$WallJumpPopUp.hide()
-		$CerditoPopUp.show()
+		$CerditoPopUp2.show()
 		$CerditoPopUp2/Panel/AnimationPlayer.play("popup")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bs7xtpp0feh50"]
+[gd_scene load_steps=29 format=3 uid="uid://bs7xtpp0feh50"]
 
 [ext_resource type="Script" path="res://Player/ParallaxBackgroundSpace.gd" id="1_7qjwt"]
 [ext_resource type="PackedScene" uid="uid://cioeiq2ketrp7" path="res://Player/Player.tscn" id="1_wrdt8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://yl3pysca6wcs" path="res://Assets_PixelAdventure/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png" id="12_e3g5k"]
 [ext_resource type="Script" path="res://Player/fallDMGWorld1.gd" id="13_fm7q8"]
 [ext_resource type="PackedScene" uid="uid://dbtb2mnhniuw1" path="res://Personajes/EnemigoCaracol/snail.tscn" id="14_fwvm4"]
+[ext_resource type="PackedScene" uid="uid://uunj472kslv1" path="res://Trampas/spikes.tscn" id="21_ya54p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6md7a"]
 texture = ExtResource("2_80tbi")
@@ -362,6 +363,14 @@ script = ExtResource("13_fm7q8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1206, 265)
 shape = SubResource("RectangleShape2D_psdhq")
+
+[node name="Spikes" parent="." instance=ExtResource("21_ya54p")]
+position = Vector2(1997, 36)
+rotation = -1.5708
+
+[node name="Spikes2" parent="." instance=ExtResource("21_ya54p")]
+position = Vector2(1997, -9)
+rotation = -1.5708
 
 [connection signal="body_entered" from="SpawnPoint" to="SpawnPoint" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

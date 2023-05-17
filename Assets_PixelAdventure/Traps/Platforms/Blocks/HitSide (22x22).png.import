@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chfa3f401u7sg"
-path="res://.godot/imported/HitTop (22x22).png-9ed806e3e960c715b12bdc73e79443c3.ctex"
+uid="uid://b14nue0u7gpwt"
+path="res://.godot/imported/HitSide (22x22).png-950dd3fcfca7ea7bc8791d3236e3211c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Traps/Blocks/HitTop (22x22).png"
-dest_files=["res://.godot/imported/HitTop (22x22).png-9ed806e3e960c715b12bdc73e79443c3.ctex"]
+source_file="res://Assets_PixelAdventure/Traps/Platforms/Blocks/HitSide (22x22).png"
+dest_files=["res://.godot/imported/HitSide (22x22).png-950dd3fcfca7ea7bc8791d3236e3211c.ctex"]
 
 [params]
 

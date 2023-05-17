@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds1s5f03i25c"
-path="res://.godot/imported/Idle.png-a7c44e8ce67bd6fae9da201ba05e20c2.ctex"
+uid="uid://wixe0mhhu7qr"
+path="res://.godot/imported/Part 2 (22x22).png-5b51a578d33fe77436a9b43e0b0d28cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Traps/Blocks/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-a7c44e8ce67bd6fae9da201ba05e20c2.ctex"]
+source_file="res://Assets_PixelAdventure/Traps/Platforms/Blocks/Part 2 (22x22).png"
+dest_files=["res://.godot/imported/Part 2 (22x22).png-5b51a578d33fe77436a9b43e0b0d28cf.ctex"]
 
 [params]
 
