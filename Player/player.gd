@@ -94,7 +94,6 @@ func actualizaInterfazFrutas():
 	frutasLabel.text = str(Global.frutas)
 
 func takeDamage(dmg):
-	print(vida)
 	vida-=dmg
 	state_machine.transition_to("takeDamage")
 	if vida <= 0:

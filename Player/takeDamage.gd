@@ -11,12 +11,11 @@ func state_enter_state(msg := {}):
 	
 	player.dmgColision.set_deferred("disabled",true)
 	$"../../AudioHerirse".play()
-	player.velocity.y = - player.jump+100
+	player.velocity.y = - player.jump - 100
 	player.move_and_slide()
 
 func state_physics_process(delta):
 	if empuje:
-		player.velocity.x = lado * 250
 		player.move_and_slide()
 	elif !empuje:
 		var direccion = Input.get_axis("ui_left","ui_right")
