@@ -75,7 +75,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_66jn0"]
 resource_name = "herido"
-length = 0.7
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -446,6 +446,28 @@ text = "RESUME"
 [node name="QuitButton" type="Button" parent="CanvasLayer/pausemenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return Main Menu"
+
+[node name="RaysChoque" type="Node2D" parent="."]
+
+[node name="RayCastDown" type="RayCast2D" parent="RaysChoque"]
+position = Vector2(0, -11)
+target_position = Vector2(0, 15)
+collision_mask = 4
+
+[node name="RayCastUP" type="RayCast2D" parent="RaysChoque"]
+position = Vector2(0, -11)
+target_position = Vector2(0, -25)
+collision_mask = 4
+
+[node name="RayCastRight" type="RayCast2D" parent="RaysChoque"]
+position = Vector2(0, -11)
+target_position = Vector2(15, 0)
+collision_mask = 4
+
+[node name="RayCastLeft" type="RayCast2D" parent="RaysChoque"]
+position = Vector2(0, -11)
+target_position = Vector2(-15, 0)
+collision_mask = 4
 
 [connection signal="timeout" from="StateMachine/takeDamage/Timer" to="StateMachine/takeDamage" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]
