@@ -1,6 +1,6 @@
 extends Control
 
-var webApiKey = "AIzaSyApRPf0C2CGtUJhDhuIk1YmdwxSFhwgf6o"
+var webApiKey = "AIzaSyDsf-lTkRdXn561qo0m_BTcK8ZGpXlANGM"
 var signupURL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
 var loginURL = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
 var postdb = "https://freefallfighters.firebaseio.com/message_list.json"

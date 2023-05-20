@@ -1,13 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://d17ks2nxixvgc"]
+[gd_scene load_steps=27 format=3 uid="uid://d17ks2nxixvgc"]
 
 [ext_resource type="Script" path="res://Maps/finish_menu.gd" id="1_s8hnk"]
 [ext_resource type="Texture2D" uid="uid://bsloktd478txp" path="res://Assets_PixelAdventure/Parallax/definitiveimage.png" id="1_vq454"]
-[ext_resource type="Texture2D" uid="uid://227ob30u73gh" path="res://Assets_PixelAdventure/Enemies/Turtle/Idle 1 (44x26).png" id="3_6it6t"]
 [ext_resource type="Texture2D" uid="uid://bcru3phed30js" path="res://Assets_PixelAdventure/Enemies/Snail/Idle (38x24).png" id="4_t8lh7"]
 [ext_resource type="Texture2D" uid="uid://c5jnjtaqne1w4" path="res://Assets_PixelAdventure/Enemies/Rino/Idle (52x34).png" id="5_krl14"]
+[ext_resource type="Texture2D" uid="uid://uula7j4s5boq" path="res://Assets_PixelAdventure/Traps/Spike Head/Blink (54x52).png" id="6_0l0ja"]
 [ext_resource type="Texture2D" uid="uid://oxm2y06ks4wf" path="res://Assets_PixelAdventure/Enemies/Plant/Idle (44x42).png" id="6_sdbwa"]
 [ext_resource type="Texture2D" uid="uid://eiulnw4qwb60" path="res://Assets_PixelAdventure/Enemies/AngryPig/Idle (36x30).png" id="7_2ar1v"]
-[ext_resource type="Texture2D" uid="uid://cq8ebwwbuhdx4" path="res://Assets_PixelAdventure/Traps/Spike Head/Idle.png" id="8_qdjah"]
+[ext_resource type="Texture2D" uid="uid://dgx8et2fqhieq" path="res://Assets_PixelAdventure/Enemies/Turtle/Spikes in (44x26).png" id="8_d64l5"]
+
+[sub_resource type="Animation" id="Animation_qwbtu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimCerdito/Sprite2D6:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_u7ar8"]
 resource_name = "cerdito"
@@ -25,12 +40,18 @@ tracks/0/keys = {
 "values": [0, 1, 1, 2, 3, 4, 5, 5]
 }
 
-[sub_resource type="Animation" id="Animation_qwbtu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntqif"]
+_data = {
+"RESET": SubResource("Animation_qwbtu"),
+"cerdito": SubResource("Animation_u7ar8")
+}
+
+[sub_resource type="Animation" id="Animation_kvq1h"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimCerdito/Sprite2D6:frame")
+tracks/0/path = NodePath("AnimRhino/Sprite2D4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,10 +61,179 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntqif"]
+[sub_resource type="Animation" id="Animation_712su"]
+resource_name = "rhino"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRhino/Sprite2D4:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w4jb"]
 _data = {
-"RESET": SubResource("Animation_qwbtu"),
-"cerdito": SubResource("Animation_u7ar8")
+"RESET": SubResource("Animation_kvq1h"),
+"rhino": SubResource("Animation_712su")
+}
+
+[sub_resource type="Animation" id="Animation_mkq1n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimSnail/Sprite2D3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_4eogw"]
+resource_name = "snail"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimSnail/Sprite2D3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ma267"]
+_data = {
+"RESET": SubResource("Animation_mkq1n"),
+"snail": SubResource("Animation_4eogw")
+}
+
+[sub_resource type="Animation" id="Animation_xyaac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimPiedra/Sprite2D7:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_04jju"]
+resource_name = "piedra"
+length = 2.5
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimPiedra/Sprite2D7:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5o1q7"]
+_data = {
+"RESET": SubResource("Animation_xyaac"),
+"piedra": SubResource("Animation_04jju")
+}
+
+[sub_resource type="Animation" id="Animation_3ihjh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimPlanta/Sprite2D5:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_x1eu8"]
+resource_name = "planta"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimPlanta/Sprite2D5:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wx3l"]
+_data = {
+"RESET": SubResource("Animation_3ihjh"),
+"planta": SubResource("Animation_x1eu8")
+}
+
+[sub_resource type="Animation" id="Animation_rvgyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimTortuga/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_3df4l"]
+resource_name = "tortuga"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimTortuga/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_meslr"]
+_data = {
+"RESET": SubResource("Animation_rvgyp"),
+"tortuga": SubResource("Animation_3df4l")
 }
 
 [node name="Finish_Menu" type="Node"]
@@ -60,30 +250,6 @@ offset_right = 280.0
 offset_bottom = 23.0
 text = "Congratulations"
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(56, 227)
-texture = ExtResource("3_6it6t")
-hframes = 14
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(141, 230)
-texture = ExtResource("4_t8lh7")
-hframes = 15
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(228, 222)
-texture = ExtResource("5_krl14")
-hframes = 11
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-position = Vector2(314, 218)
-texture = ExtResource("6_sdbwa")
-hframes = 11
-
-[node name="Sprite2D7" type="Sprite2D" parent="."]
-position = Vector2(218, 97)
-texture = ExtResource("8_qdjah")
-
 [node name="Button" type="Button" parent="."]
 offset_left = 179.0
 offset_top = 154.0
@@ -97,7 +263,63 @@ libraries = {
 }
 
 [node name="Sprite2D6" type="Sprite2D" parent="AnimCerdito"]
-position = Vector2(394, 225)
+position = Vector2(398, 218)
 texture = ExtResource("7_2ar1v")
 hframes = 9
 frame = 1
+
+[node name="AnimRhino" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4w4jb")
+}
+
+[node name="Sprite2D4" type="Sprite2D" parent="AnimRhino"]
+position = Vector2(227, 218)
+texture = ExtResource("5_krl14")
+hframes = 11
+frame = 1
+
+[node name="AnimSnail" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ma267")
+}
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimSnail"]
+position = Vector2(141, 222)
+texture = ExtResource("4_t8lh7")
+hframes = 15
+frame = 2
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5o1q7")
+}
+
+[node name="Sprite2D7" type="Sprite2D" parent="AnimPiedra"]
+position = Vector2(218, 97)
+texture = ExtResource("6_0l0ja")
+hframes = 4
+
+[node name="AnimPlanta" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6wx3l")
+}
+
+[node name="Sprite2D5" type="Sprite2D" parent="AnimPlanta"]
+position = Vector2(312, 214)
+texture = ExtResource("6_sdbwa")
+hframes = 11
+frame = 1
+
+[node name="AnimTortuga" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_meslr")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimTortuga"]
+position = Vector2(58, 222)
+texture = ExtResource("8_d64l5")
+hframes = 8
+frame = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
