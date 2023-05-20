@@ -2,6 +2,10 @@ extends Node
 
 var inicio = true
 var bandera = true
+var checkX = 0
+var checkY = 0
+var levels = []
+var unlockLevels = 1
 
 signal fruitCollected
 var frutas := 0 :

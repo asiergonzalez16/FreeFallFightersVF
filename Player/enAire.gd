@@ -12,6 +12,17 @@ func state_enter_state(msg := {}):
 		player.velocity.y = - player.jump +50
 		if player.numSaltos == 0:
 			anim_player.play("doubleJump")
+
+	elif msg.has("Trampoline"):
+		hasJumped = true
+		player.numSaltos+=1
+		$"../../AudioSalto".play()
+		anim_player.play("jump")
+		player.velocity.y = - player.jump - 400
+	
+		if player.numSaltos == 0:
+			anim_player.play("doubleJump")
+		
 	else:
 		anim_player.play("fall")
 	

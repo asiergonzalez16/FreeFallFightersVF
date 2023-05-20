@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://ch8rcclpypxyj"]
+
+[ext_resource type="Script" path="res://Trampas/falling_platforms.gd" id="1_dp81w"]
+[ext_resource type="Texture2D" uid="uid://8ee7asmsclfn" path="res://Assets_PixelAdventure/Traps/Falling Platforms/On (32x10).png" id="2_dyso4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naohf"]
+size = Vector2(32, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc8nc"]
+size = Vector2(32, 7)
+
+[sub_resource type="Animation" id="Animation_yn0dh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("On:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_t7p7p"]
+resource_name = "falling"
+length = 1.5
+
+[sub_resource type="Animation" id="Animation_btbu5"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("On:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1pcct"]
+resource_name = "on"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("On:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_slo4d"]
+_data = {
+"RESET": SubResource("Animation_yn0dh"),
+"falling": SubResource("Animation_t7p7p"),
+"off": SubResource("Animation_btbu5"),
+"on": SubResource("Animation_1pcct")
+}
+
+[node name="FallingPlatforms" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_dp81w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_naohf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_qc8nc")
+
+[node name="On" type="Sprite2D" parent="."]
+texture = ExtResource("2_dyso4")
+hframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_slo4d")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

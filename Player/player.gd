@@ -14,6 +14,7 @@ const gravity := 9
 var damage = 1
 var canDash = true
 var vidasMaximas = 5
+var contadorNivelesDesbloqueados = 0
 
 
 @onready var anim := $AnimationPlayer
@@ -38,8 +39,8 @@ var vida := 5 :
 
 func _ready():
 	if !Global.inicio:
-		position.x = 1152
-		position.y = -127
+		position.x = Global.checkX
+		position.y = Global.checkY
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
@@ -98,7 +99,6 @@ func actualizaInterfazFrutas():
 	frutasLabel.text = str(Global.frutas)
 
 func takeDamage(dmg):
-	print(vida)
 	vida-=dmg
 	state_machine.transition_to("takeDamage")
 	if vida <= 0:
@@ -125,7 +125,7 @@ func morir():
 		Save.game_data.VidasJugador = vidasMaximas
 		Global.inicio = true
 		Save.save_data()
-		transition_to_scene("res://Maps/main_menu.tscn")
+		transition_to_scene("res://Maps/game_over.tscn")
 	
 	else:
 		gui_animation_player.play_backwards("TransitionAnim")
@@ -140,8 +140,6 @@ func transition_to_scene(scene : String):
 	await(gui_animation_player.animation_finished)
 	get_tree().paused = false
 	get_tree().change_scene_to_file(scene)
-	
-	
 
 
 

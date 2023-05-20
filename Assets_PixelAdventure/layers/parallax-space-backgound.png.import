@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chfa3f401u7sg"
-path="res://.godot/imported/HitTop (22x22).png-9ed806e3e960c715b12bdc73e79443c3.ctex"
+uid="uid://cpo3vnt6ps58x"
+path="res://.godot/imported/parallax-space-backgound.png-702594721a9a23ff98ce9b1d00963cd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Traps/Blocks/HitTop (22x22).png"
-dest_files=["res://.godot/imported/HitTop (22x22).png-9ed806e3e960c715b12bdc73e79443c3.ctex"]
+source_file="res://Assets_PixelAdventure/layers/parallax-space-backgound.png"
+dest_files=["res://.godot/imported/parallax-space-backgound.png-702594721a9a23ff98ce9b1d00963cd6.ctex"]
 
 [params]
 

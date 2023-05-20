@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://d17ks2nxixvgc"]
+
+[ext_resource type="Script" path="res://Maps/finish_menu.gd" id="1_s8hnk"]
+[ext_resource type="Texture2D" uid="uid://bsloktd478txp" path="res://Assets_PixelAdventure/Parallax/definitiveimage.png" id="1_vq454"]
+[ext_resource type="Texture2D" uid="uid://227ob30u73gh" path="res://Assets_PixelAdventure/Enemies/Turtle/Idle 1 (44x26).png" id="3_6it6t"]
+[ext_resource type="Texture2D" uid="uid://bcru3phed30js" path="res://Assets_PixelAdventure/Enemies/Snail/Idle (38x24).png" id="4_t8lh7"]
+[ext_resource type="Texture2D" uid="uid://c5jnjtaqne1w4" path="res://Assets_PixelAdventure/Enemies/Rino/Idle (52x34).png" id="5_krl14"]
+[ext_resource type="Texture2D" uid="uid://oxm2y06ks4wf" path="res://Assets_PixelAdventure/Enemies/Plant/Idle (44x42).png" id="6_sdbwa"]
+[ext_resource type="Texture2D" uid="uid://eiulnw4qwb60" path="res://Assets_PixelAdventure/Enemies/AngryPig/Idle (36x30).png" id="7_2ar1v"]
+[ext_resource type="Texture2D" uid="uid://cq8ebwwbuhdx4" path="res://Assets_PixelAdventure/Traps/Spike Head/Idle.png" id="8_qdjah"]
+
+[sub_resource type="Animation" id="Animation_u7ar8"]
+resource_name = "cerdito"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimCerdito/Sprite2D6:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5, 5]
+}
+
+[sub_resource type="Animation" id="Animation_qwbtu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimCerdito/Sprite2D6:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntqif"]
+_data = {
+"RESET": SubResource("Animation_qwbtu"),
+"cerdito": SubResource("Animation_u7ar8")
+}
+
+[node name="Finish_Menu" type="Node"]
+script = ExtResource("1_s8hnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(227, 109.5)
+scale = Vector2(0.325, 0.421429)
+texture = ExtResource("1_vq454")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 155.0
+offset_right = 280.0
+offset_bottom = 23.0
+text = "Congratulations"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(56, 227)
+texture = ExtResource("3_6it6t")
+hframes = 14
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(141, 230)
+texture = ExtResource("4_t8lh7")
+hframes = 15
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(228, 222)
+texture = ExtResource("5_krl14")
+hframes = 11
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(314, 218)
+texture = ExtResource("6_sdbwa")
+hframes = 11
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(218, 97)
+texture = ExtResource("8_qdjah")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 179.0
+offset_top = 154.0
+offset_right = 258.0
+offset_bottom = 185.0
+text = "Continue"
+
+[node name="AnimCerdito" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ntqif")
+}
+
+[node name="Sprite2D6" type="Sprite2D" parent="AnimCerdito"]
+position = Vector2(394, 225)
+texture = ExtResource("7_2ar1v")
+hframes = 9
+frame = 1

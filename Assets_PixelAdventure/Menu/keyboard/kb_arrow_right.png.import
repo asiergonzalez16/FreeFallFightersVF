@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1w3nlmmx46mm"
-path="res://.godot/imported/Part 1 (22x22).png-71614fb773576e04202bc0edc0bcda80.ctex"
+uid="uid://bky4be887ki11"
+path="res://.godot/imported/kb_arrow_right.png-2264b3a2161a0d9e5255607a93ec8c91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Traps/Blocks/Part 1 (22x22).png"
-dest_files=["res://.godot/imported/Part 1 (22x22).png-71614fb773576e04202bc0edc0bcda80.ctex"]
+source_file="res://Assets_PixelAdventure/Menu/keyboard/kb_arrow_right.png"
+dest_files=["res://.godot/imported/kb_arrow_right.png-2264b3a2161a0d9e5255607a93ec8c91.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b14nue0u7gpwt"
-path="res://.godot/imported/HitSide (22x22).png-c835ba50e2a32666d10ea54452a9c7b0.ctex"
+uid="uid://b5xqiw0ee187l"
+path="res://.godot/imported/Blue700x700.png-4285ff74091fb2819b552fe7a1e203e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Traps/Blocks/HitSide (22x22).png"
-dest_files=["res://.godot/imported/HitSide (22x22).png-c835ba50e2a32666d10ea54452a9c7b0.ctex"]
+source_file="res://Assets_PixelAdventure/Enemies/Background/Blue700x700.png"
+dest_files=["res://.godot/imported/Blue700x700.png-4285ff74091fb2819b552fe7a1e203e7.ctex"]
 
 [params]
 

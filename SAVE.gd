@@ -6,20 +6,20 @@ var game_data = { #Solo funciona cuando no existe el archivo de guardado
 	"VidasJugador" : 5,
 	"MonedaExtra" : 0,
 	#Settings
-	"fullscreen_on" : true,
+	"fullscreen_on" : false,
 	"screen_res" : 1,
 	"sfx_vol" : -10,
 	"music_vol" : -10,
-	"master_vol" : -10
+	"master_vol" : -10,
+	#levels
+	"levels_unlocked" : 1
 }
 
 func _ready():
 	load_data()
-#	print(game_data)
 
 func load_data():
 	var file = FileAccess.open(SAVEFILE,FileAccess.READ)
-#	print(file)
 	if file == null:
 		save_data()
 	else:
@@ -37,3 +37,4 @@ func save_data():
 	var file = FileAccess.open(SAVEFILE,FileAccess.WRITE)
 	file.store_var(game_data)
 	file = null
+

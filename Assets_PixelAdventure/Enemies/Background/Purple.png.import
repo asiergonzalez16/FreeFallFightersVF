@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp5mqauej3m24"
-path="res://.godot/imported/Pink.png-47d4a99e3c66906b123e1bc7c96ab4c1.ctex"
+uid="uid://bskjobyrlpev1"
+path="res://.godot/imported/Purple.png-42429c9d561feb1a4c4e8a9f0a4b5fbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets_PixelAdventure/Background/Pink.png"
-dest_files=["res://.godot/imported/Pink.png-47d4a99e3c66906b123e1bc7c96ab4c1.ctex"]
+source_file="res://Assets_PixelAdventure/Enemies/Background/Purple.png"
+dest_files=["res://.godot/imported/Purple.png-42429c9d561feb1a4c4e8a9f0a4b5fbf.ctex"]
 
 [params]
 

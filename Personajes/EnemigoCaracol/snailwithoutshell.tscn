@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhlsb3s3tphc7"]
+
+[ext_resource type="Script" path="res://Personajes/EnemigoCaracol/snailwithoutshell.gd" id="1_0eb1k"]
+[ext_resource type="Texture2D" uid="uid://drar2km4lv0nc" path="res://Assets_PixelAdventure/Enemies/Snail/Snail without shell.png" id="2_wvm4y"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_0eb1k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wvm4y")
