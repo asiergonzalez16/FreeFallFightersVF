@@ -1,6 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var rayDown = $RaysChoque/RayCastDown
+@onready var rayUp = $RaysChoque/RayCastUP
+@onready var rayRight = $RaysChoque/RayCastRight
+@onready var rayLeft = $RaysChoque/RayCastLeft
+
 
 var speed := 120
 var direccion := 0
@@ -105,6 +110,8 @@ func takeDamageRhino(dmg,side):
 	state_machine.transition_to("takeDamage",{Empuje = true, Lado = side})
 	if vida <= 0:
 		morir()
+func takeDamageSpikeHead(dx,dy,sobrante):
+	state_machine.transition_to("takeDamage",{Arrastrar = true, dx = dx, dy = dy,sobrante = sobrante})
 	
 func morir():
 	
