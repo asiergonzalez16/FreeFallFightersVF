@@ -18,5 +18,7 @@ func state_physics_process(delta):
 	
 	if canChangeState and !player.is_on_floor():
 		state_machine.transition_to("enAire")
-	elif Input.is_action_just_pressed("dash"):
-		state_machine.transition_to("dash")
+	elif player.is_on_ceiling():
+		state_machine.transition_to("enAire")
+#	elif Input.is_action_just_pressed("dash"):
+#		state_machine.transition_to("dash")

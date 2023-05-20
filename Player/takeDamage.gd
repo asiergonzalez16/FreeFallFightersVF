@@ -27,7 +27,7 @@ func state_enter_state(msg := {}):
 
 func state_physics_process(delta):
 	if empuje:
-		player.velocity.x = lado * 250
+		player.velocity.x = lado * 300
 		player.move_and_slide()
 	elif arrastrar:
 		print(Dx)
@@ -40,9 +40,9 @@ func state_physics_process(delta):
 			player.morir()
 		if player.rayRight.is_colliding() and Dx == 1:
 			player.morir()
-		if Dx == -1:
+		if Dx == -1 and player.rayDown.is_colliding():
 			player.global_position.x = player.global_position.x - sobrante
-		elif Dx == 1:
+		elif Dx == 1 and player.rayDown.is_colliding():
 			player.global_position.x = player.global_position.x + sobrante
 	else:
 		var direccion = Input.get_axis("ui_left","ui_right")

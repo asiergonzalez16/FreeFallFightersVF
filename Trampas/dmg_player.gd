@@ -20,20 +20,18 @@ func _on_area_entered(area):
 		area.owner.takeDamageRhino(danio,side)
 		emit_signal("heHechoDanio")
 	elif parent is SpikeHead and area.is_in_group("AreaPlayer"):
-		if parent.atacar == false:
-			area.owner.takeDamage(danio)
-		if area.owner.global_position.x > global_position.x and parent.direccionX != 0:
+		if area.owner.global_position.x > global_position.x and parent.direccionX != 0 and parent.estadoActual == parent.estados.INACTIVO:
 			dx = 1
 			sobrante = (($CollisionShape2D.shape.extents.x) + (area.owner.dmgColision.shape.extents.x)) - abs(area.owner.global_position.x - global_position.x)
 			area.owner.takeDamageSpikeHead(dx,dy,sobrante)
-		elif area.owner.global_position.x < global_position.x and parent.direccionX != 0:
+		elif area.owner.global_position.x < global_position.x and parent.direccionX != 0 and parent.estadoActual == parent.estados.INACTIVO:
 			dx = -1
 			sobrante = (($CollisionShape2D.shape.extents.x) + (area.owner.dmgColision.shape.extents.x)) - abs(area.owner.global_position.x - global_position.x)
 			area.owner.takeDamageSpikeHead(dx,dy,sobrante)
-		elif area.owner.global_position.y < global_position.y and parent.direccionY != 0:
+		elif area.owner.global_position.y < global_position.y and parent.direccionY != 0 and parent.estadoActual == parent.estados.INACTIVO:
 			dy = -1
 			area.owner.takeDamageSpikeHead(dx,dy,sobrante)
-		elif area.owner.global_position.y > global_position.y+30 and parent.direccionY != 0:
+		elif area.owner.global_position.y > global_position.y+30 and parent.direccionY != 0 and parent.estadoActual == parent.estados.INACTIVO:
 			dy = 1
 			area.owner.takeDamageSpikeHead(dx,dy,sobrante)
 		else: 
