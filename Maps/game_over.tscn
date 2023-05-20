@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ndnj7ordmal"]
+
+[ext_resource type="Texture2D" uid="uid://cc60sa5k3dev3" path="res://Assets_PixelAdventure/Parallax/gameover.jpg" id="1_ohfuj"]
+[ext_resource type="Script" path="res://Maps/game_over.gd" id="1_u4g2c"]
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_u4g2c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(212.375, 116.938)
+scale = Vector2(0.611607, 0.576099)
+texture = ExtResource("1_ohfuj")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 198.0
+offset_right = 302.0
+offset_bottom = 229.0
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

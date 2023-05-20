@@ -93,3 +93,6 @@ func _on_dmg_player_he_hecho_danio():
 	estadoActual = estados.PATRULLAR
 	player = null
 	direccion *=-1
+	
+func morir():
+	queue_free()

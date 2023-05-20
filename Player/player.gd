@@ -118,7 +118,7 @@ func morir():
 		Save.game_data.VidasJugador = vidasMaximas
 		Global.inicio = true
 		Save.save_data()
-		transition_to_scene("res://Maps/main_menu.tscn")
+		transition_to_scene("res://Maps/game_over.tscn")
 	
 	else:
 		gui_animation_player.play_backwards("TransitionAnim")
