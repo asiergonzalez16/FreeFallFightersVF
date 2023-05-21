@@ -45,7 +45,7 @@ func state_physics_process(delta):
 	
 	player.move_and_slide()
 	
-	if player.is_on_wall():
+	if player.is_on_wall() and (player.rayRight.is_colliding() or player.rayLeft.is_colliding()):
 		state_machine.transition_to("wallSlide")
 	
 	if player.is_on_floor():
@@ -61,8 +61,8 @@ func state_physics_process(delta):
 		state_machine.transition_to("enAire",{Salto = true})
 	elif Input.is_action_just_pressed("ui_accept"):
 		$BufferJumpTimer.start()
-	elif Input.is_action_just_pressed("dash") and player.canDash:
-		state_machine.transition_to("dash")
+#	elif Input.is_action_just_pressed("dash") and player.canDash:
+#		state_machine.transition_to("dash")
 		
 
 func state_exit():
