@@ -31,7 +31,8 @@ var estadoActual = estados.PATRULLAR :
 func _ready():
 	anim.play("walk") #animacion de caminar
 	speed = 60
-	
+
+func _physics_process(delta):
 	velocity.x = direccion * speed
 	if !is_on_floor():
 		velocity.y += gravity
@@ -62,7 +63,6 @@ func _process(delta):
 func takeDmg(damage):
 	player = null
 	vida -= damage
-	print (vida)
 	if vida <= 0:
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
 		estadoActual = estados.MORIRSE
