@@ -323,7 +323,7 @@ offset_left = 13.0
 offset_top = 11.0
 offset_right = 220.0
 offset_bottom = 63.0
-text = "Estas seguro que quieres borrar todo el progreso?"
+text = "Are you sure you want to reset all your progress?"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Panel"]
 libraries = {
@@ -337,7 +337,7 @@ offset_top = 158.0
 offset_right = 199.0
 offset_bottom = 189.0
 theme_override_colors/font_color = Color(0.85098, 0, 0, 1)
-text = "Estoy seguro"
+text = "I am sure"
 
 [node name="MeLoHePensadoMejor" type="Button" parent="Control"]
 layout_mode = 0
@@ -345,7 +345,7 @@ offset_left = 253.0
 offset_top = 160.0
 offset_right = 337.0
 offset_bottom = 191.0
-text = "Salir"
+text = "Exit"
 
 [node name="Imagenes" type="Control" parent="."]
 layout_mode = 3
