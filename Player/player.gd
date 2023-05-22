@@ -42,6 +42,7 @@ func _ready():
 		position.x = Global.checkX
 		position.y = Global.checkY
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
+	
 	gui_animation_player.play("TransitionAnim")
 	$PlayerGUI/HPProgressBar.value = vida
 	Global.connect("fruitCollected",actualizaInterfazFrutas)
@@ -50,6 +51,14 @@ func reiniciaSaltos():
 	numSaltos = 2
 	
 func _process(delta):
+	Global.tiempo-= delta
+	print(Save.game_data.topScoreLevel1)
+	if Global.ultimoBotonPressed == 1:
+		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel1)
+	elif Global.ultimoBotonPressed == 2:
+		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel2)
+	else:
+		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel3)
 	if Global.frutas >= 10:
 		Global.frutas = 0
 		Global.vidas += 1
@@ -63,6 +72,12 @@ func _process(delta):
 		if ray.is_colliding():
 			var colision = ray.get_collider()
 			if colision.is_in_group("Enemigos") and colision.has_method("takeDmg"):
+				if Global.ultimoBotonPressed == 1:
+					Global.actualPointsLevel1 += 15
+				elif Global.ultimoBotonPressed == 2:
+					Global.actualPointsLevel2 += 15
+				elif Global.ultimoBotonPressed == 3:
+					Global.actualPointsLevel3 += 15
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
@@ -114,7 +129,13 @@ func takeDamageSpikeHead(dx,dy,sobrante):
 	state_machine.transition_to("takeDamage",{Arrastrar = true, dx = dx, dy = dy,sobrante = sobrante})
 	
 func morir():
-	
+	if Global.bandera:
+		if Global.ultimoBotonPressed == 1:
+			Global.actualPointsLevel1 = 0
+		elif Global.ultimoBotonPressed == 2:
+			Global.actualPointsLevel2 = 0
+		else:
+			Global.actualPointsLevel3 = 0
 	Global.vidas -= 1
 	Global.frutas = 0
 	Global.bandera = true
@@ -145,6 +166,10 @@ func transition_to_scene(scene : String):
 
 func _on_quit_button_pressed(): #boton para volver al menu principal
 	Global.frutas = 0
+	Global.tiempo = 300
 	Global.inicio = true
 	Global.bandera = true
+	Global.actualPointsLevel1 = 0
+	Global.actualPointsLevel2 = 0
+	Global.actualPointsLevel3 = 0
 	transition_to_scene("res://Maps/main_menu.tscn")

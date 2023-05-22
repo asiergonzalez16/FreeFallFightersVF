@@ -3,9 +3,11 @@ extends Node
 
 func _ready():
 	settings_canvas_layer.hide()
+	$"levels/1/Label".text = str(Save.game_data.topScoreLevel1)
+	$"levels/2/Label".text = str(Save.game_data.topScoreLevel2)
+	$"levels/3/Label".text = str(Save.game_data.topScoreLevel3)
 	
 	var nivelesDesbloqueados = Save.game_data.levels_unlocked
-	print(nivelesDesbloqueados)
 	if nivelesDesbloqueados >= 3:
 		$Imagenes/level2locked.hide()
 		$Imagenes/level3locked.hide()
@@ -42,14 +44,17 @@ func _on_settings_pressed():
 
 
 func _on_2_pressed():
+	Global.ultimoBotonPressed = 2
 	get_tree().change_scene_to_file("res://Player/world.tscn")
 
 
 func _on_1_pressed():
+	Global.ultimoBotonPressed = 1
 	get_tree().change_scene_to_file("res://Player/world_tutorial.tscn")
 
 
 func _on_3_pressed():
+	Global.ultimoBotonPressed = 3
 	get_tree().change_scene_to_file("res://Player/world_2.tscn")
 
 
@@ -78,3 +83,27 @@ func _on_me_lo_he_pensado_mejor_pressed():
 	$Control.hide()
 	$levels.show()
 	$Imagenes.show()
+
+
+func _on_texture_rect_mouse_entered():
+	$"levels/1/Label".show()
+
+
+func _on_texture_rect_mouse_exited():
+	$"levels/1/Label".hide()
+
+
+func _on_level_2_record_mouse_entered():
+	$"levels/2/Label".show()
+
+
+func _on_level_2_record_mouse_exited():
+	$"levels/2/Label".hide()
+
+
+func _on_level_3_record_mouse_entered():
+	$"levels/3/Label".show()
+
+
+func _on_level_3_record_mouse_exited():
+	$"levels/3/Label".hide()

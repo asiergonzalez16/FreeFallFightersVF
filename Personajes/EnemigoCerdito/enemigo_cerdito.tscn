@@ -10,7 +10,7 @@
 [node name="EnemigoCerdito" groups=["Enemigos"] instance=ExtResource("1_3ja0e")]
 process_mode = 1
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("2_31ica")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -33,7 +33,7 @@ collision_mask = 4
 
 [node name="RayCastMuro" type="RayCast2D" parent="Raycasts" index="1"]
 target_position = Vector2(-20, 0)
-collision_mask = 4
+collision_mask = 6
 
 [node name="RayTimer" type="Timer" parent="Raycasts" index="2"]
 

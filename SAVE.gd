@@ -12,7 +12,11 @@ var game_data = { #Solo funciona cuando no existe el archivo de guardado
 	"music_vol" : -10,
 	"master_vol" : -10,
 	#levels
-	"levels_unlocked" : 1
+	"levels_unlocked" : 1,
+	#puntuación
+	"topScoreLevel1" : 0,
+	"topScoreLevel2" : 0,
+	"topScoreLevel3" : 0
 }
 
 func _ready():
@@ -37,4 +41,5 @@ func save_data():
 	var file = FileAccess.open(SAVEFILE,FileAccess.WRITE)
 	file.store_var(game_data)
 	file = null
+
 

@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 func _ready():
@@ -9,6 +10,7 @@ func _ready():
 	$AnimRhino.play("rhino")
 	$AnimSnail.play("snail")
 	$AnimationPlayer.play("pink")
+	$AnimPiedra.play("piedra")
 	$AnimPlanta.play("planta")
 	$AnimTortuga.play("tortuga")
 

@@ -45,8 +45,6 @@ func _process(delta):
 		if colision.is_in_group("Player"):
 			player = colision
 			estadoActual = estados.ANGRY
-			
-	
 	if estadoActual == estados.ANGRY and player != null:
 		anim.play("runAngry")
 		var directionPlayer = global_position.direction_to(player.global_position)
@@ -59,6 +57,9 @@ func _process(delta):
 		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()):
 			direccion*=-1
 	$Sprite2D.flip_h = true if direccion == 1 else false
+	
+	if rayMuro.is_colliding():
+		darseVuelta()
 	
 func takeDmg(damage):
 	player = null

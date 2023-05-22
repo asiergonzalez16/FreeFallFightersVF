@@ -37,7 +37,6 @@ func _process(delta):
 func takeDmg(damage):
 	if $dmgPlayer/CollisionShape2D.disabled == true:
 		vida -= damage
-		print (vida)
 		animation_player.play("hurt")
 		await (animation_player.animation_finished)
 		if vida <= 0:
