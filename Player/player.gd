@@ -8,13 +8,13 @@ class_name Player
 
 
 var speed := 120
-var direccion := 0
+var direction := 0
 var jump := 250
 const gravity := 9
 var damage = 1
 var canDash = true
-var vidasMaximas = 5
-var contadorNivelesDesbloqueados = 0
+var maxLives = 5
+var counterUnlockedLevels = 0
 
 
 @onready var anim := $AnimationPlayer
@@ -30,7 +30,7 @@ var contadorNivelesDesbloqueados = 0
 
 #enum estados {NORMAL, HERIDO}
 #var estadoActual = estados.NORMAL
-var numSaltos = 2
+var numJumps = 2
 
 var vida := 5 : 
 	set(val):
@@ -38,7 +38,7 @@ var vida := 5 :
 		$PlayerGUI/HPProgressBar.value = vida
 
 func _ready():
-	if !Global.inicio:
+	if !Global.start:
 		position.x = Global.checkX
 		position.y = Global.checkY
 	vidas_label.text = "x"+str(Save.game_data.VidasJugador)
@@ -48,39 +48,38 @@ func _ready():
 	Global.connect("fruitCollected",actualizaInterfazFrutas)
 	
 func reiniciaSaltos():
-	numSaltos = 2
+	numJumps = 2
 	
 func _process(delta):
-	Global.tiempo-= delta
-	print(Save.game_data.topScoreLevel1)
-	if Global.ultimoBotonPressed == 1:
+	Global.time-= delta
+	if Global.lastButtonPressed == 1:
 		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel1)
-	elif Global.ultimoBotonPressed == 2:
+	elif Global.lastButtonPressed == 2:
 		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel2)
 	else:
 		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel3)
-	if Global.frutas >= 10:
-		Global.frutas = 0
-		Global.vidas += 1
+	if Global.fruits >= 10:
+		Global.fruits = 0
+		Global.lives += 1
 		Save.game_data.VidasJugador += 1
 		Save.save_data()
 		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	$LabelState.text = $StateMachine.state.name
-	if is_on_floor() and numSaltos != 2 and state_machine.state.name !="enAire":
+	if is_on_floor() and numJumps != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()
 	for ray in raycastDmg.get_children():
 		if ray.is_colliding():
 			var colision = ray.get_collider()
 			if colision.is_in_group("Enemigos") and colision.has_method("takeDmg"):
-				if Global.ultimoBotonPressed == 1:
+				if Global.lastButtonPressed == 1:
 					Global.actualPointsLevel1 += 15
-				elif Global.ultimoBotonPressed == 2:
+				elif Global.lastButtonPressed == 2:
 					Global.actualPointsLevel2 += 15
-				elif Global.ultimoBotonPressed == 3:
+				elif Global.lastButtonPressed == 3:
 					Global.actualPointsLevel3 += 15
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
-				numSaltos+=1
+				numJumps+=1
 				break
 	if is_on_floor() or is_on_wall():
 		canDash = true
@@ -111,7 +110,7 @@ func _process(delta):
 
 
 func actualizaInterfazFrutas():
-	frutasLabel.text = str(Global.frutas)
+	frutasLabel.text = str(Global.fruits)
 
 func takeDamage(dmg):
 	vida-=dmg
@@ -129,22 +128,22 @@ func takeDamageSpikeHead(dx,dy,sobrante):
 	state_machine.transition_to("takeDamage",{Arrastrar = true, dx = dx, dy = dy,sobrante = sobrante})
 	
 func morir():
-	if Global.bandera:
-		if Global.ultimoBotonPressed == 1:
+	if Global.flag:
+		if Global.lastButtonPressed == 1:
 			Global.actualPointsLevel1 = 0
-		elif Global.ultimoBotonPressed == 2:
+		elif Global.lastButtonPressed == 2:
 			Global.actualPointsLevel2 = 0
 		else:
 			Global.actualPointsLevel3 = 0
-	Global.vidas -= 1
-	Global.frutas = 0
-	Global.bandera = true
+	Global.lives -= 1
+	Global.fruits = 0
+	Global.flag = true
 	Save.game_data.VidasJugador -= 1
 	Save.save_data()
 	
 	if Save.game_data.VidasJugador <= 0:
-		Save.game_data.VidasJugador = vidasMaximas
-		Global.inicio = true
+		Save.game_data.VidasJugador = maxLives
+		Global.start = true
 		Save.save_data()
 		transition_to_scene("res://Maps/game_over.tscn")
 	
@@ -165,10 +164,10 @@ func transition_to_scene(scene : String):
 
 
 func _on_quit_button_pressed(): #boton para volver al menu principal
-	Global.frutas = 0
-	Global.tiempo = 300
-	Global.inicio = true
-	Global.bandera = true
+	Global.fruits = 0
+	Global.time = 300
+	Global.start = true
+	Global.flag = true
 	Global.actualPointsLevel1 = 0
 	Global.actualPointsLevel2 = 0
 	Global.actualPointsLevel3 = 0

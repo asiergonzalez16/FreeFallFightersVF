@@ -5,11 +5,11 @@ func state_enter_state(msg := {}):
 	anim_player.play("idle")
 
 func state_process(delta):
-	var direccion = Input.get_axis("ui_left","ui_right")
+	var direction = Input.get_axis("ui_left","ui_right")
 	
 	player.move_and_slide()
 	
-	if direccion != 0:
+	if direction != 0:
 		state_machine.transition_to("Moving")
 	elif !player.is_on_floor():
 		state_machine.transition_to("enAire")

@@ -5,13 +5,13 @@ func state_enter_state(msg := {}):
 	anim_player.play("walk")
 	
 func state_physics_process(delta):
-	var direccion = Input.get_axis("ui_left","ui_right")
-	player.sprite.flip_h = direccion < 0 if direccion != 0 else player.sprite.flip_h
+	var direction = Input.get_axis("ui_left","ui_right")
+	player.sprite.flip_h = direction < 0 if direction != 0 else player.sprite.flip_h
 	
-	player.velocity.x = direccion * player.speed
+	player.velocity.x = direction * player.speed
 	player.move_and_slide()
 	
-	if direccion == 0:
+	if direction == 0:
 		state_machine.transition_to("Idle")
 	elif !player.is_on_floor():
 		state_machine.transition_to("enAire") 

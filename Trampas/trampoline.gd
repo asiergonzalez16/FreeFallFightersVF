@@ -1,17 +1,17 @@
 extends Area2D
 
-var puedeImpulsar = true
+var canBoost = true
 
 
 func _on_body_entered(body):
 	if body is Player:
-		if puedeImpulsar:
+		if canBoost:
 			body.state_machine.transition_to("enAire",{Trampoline = true})
-			puedeImpulsar = false
+			canBoost = false
 		$Idle.hide()
 		$jump.show()
 		$AnimationPlayer.play("jump")
 		await $AnimationPlayer.animation_finished
 		$jump.hide()
-		puedeImpulsar = true
+		canBoost = true
 		$Idle.show()

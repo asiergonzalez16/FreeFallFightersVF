@@ -189,7 +189,7 @@ position = Vector2(1700, -213)
 
 [node name="FinDeNivel" parent="." instance=ExtResource("13_1qb8c")]
 position = Vector2(2048, -143)
-siguienteNivel = "res://Player/world.tscn"
+nextLevel = "res://Maps/main_menu.tscn"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="FinDeNivel"]
 

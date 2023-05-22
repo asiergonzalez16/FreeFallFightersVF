@@ -6,21 +6,21 @@ var isFalling = false
 func state_enter_state(msg := {}):
 	if msg.has("Salto"):
 		hasJumped = true
-		player.numSaltos-=1
+		player.numJumps-=1 
 		$"../../AudioSalto".play()
 		anim_player.play("jump")
 		player.velocity.y = - player.jump +50
-		if player.numSaltos == 0:
+		if player.numJumps == 0:
 			anim_player.play("doubleJump")
 
 	elif msg.has("Trampoline"):
 		hasJumped = true
-		player.numSaltos+=1
+		player.numJumps+=1
 		$"../../AudioSalto".play()
 		anim_player.play("jump")
 		player.velocity.y = - player.jump - 400
 	
-		if player.numSaltos == 0:
+		if player.numJumps == 0:
 			anim_player.play("doubleJump")
 		
 	else:
@@ -30,11 +30,11 @@ func state_enter_state(msg := {}):
 		$CoyoteTimer.start()
 
 func state_physics_process(delta):
-	var direccion = Input.get_axis("ui_left","ui_right")
+	var direction = Input.get_axis("ui_left","ui_right")
 	
-	player.sprite.flip_h = direccion < 0 if direccion != 0 else player.sprite.flip_h
+	player.sprite.flip_h = direction < 0 if direction != 0 else player.sprite.flip_h
 	
-	player.velocity.x = direccion * player.speed
+	player.velocity.x = direction * player.speed
 	
 	player.velocity.y += player.gravity
 	
@@ -54,7 +54,7 @@ func state_physics_process(delta):
 		$BufferJumpTimer.stop()
 		player.reiniciaSaltos()
 		state_machine.transition_to("enAire",{Salto = true})
-	elif hasJumped and Input.is_action_just_pressed("ui_accept") and player.numSaltos > 0:
+	elif hasJumped and Input.is_action_just_pressed("ui_accept") and player.numJumps > 0:
 		state_machine.transition_to("enAire",{Salto = true})
 		hasJumped = false
 	elif !$CoyoteTimer.is_stopped() and  Input.is_action_just_pressed("ui_accept"):

@@ -11,9 +11,9 @@ var vida := 1
 
 
 
-enum estados {REPOSO,ACTIVARSPIKES,REPOSO2,DESACTIVARSPIKES,MORIR}
+enum states {REPOSO,ACTIVARSPIKES,REPOSO2,DESACTIVARSPIKES,MORIR}
 var player
-var estadoActual = estados.REPOSO
+var actualState = states.REPOSO
 
 func _ready():
 	animation_player.play("idle1")
@@ -29,8 +29,8 @@ func _process(delta):
 				$dmgPlayer/CollisionShape2D.set_deferred("disabled",false)
 				$ActivarSpikes.start()
 				player = colision
-				estadoActual = estados.ACTIVARSPIKES
-				estadoActual = estados.REPOSO2
+				actualState = states.ACTIVARSPIKES
+				actualState = states.REPOSO2
 				animation_player.play("idle2")
 			
 			
@@ -40,7 +40,7 @@ func takeDmg(damage):
 		animation_player.play("hurt")
 		await (animation_player.animation_finished)
 		if vida <= 0:
-			estadoActual = estados.MORIR
+			actualState = states.MORIR
 			$CollisionShape2D.set_deferred("disabled",true)
 			$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
 			queue_free()
@@ -52,7 +52,7 @@ func _on_activar_spikes_timeout():
 	animation_player.play("spikesIn")
 	await(animation_player.animation_finished)
 	$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-	estadoActual = estados.REPOSO
+	actualState = states.REPOSO
 	animation_player.play("idle1")
 	$DesactivarSpikes.start()
 

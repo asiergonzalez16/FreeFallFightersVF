@@ -155,7 +155,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_6md7a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j101"]
-size = Vector2(4526, 20)
+size = Vector2(5875, 43)
 
 [sub_resource type="Curve2D" id="Curve2D_bdrnp"]
 _data = {
@@ -200,13 +200,13 @@ position = Vector2(-294, 78)
 
 [node name="FinDeNivel" parent="." instance=ExtResource("3_11fq6")]
 position = Vector2(4064, -799)
-siguienteNivel = "res://Maps/finish_menu.tscn"
+nextLevel = "res://Maps/finish_menu.tscn"
 
 [node name="FallDamage" parent="." instance=ExtResource("10_4ax3t")]
 position = Vector2(401, 250)
 
 [node name="CollisionShape2D" parent="FallDamage" index="0"]
-position = Vector2(2247, 0)
+position = Vector2(1572.5, 11.5)
 shape = SubResource("RectangleShape2D_7j101")
 
 [node name="spikeHead" parent="." instance=ExtResource("12_81hc5")]
@@ -374,10 +374,10 @@ position = Vector2(2525, -115)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Cosos/Sierra4" index="0"]
-position = Vector2(2.00049, 17.581)
+position = Vector2(2.00049, 20.1536)
 
 [node name="Sprite2D" parent="Cosos/Sierra4/SierraVerdadera" index="0"]
-rotation = 352887.0
+rotation = 354852.0
 
 [node name="Path2D" parent="Cosos/Sierra4" index="1"]
 position = Vector2(-117.333, 16.5488)
@@ -385,19 +385,19 @@ scale = Vector2(59.6667, 0.719512)
 curve = SubResource("Curve2D_bdrnp")
 
 [node name="PathFollow2D" parent="Cosos/Sierra4/Path2D" index="0"]
-position = Vector2(2, 0.0533725)
+position = Vector2(2, -0.494934)
 rotation = -1.5708
-progress = 59.0235
+progress = 59.5645
 
 [node name="Sierra3" parent="Cosos" instance=ExtResource("11_4ic2k")]
 position = Vector2(2342, -119)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Cosos/Sierra3" index="0"]
-position = Vector2(-60.8223, 37.733)
+position = Vector2(-14.6665, 9.46954)
 
 [node name="Sprite2D" parent="Cosos/Sierra3/SierraVerdadera" index="0"]
-rotation = 352887.0
+rotation = 354852.0
 
 [node name="Path2D" parent="Cosos/Sierra3" index="1"]
 position = Vector2(-134, 17)
@@ -405,27 +405,27 @@ scale = Vector2(59.6667, 0.719512)
 curve = SubResource("Curve2D_bdrnp")
 
 [node name="PathFollow2D" parent="Cosos/Sierra3/Path2D" index="0"]
-position = Vector2(1.15109, 30.161)
-rotation = -1.51486
-progress = 28.8606
+position = Vector2(2, -15.8366)
+rotation = -1.5708
+progress = 74.993
 
 [node name="Sierra2" parent="Cosos" instance=ExtResource("11_4ic2k")]
 position = Vector2(839, -52)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Cosos/Sierra2" index="0"]
-position = Vector2(2, -0.905647)
+position = Vector2(2, 8.5931)
 
 [node name="Sprite2D" parent="Cosos/Sierra2/SierraVerdadera" index="0"]
-rotation = 352897.0
+rotation = 354862.0
 
 [node name="Path2D" parent="Cosos/Sierra2" index="1"]
 curve = SubResource("Curve2D_paupm")
 
 [node name="PathFollow2D" parent="Cosos/Sierra2/Path2D" index="0"]
-position = Vector2(2, -2.27269)
+position = Vector2(2, 3.19748)
 rotation = -1.5708
-progress = 61.3816
+progress = 55.9118
 
 [node name="Platform2" parent="Cosos" instance=ExtResource("4_xymls")]
 position = Vector2(1058, 25)
@@ -452,14 +452,15 @@ position = Vector2(724, -54)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Cosos/Sierra" index="0"]
-position = Vector2(-2.45801, 8.88869)
+position = Vector2(-3, 35.0333)
 
 [node name="Sprite2D" parent="Cosos/Sierra/SierraVerdadera" index="0"]
-rotation = 352897.0
+rotation = 354862.0
 
 [node name="PathFollow2D" parent="Cosos/Sierra/Path2D" index="0"]
-position = Vector2(-2.3919, 7.53395)
-progress = 51.4965
+position = Vector2(-3, 29.6835)
+rotation = -1.5708
+progress = 29.2907
 
 [node name="FallingPlatforms" parent="." instance=ExtResource("25_ylstw")]
 position = Vector2(3678, -750)

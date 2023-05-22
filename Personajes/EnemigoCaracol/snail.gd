@@ -3,14 +3,14 @@ extends CharacterBody2D
 var canChangeDirection = true
 var gravity = 9
 var speed = 0
-var vida = 2
+var life = 2
 const snailWithoutShell = preload("res://Personajes/EnemigoCaracol/snailwithoutshell.tscn")
 
-var direccion = -1:
+var direction = -1:
 	set(value):
-		if value != direccion:
+		if value != direction:
 			darseVuelta()
-		direccion = value
+		direction = value
 
 
 @onready var raysuelo = $rayos/raysuelo
@@ -39,7 +39,7 @@ func _ready():
 	speed = 40
 
 func _physics_process(delta):
-	velocity.x = direccion * speed
+	velocity.x = direction * speed
 	if !is_on_floor():
 		velocity.y += gravity
 	move_and_slide()
@@ -49,8 +49,8 @@ func _process(delta):
 		anim.play("hurtShell")
 
 	if canChangeDirection and (raymuro.is_colliding() or !raysuelo.is_colliding()):
-			direccion*=-1
-	$Sprite2D.flip_h = true if direccion == 1 else false
+			direction*=-1
+	$Sprite2D.flip_h = true if direction == 1 else false
 
 	if estadoActual == estados.CAPARAZON:
 		speed -= 0.5
@@ -69,9 +69,9 @@ func _on_ray_timer_timeout():
 	canChangeDirection = true
 
 func takeDmg(damage):
-	vida -= damage
+	life -= damage
 
-	if vida <= 0:
+	if life <= 0:
 		speed = 0
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
 		anim.play("hurtShell")
@@ -97,5 +97,5 @@ func _on_dmg_player_he_hecho_danio():
 	if estadoActual == estados.CAPARAZON:
 		anim.play("hurtShell")
 	raymuro.scale.x *=-1
-	direccion *=-1
+	direction *=-1
 	darseVuelta()

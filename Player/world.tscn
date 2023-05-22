@@ -237,7 +237,7 @@ size = Vector2(5581, 98)
 process_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("1_wrdt8")]
-position = Vector2(264, -102)
+position = Vector2(3190, -570)
 
 [node name="TileMap" type="TileMap" parent="." groups=["Mapa"]]
 tile_set = SubResource("TileSet_0xb6r")
@@ -396,10 +396,10 @@ position = Vector2(3445, -423)
 position = Vector2(4022, -502)
 
 [node name="Fruta21" parent="Cosos" instance=ExtResource("8_ror2t")]
-position = Vector2(4055, -544)
+position = Vector2(4041, -548)
 
 [node name="Fruta22" parent="Cosos" instance=ExtResource("8_ror2t")]
-position = Vector2(4089, -589)
+position = Vector2(4062, -598)
 
 [node name="Fruta16" parent="Cosos" instance=ExtResource("8_ror2t")]
 position = Vector2(2233, -517)
@@ -436,7 +436,7 @@ position = Vector2(3495, -396)
 
 [node name="FinDeNivel" parent="." instance=ExtResource("10_35cx1")]
 position = Vector2(4435, -640)
-siguienteNivel = "res://Player/world_2.tscn"
+nextLevel = "res://Maps/main_menu.tscn"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="FinDeNivel"]
 

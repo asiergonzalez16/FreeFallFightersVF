@@ -7,14 +7,14 @@ func _ready():
 	$"levels/2/Label".text = str(Save.game_data.topScoreLevel2)
 	$"levels/3/Label".text = str(Save.game_data.topScoreLevel3)
 	
-	var nivelesDesbloqueados = Save.game_data.levels_unlocked
-	if nivelesDesbloqueados >= 3:
+	var unlockedLevels = Save.game_data.levels_unlocked
+	if unlockedLevels >= 3:
 		$Imagenes/level2locked.hide()
 		$Imagenes/level3locked.hide()
 	else:
-		if nivelesDesbloqueados == 2:
+		if unlockedLevels == 2:
 			$Imagenes/level2locked.hide()
-		elif nivelesDesbloqueados == 3:
+		elif unlockedLevels == 3:
 			$Imagenes/level2locked.hide()
 			$Imagenes/level3locked.hide()
 		
@@ -22,7 +22,7 @@ func _ready():
 		Global.levels.append(i+1)
 	
 	for level in $levels.get_children():
-		if str_to_var(level.name) in range(nivelesDesbloqueados+1):
+		if str_to_var(level.name) in range(unlockedLevels+1):
 			level.disabled = false
 		else:
 			level.disabled = true
@@ -44,17 +44,17 @@ func _on_settings_pressed():
 
 
 func _on_2_pressed():
-	Global.ultimoBotonPressed = 2
+	Global.lastButtonPressed = 2
 	get_tree().change_scene_to_file("res://Player/world.tscn")
 
 
 func _on_1_pressed():
-	Global.ultimoBotonPressed = 1
+	Global.lastButtonPressed = 1
 	get_tree().change_scene_to_file("res://Player/world_tutorial.tscn")
 
 
 func _on_3_pressed():
-	Global.ultimoBotonPressed = 3
+	Global.lastButtonPressed = 3
 	get_tree().change_scene_to_file("res://Player/world_2.tscn")
 
 

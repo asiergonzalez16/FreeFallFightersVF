@@ -3,7 +3,7 @@ extends Node
 
 func _ready():
 	$Timer.start()
-	Global.vidas = 5
+	Global.lives = 5
 	Save.game_data.VidasJugador = 5
 	Save.save_data()
 	$AnimCerdito.play("cerdito")

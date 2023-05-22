@@ -1,21 +1,21 @@
 extends CharacterBody2D
-var direccion = 0
+var direction = 0
 func _ready():
 	$Timer.start()
 	var parent = get_node_or_null("..") 
-	direccion = parent.direccion
+	direction = parent.direction
 	$Area2D/CollisionShape2D.set_deferred("disabled",true)
 	velocity.x = 0
 func _process(delta):
 	var parent = get_node_or_null("..")
 	if $Area2D/RayCast2DLeft.is_colliding() or $Area2D/RayCast2DRight.is_colliding():
 		queue_free()
-	moverse(direccion)
+	moverse(direction)
 
 	move_and_slide()
 
-func moverse(direccion):
-	velocity.x = direccion * 300
+func moverse(direction):
+	velocity.x = direction * 300
 	
 
 

@@ -399,10 +399,10 @@ position = Vector2(64, 72)
 platformSpeed = 1.0
 
 [node name="SierraVerdadera" parent="Sierra" index="0"]
-position = Vector2(53.4953, 27.2754)
+position = Vector2(50.3073, 29.5932)
 
 [node name="Sprite2D" parent="Sierra/SierraVerdadera" index="0"]
-rotation = 339248.0
+rotation = 339920.0
 
 [node name="Path2D" parent="Sierra" index="1"]
 position = Vector2(230, 5.05263)
@@ -410,9 +410,9 @@ scale = Vector2(57.3332, 0.947368)
 curve = SubResource("Curve2D_4mkct")
 
 [node name="PathFollow2D" parent="Sierra/Path2D" index="0"]
-position = Vector2(-3.18097, 27.9628)
+position = Vector2(-3.09433, 24.1504)
 rotation = -1.54807
-progress = 68.1559
+progress = 71.755
 
 [node name="26762" type="Timer" parent="Sierra/Path2D/PathFollow2D" index="0"]
 wait_time = 0.2

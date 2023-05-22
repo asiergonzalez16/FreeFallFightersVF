@@ -1,9 +1,9 @@
 extends Personajes
-var direccion = -1:
+var direction = -1:
 	set(value):
-		if value != direccion:
+		if value != direction:
 			darseVuelta()
-		direccion = value
+		direction = value
 		
 
 @onready var raySuelo : RayCast2D = $Raycasts/RayCastSuelo
@@ -16,15 +16,15 @@ var player
 var canChangeDirection = true
 var gravity = 9
 
-enum estados {ANGRY,PATRULLAR, MORIRSE}
-var estadoActual = estados.PATRULLAR :
+enum states {ANGRY,PATRULLAR, MORIRSE}
+var actualState = states.PATRULLAR :
 	set(value):
-		estadoActual = value
+		actualState = value
 		match value:
-			estados.ANGRY:
+			states.ANGRY:
 				anim.play("runAngry")
 				speed = 90
-			estados.PATRULLAR:
+			states.PATRULLAR:
 				anim.play("walk")
 				speed = 60
 
@@ -33,7 +33,7 @@ func _ready():
 	speed = 60
 
 func _physics_process(delta):
-	velocity.x = direccion * speed
+	velocity.x = direction * speed
 	if !is_on_floor():
 		velocity.y += gravity
 	move_and_slide()
@@ -44,29 +44,29 @@ func _process(delta):
 		var colision = raycastPlayer.get_collider()
 		if colision.is_in_group("Player"):
 			player = colision
-			estadoActual = estados.ANGRY
-	if estadoActual == estados.ANGRY and player != null:
+			actualState = states.ANGRY
+	if actualState == states.ANGRY and player != null:
 		anim.play("runAngry")
 		var directionPlayer = global_position.direction_to(player.global_position)
 		if directionPlayer.x < 0:
-			direccion = -1
+			direction = -1
 		elif  directionPlayer.x > 0:
-			direccion = 1
+			direction = 1
 		
-	if estadoActual == estados.PATRULLAR:
+	if actualState == states.PATRULLAR:
 		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()):
-			direccion*=-1
-	$Sprite2D.flip_h = true if direccion == 1 else false
+			direction*=-1
+	$Sprite2D.flip_h = true if direction == 1 else false
 	
 	if rayMuro.is_colliding():
 		darseVuelta()
 	
 func takeDmg(damage):
 	player = null
-	vida -= damage
-	if vida <= 0:
+	life -= damage
+	if life <= 0:
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-		estadoActual = estados.MORIRSE
+		actualState = states.MORIRSE
 		anim.play("hurt")
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
@@ -78,7 +78,7 @@ func takeDmg(damage):
 		await (anim.animation_finished)
 		$CollisionShape2D.set_deferred("disabled",false)
 		gravity = 9
-		estadoActual = estados.PATRULLAR
+		actualState = states.PATRULLAR
 
 func _on_ray_timer_timeout():
 	canChangeDirection = true
@@ -90,9 +90,9 @@ func darseVuelta():
 	raycastPlayer.scale.x *=-1
 
 func _on_dmg_player_he_hecho_danio():
-	estadoActual = estados.PATRULLAR
+	actualState = states.PATRULLAR
 	player = null
-	direccion *=-1
+	direction *=-1
 	
 func morir():
 	queue_free()
