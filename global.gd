@@ -1,5 +1,7 @@
 extends Node
 
+#All variables declared here, can be used everywhere in the project
+
 var start = true
 var flag = true
 var checkX = 0

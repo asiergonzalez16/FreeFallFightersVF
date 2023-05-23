@@ -5,7 +5,7 @@ func state_enter_state(msg := {}):
 	anim_player.play("wallSlide")
 	
 func state_physics_process(delta):
-	player.velocity.y += player.gravity*.08
+	player.velocity.y += player.gravity*.08 #the player position vertical will fall down slowly with gravity, being in the wall
 	var direction = Input.get_axis("ui_left","ui_right")
 	player.velocity.x = direction * player.speed
 	player.move_and_slide()

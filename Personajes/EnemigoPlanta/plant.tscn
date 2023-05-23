@@ -93,6 +93,7 @@ _data = {
 radius = 16.0312
 
 [node name="Plant" type="CharacterBody2D" groups=["Enemigos"]]
+process_mode = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_rf5j4")

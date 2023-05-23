@@ -8,21 +8,14 @@ func _ready():
 	velocity.x = 0
 func _process(delta):
 	var parent = get_node_or_null("..")
-	if $Area2D/RayCast2DLeft.is_colliding() or $Area2D/RayCast2DRight.is_colliding():
+	if $Area2D/RayCast2DLeft.is_colliding() or $Area2D/RayCast2DRight.is_colliding(): #if the bullet colision with somthing, will be deleted
 		queue_free()
-	moverse(direction)
+	move(direction)
 
 	move_and_slide()
 
-func moverse(direction):
+func move(direction): #the bullet will be moved on the direction if the player
 	velocity.x = direction * 300
-	
-
-
-
-func _on_dmg_player_he_hecho_danio():
-	$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-	$Area2D/CollisionShape2D.set_deferred("disabled",false)
 
 
 func _on_timer_timeout():
@@ -30,3 +23,8 @@ func _on_timer_timeout():
 	
 func takeDmg(damage):
 	queue_free()
+
+
+func _on_dmg_player_i_made_damage():
+	$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
+	$Area2D/CollisionShape2D.set_deferred("disabled",false)

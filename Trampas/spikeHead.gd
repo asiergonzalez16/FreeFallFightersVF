@@ -3,14 +3,14 @@ class_name SpikeHead
 var speed 
 var firstTime = true
 var restart = false
-enum states {REPOSO,DESPIERTO,ACTIVO,INACTIVO}
-var actualState = states.REPOSO:
+enum states {REPOSE,AWAKE,ACTIVE,INACTIVE}
+var actualState = states.REPOSE:
 	set(value):
 		actualState = value
 		match value:
-			states.DESPIERTO:
+			states.AWAKE:
 				animation_player.play("despierto")
-			states.INACTIVO:
+			states.INACTIVE:
 				direccionX = 0 
 				direccionY = 0
 
@@ -36,36 +36,36 @@ func _ready():
 	
 
 	
-func _process(delta):
-	if rayDmgRight.is_colliding() and actualState != states.ACTIVO and direccionY == 0:
-		if firstTime:
-			actualState = states.DESPIERTO
+func _process(delta): #lot of conditions for the movement of the spikeHead, directions
+	if rayDmgRight.is_colliding() and actualState != states.ACTIVE and direccionY == 0:
+		if firstTime: #if its the first time colision, change state to awake
+			actualState = states.AWAKE
 		direccionX = 1
-	elif rayDmgLeft.is_colliding() and actualState != states.ACTIVO and direccionY == 0:
+	elif rayDmgLeft.is_colliding() and actualState != states.ACTIVE and direccionY == 0:
 		if firstTime:
-			actualState = states.DESPIERTO
+			actualState = states.AWAKE
 		direccionX = -1
-	elif rayDmgDown.is_colliding() and actualState != states.ACTIVO and direccionX == 0:
+	elif rayDmgDown.is_colliding() and actualState != states.ACTIVE and direccionX == 0:
 		if firstTime:
-			actualState = states.DESPIERTO
+			actualState = states.AWAKE
 		direccionY = 1
-	elif rayDmgUp.is_colliding() and actualState != states.ACTIVO and direccionX == 0:
+	elif rayDmgUp.is_colliding() and actualState != states.ACTIVE and direccionX == 0:
 		if firstTime:
-			actualState = states.DESPIERTO
+			actualState = states.AWAKE
 		direccionY = -1 
 	
-	if actualState == states.DESPIERTO and firstTime:
+	if actualState == states.AWAKE and firstTime: #if its the first time and state is awake, play animation wakeup
 		firstTime = false
 		animation_player.play("wakeUp")
 		$despierto.start()
 	
-	if actualState == states.ACTIVO  and atacar:
+	if actualState == states.ACTIVE  and atacar: #if state is active and can attack, change velocity
 		atacar = false	
 		velocity.x = direccionX *400
 		velocity.y = direccionY *400
 		restart = true
 	if ($Node2D/RayWorldDown.is_colliding() or $Node2D/RayWorldUp.is_colliding() or $Node2D/RayWorldRight.is_colliding() or $Node2D/RayWorldLeft.is_colliding()) and restart == true:
-		actualState = states.INACTIVO
+		actualState = states.INACTIVE
 		restart = false
 		$volverAtacar.start()
 	
@@ -75,12 +75,12 @@ func _process(delta):
 
 
 
-func _on_volver_atacar_timeout():
+func _on_volver_atacar_timeout(): #if timeout ends, he can attack again and return to state active
 	atacar = true
 	player = null
-	actualState = states.ACTIVO
+	actualState = states.ACTIVE
 
 
-func _on_despierto_timeout():
-	actualState = states.ACTIVO
+func _on_despierto_timeout(): #after despierto time ends, change to active state
+	actualState = states.ACTIVE
 	

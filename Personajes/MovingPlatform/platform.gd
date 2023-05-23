@@ -1,12 +1,12 @@
 @tool
 extends Path2D
 
-@export var platformSpeed : float = .2
+@export var platformSpeed : float = .2 #if we make @export, we can change this variable from the editor, don't need modify code
 var isRight = true
 
 func _process(delta):
-	#if Engine.is_editor_hint(): # Corre en el editor
-	#if not Engine.is_editor_hint(): #Solo en el juego	
+	#if Engine.is_editor_hint(): # Run only in the editor
+	#if not Engine.is_editor_hint(): # Run only in the game
 	$PlatformCharacter.global_position = $PathFollow2D.global_position
 	
 	if isRight:

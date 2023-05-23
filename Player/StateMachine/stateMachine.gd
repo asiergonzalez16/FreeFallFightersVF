@@ -9,7 +9,7 @@ signal cambioEstado(nombre_estado)
 
 func _ready():
 	await (owner.ready)
-	for child in get_children():
+	for child in get_children(): # Assign the state machine to all children
 		child.state_machine = self
 	state.state_enter_state()
 
@@ -20,11 +20,11 @@ func _unhandled_input(event):
 func _process(delta):
 	state.state_process(delta)
 
-func _physics_process(delta):
+func _physics_process(delta): # Call the state_physics_process() method of the current state every physics step
 	state.state_physics_process(delta)
 	
 func transition_to(target_state : String, msg : Dictionary = {}):
-	if not has_node(target_state):
+	if not has_node(target_state): #Assign the new target state to the current state
 		return
 	
 	state.state_exit()

@@ -1,24 +1,24 @@
 extends Node
 
 
-func _on_area_welcome_body_entered(body):
+func _on_area_welcome_body_entered(body): #Show the popup and play the animation
 	if body is Player:
 		$WelcomePopUp.show()
 		$WelcomePopUp/Panel/AnimationPlayer.play("popup")
 
 
 
-func _on_area_jump_body_entered(body):
+func _on_area_jump_body_entered(body): #Show the popup and play the animation, hide the welcome popup
 	if body is Player:
 		$JumpPopUp.show()
 		$JumpPopUp/Panel/AnimationPlayer.play("popup")
 		$WelcomePopUp.hide()
 
 
-func _on_texture_button_pressed():
+func _on_texture_button_pressed(): #if button X is pressed, the popup close
 	$WelcomePopUp.hide()
 
-
+#The rest methods are the same with more popups
 func _on_area_doble_jump_body_entered(body):
 	if body is Player:
 		$DoubleJumpPopUp.show()

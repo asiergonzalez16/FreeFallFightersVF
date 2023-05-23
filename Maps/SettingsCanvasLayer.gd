@@ -36,7 +36,7 @@ func changeResolution():
 	Save.save_data()
 
 
-func _on_window_size_check_box_item_selected(index):
+func _on_window_size_check_box_item_selected(index): #window check box for select size of window
 	var size : Vector2
 	match index:
 		0:

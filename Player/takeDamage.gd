@@ -8,10 +8,10 @@ var leftovers = 0
 func state_enter_state(msg := {}):
 	$Timer.start()
 	
-	if msg.has("Empuje"):
+	if msg.has("Empuje"): #If the missage in dictionary has "Empuje"
 		push = true
 		side = msg.get("Lado")
-	elif msg.has("Arrastrar"):
+	elif msg.has("Arrastrar"): #If the missage in dictionary has "Arrastrar"
 		drag = true
 		Dx = msg.get("dx")
 		Dy = msg.get("dy")
@@ -21,7 +21,7 @@ func state_enter_state(msg := {}):
 	await $"../../AnimationPlayer".animation_finished
 	
 	player.dmgColision.set_deferred("disabled",true)
-	$"../../AudioHerirse".play()
+	$"../../AudioHerirse".play() #play sound of injured
 	player.velocity.y = - player.jump - 100
 	player.move_and_slide()
 
@@ -50,7 +50,7 @@ func state_physics_process(delta):
 		player.move_and_slide()
 
 
-func _on_timer_timeout():
+func _on_timer_timeout(): 
 	state_machine.transition_to("Idle")
 	player.dmgColision.set_deferred("disabled",false)
 	push = false

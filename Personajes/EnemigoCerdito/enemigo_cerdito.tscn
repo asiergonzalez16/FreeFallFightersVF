@@ -46,6 +46,6 @@ target_position = Vector2(-50, 0)
 position = Vector2(0, 2.5)
 
 [connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
-[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
+[connection signal="IMadeDamage" from="dmgPlayer" to="." method="_on_dmg_player_i_made_damage"]
 
 [editable path="dmgPlayer"]

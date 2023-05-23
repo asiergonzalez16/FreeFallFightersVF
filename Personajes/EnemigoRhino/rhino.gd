@@ -11,7 +11,7 @@ class_name Rhino
 
 
 var direction = -1
-enum states {ANGRY,IDLE,MORIRSE,WALKING}
+enum states {ANGRY,IDLE,DIE,WALKING}
 var player
 var canChangeDirection = true
 var gravity = 9
@@ -38,7 +38,7 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.x = direction * speed
-	if !is_on_floor():
+	if !is_on_floor(): #if enemy is not on the floor, apply gravity
 		velocity.y += gravity
 	move_and_slide()
 	
@@ -48,23 +48,22 @@ func _process(delta):
 			var colision = ray.get_collider()
 			if colision.is_in_group("Player"):
 				player = colision
-				actualState = states.ANGRY
+				actualState = states.ANGRY #if detect a player, change state to angry
 				
 			
 	if ray_cast_2d_wall.is_colliding() and canChangeDirection:
-		anim.play("hitWall")
+		anim.play("hitWall") #if collision with a wall, make animation of hitwall
 		await anim.animation_finished
-		darseVuelta()
+		turnAround() #after the animation hitwall, he change direction
 	if $RayCasts/RayCast2DPlayer2Right.is_colliding() and direction == -1:
-		darseVuelta()
+		turnAround()
 	elif $RayCasts/RayCast2DPlayerLeft.is_colliding() and direction == 1:
-		darseVuelta()
+		turnAround()
 		
 	$Sprite2D.flip_h = true if direction == 1 else false
 
 
-
-func darseVuelta():
+func turnAround():
 	canChangeDirection = false
 	ray_cast_2d_wall.scale.x *=-1
 	direction *= -1
@@ -79,12 +78,12 @@ func darseVuelta():
 	$Timer.start()
 	
 
-func takeDmg(damage):
+func takeDmg(damage): #function called when a player hit the enemy
 	player = null
 	life -= damage
 	if life <= 0:
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-		actualState = states.MORIRSE
+		actualState = states.DIE
 		anim.play("hurt")
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
@@ -98,16 +97,6 @@ func takeDmg(damage):
 		$CollisionShape2D.set_deferred("disabled",false)
 		gravity = 9
 		actualState = states.IDLE
-		
-
-
-
-func _on_dmg_player_he_hecho_danio():
-	$Timer2.start()
-	actualState = states.WALKING
-	$RayCasts/RayCast2DPlayer2Right.enabled = false
-	$RayCasts/RayCast2DPlayerLeft.enabled = false
-	
 
 
 
@@ -121,3 +110,10 @@ func _on_timer_2_timeout():
 	$RayCasts/RayCast2DPlayerLeft.enabled = true
 func morir():
 	queue_free()
+
+
+func _on_dmg_player_i_made_damage(): #if colision with a player and make damage, state walking
+	$Timer2.start()
+	actualState = states.WALKING
+	$RayCasts/RayCast2DPlayer2Right.enabled = false
+	$RayCasts/RayCast2DPlayerLeft.enabled = false
