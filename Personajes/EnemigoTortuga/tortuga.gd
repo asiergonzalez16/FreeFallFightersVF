@@ -1,10 +1,12 @@
 extends CharacterBody2D
+class_name Tortuga
 @onready var animation_player = $AnimationPlayer
 @onready var raySideLeft = $Raycast/RayCast2DSideLeft
 @onready var raySideRight = $Raycast/RayCast2DSideRight
 @onready var rayUpLeft = $Raycast/RayCast2DUpLeft
 @onready var rayUpRight = $Raycast/RayCast2DUpRight
 @onready var raycast = $Raycast
+@onready var collision_shape_2d = $CollisionShape2D
 
 var life := 1
 

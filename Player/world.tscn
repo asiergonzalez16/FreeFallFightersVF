@@ -237,7 +237,7 @@ size = Vector2(5581, 98)
 process_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("1_wrdt8")]
-position = Vector2(1562, -470)
+position = Vector2(238, -160)
 
 [node name="TileMap" type="TileMap" parent="." groups=["Mapa"]]
 tile_set = SubResource("TileSet_0xb6r")

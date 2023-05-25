@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://wddl6i3xanfh"]
+
+[ext_resource type="Script" path="res://Maps/level_complete.gd" id="1_atnx0"]
+
+[node name="LevelComplete" type="CanvasLayer"]
+script = ExtResource("1_atnx0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 69.0
+offset_top = 40.0
+offset_right = 359.0
+offset_bottom = 113.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 153.0
+offset_bottom = 101.0
+color = Color(0.0470588, 0.0352941, 0.0666667, 0)
+
+[node name="MarginContainer" type="PanelContainer" parent="Control"]
+layout_mode = 2
+offset_left = 43.0
+offset_right = 259.0
+offset_bottom = 101.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Current" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Top" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TryAgain" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try again"
+
+[node name="Continue" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]

@@ -51,7 +51,20 @@ func reiniciaSaltos():
 	numJumps = 2
 	
 func _process(delta): #This runs all the time
-	Global.time-= delta
+	
+	if Global.continuePointing and Global.lastButtonPressed == 1:
+		Global.time-= 0.02
+		Global.actualPointsLevel1 = int(Global.time)
+		
+	elif Global.continuePointing and Global.lastButtonPressed == 2:
+		Global.time-= 0.02
+		Global.actualPointsLevel2 = int(Global.time)
+		
+	elif Global.continuePointing and Global.lastButtonPressed == 3:
+		Global.time-= 0.02
+		Global.actualPointsLevel3 = int(Global.time)
+		
+		
 	#We check in which map is the player for calculate the points
 	if Global.lastButtonPressed == 1:
 		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel1)
@@ -78,12 +91,16 @@ func _process(delta): #This runs all the time
 		if ray.is_colliding():
 			var colision = ray.get_collider()
 			if colision.is_in_group("Enemigos") and colision.has_method("takeDmg"):
-				if Global.lastButtonPressed == 1:
-					Global.actualPointsLevel1 += 15
-				elif Global.lastButtonPressed == 2:
-					Global.actualPointsLevel2 += 15
-				elif Global.lastButtonPressed == 3:
-					Global.actualPointsLevel3 += 15
+				if colision is Tortuga:
+					if colision.actualState == colision.states.REPOSE:
+						Global.time+=7.5
+				else:
+					if Global.lastButtonPressed == 1:
+						Global.time += 15
+					elif Global.lastButtonPressed == 2:
+						Global.time += 15
+					elif Global.lastButtonPressed == 3:
+						Global.time += 15
 				colision.takeDmg(damage)
 				state_machine.transition_to("enAire",{Salto = true})
 				numJumps+=1
@@ -151,7 +168,4 @@ func _on_quit_button_pressed(): #button on pause menu to return menu, we restart
 	Global.time = 300
 	Global.start = true
 	Global.flag = true
-	Global.actualPointsLevel1 = 0
-	Global.actualPointsLevel2 = 0
-	Global.actualPointsLevel3 = 0
 	transition_to_scene("res://Maps/main_menu.tscn")

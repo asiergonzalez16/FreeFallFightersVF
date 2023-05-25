@@ -13,6 +13,7 @@ var lastButtonPressed = 0
 var actualPointsLevel1 = 0
 var actualPointsLevel2 = 0
 var actualPointsLevel3 = 0
+var continuePointing = true
 
 var topScoreLevel1 :int
 var topScoreLevel2 :int
