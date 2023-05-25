@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cioeiq2ketrp7"]
+[gd_scene load_steps=40 format=3 uid="uid://cioeiq2ketrp7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nuxl"]
 [ext_resource type="Script" path="res://Player/StateMachine/stateMachine.gd" id="2_owes5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bg3msc341myox" path="res://Assets_PixelAdventure/Main Characters/PinkGUI.png" id="14_s4ki2"]
 [ext_resource type="Shader" path="res://Player/TransitionShader.gdshader" id="15_5lxgt"]
 [ext_resource type="Script" path="res://Maps/pausemenu.gd" id="20_cm4ay"]
+[ext_resource type="AudioStream" uid="uid://dkra4csj5ext1" path="res://Assets_PixelAdventure/Sounds/music.mp3" id="22_5tm0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slqit"]
 size = Vector2(19.25, 22)
@@ -483,6 +484,9 @@ collision_mask = 4
 position = Vector2(0, -11)
 target_position = Vector2(-15, 0)
 collision_mask = 4
+
+[node name="GameLevelMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_5tm0l")
 
 [connection signal="timeout" from="StateMachine/takeDamage/Timer" to="StateMachine/takeDamage" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]

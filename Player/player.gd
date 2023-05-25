@@ -38,6 +38,7 @@ var vida := 5 :
 		$PlayerGUI/HPProgressBar.value = vida
 
 func _ready():
+	$GameLevelMusic.play()
 	if !Global.start: #Checking if its the start, we use with the check point
 		position.x = Global.checkX
 		position.y = Global.checkY
@@ -54,14 +55,20 @@ func _process(delta): #This runs all the time
 	
 	if Global.continuePointing and Global.lastButtonPressed == 1:
 		Global.time-= 0.02
+		if Global.time <= 0:
+			Global.time = 0
 		Global.actualPointsLevel1 = int(Global.time)
 		
 	elif Global.continuePointing and Global.lastButtonPressed == 2:
 		Global.time-= 0.02
+		if Global.time <= 0:
+			Global.time = 0
 		Global.actualPointsLevel2 = int(Global.time)
 		
 	elif Global.continuePointing and Global.lastButtonPressed == 3:
 		Global.time-= 0.02
+		if Global.time <= 0:
+			Global.time = 0
 		Global.actualPointsLevel3 = int(Global.time)
 		
 		
