@@ -7,6 +7,7 @@ func _ready():
 	$"levels/1/Label".text = str(Save.game_data.topScoreLevel1)
 	$"levels/2/Label".text = str(Save.game_data.topScoreLevel2)
 	$"levels/3/Label".text = str(Save.game_data.topScoreLevel3)
+	Global.flag = true
 	
 	var unlockedLevels = Save.game_data.levels_unlocked #check the unlocked levels in the save file
 	#Now we check depending the unlocked levels, we show an image locked or not

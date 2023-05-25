@@ -62,3 +62,36 @@ func _on_cerdito_pop_up_body_entered(body):
 		$WallJumpPopUp.hide()
 		$CerditoPopUp2.show()
 		$CerditoPopUp2/Panel/AnimationPlayer.play("popup")
+
+
+func _on_frutas_letrero_body_entered(body):
+	if body is Player:
+		$FrutasPopUp2.show()
+		$CerditoPopUp2.hide()
+		$FrutasPopUp2/Panel/AnimationPlayer.play("popup")
+
+
+func _on_close_frutas_pressed():
+	$FrutasPopUp2.hide()
+	$CerditoPopUp2.hide()
+	$WallJumpPopUp.hide()
+	$DoubleJumpPopUp.hide()
+	$JumpPopUp.hide()
+	$WelcomePopUp.hide()
+
+
+func _on_close_esc_pop_up_pressed():
+	$PauseMenuPopUp.hide()
+	$FrutasPopUp2.hide()
+	$CerditoPopUp2.hide()
+	$WallJumpPopUp.hide()
+	$DoubleJumpPopUp.hide()
+	$JumpPopUp.hide()
+	$WelcomePopUp.hide()
+
+
+func _on_esc_letero_body_entered(body):
+	if body is Player:
+		$PauseMenuPopUp.show()
+		$FrutasPopUp2.hide()
+		$PauseMenuPopUp/Panel/AnimationPlayer.play("popup")

@@ -19,18 +19,18 @@ func _on_area_entered(area):
 		area.owner.takeDamageRhino(damage,side) #call the method takeDamageRhino in the Player script
 		emit_signal("IMadeDamage")
 	elif parent is SpikeHead and area.is_in_group("AreaPlayer"): #If is not rhino, check if is SpikeHead
-		if area.owner.global_position.x > global_position.x and parent.direccionX != 0 and parent.actualState == parent.states.INACTIVO:
+		if area.owner.global_position.x > global_position.x and parent.direccionX != 0 and parent.actualState == parent.states.INACTIVE:
 			dx = 1
 			leftovers = (($CollisionShape2D.shape.extents.x) + (area.owner.dmgColision.shape.extents.x)) - abs(area.owner.global_position.x - global_position.x)
 			area.owner.takeDamageSpikeHead(dx,dy,leftovers)
-		elif area.owner.global_position.x < global_position.x and parent.direccionX != 0 and parent.actualState == parent.states.INACTIVO:
+		elif area.owner.global_position.x < global_position.x and parent.direccionX != 0 and parent.actualState == parent.states.INACTIVE:
 			dx = -1
 			leftovers = (($CollisionShape2D.shape.extents.x) + (area.owner.dmgColision.shape.extents.x)) - abs(area.owner.global_position.x - global_position.x)
 			area.owner.takeDamageSpikeHead(dx,dy,leftovers)
-		elif area.owner.global_position.y < global_position.y and parent.direccionY != 0 and parent.actualState == parent.states.INACTIVO:
+		elif area.owner.global_position.y < global_position.y and parent.direccionY != 0 and parent.actualState == parent.states.INACTIVE:
 			dy = -1
 			area.owner.takeDamageSpikeHead(dx,dy,leftovers)
-		elif area.owner.global_position.y > global_position.y+30 and parent.direccionY != 0 and parent.actualState == parent.states.INACTIVO:
+		elif area.owner.global_position.y > global_position.y+30 and parent.direccionY != 0 and parent.actualState == parent.states.INACTIVE:
 			dy = 1
 			area.owner.takeDamageSpikeHead(dx,dy,leftovers)
 		else: 
