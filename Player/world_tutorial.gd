@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	$GameLevelMusic.play()
+	pass
 
 func _on_area_welcome_body_entered(body): #Show the popup and play the animation
 	if body is Player:

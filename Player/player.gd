@@ -87,7 +87,6 @@ func _process(delta): #This runs all the time
 		Save.game_data.VidasJugador += 1
 		Save.save_data()
 		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
-	$LabelState.text = $StateMachine.state.name
 	
 	if is_on_floor() and numJumps != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()

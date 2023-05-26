@@ -228,13 +228,6 @@ process_mode = 1
 collision_mask = 6
 script = ExtResource("1_1nuxl")
 
-[node name="LabelState" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -51.0
-offset_right = 108.0
-offset_bottom = -25.0
-text = "aaaaaaaaaaaaaa"
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_owes5")
 estado_inicial = NodePath("Idle")
@@ -402,9 +395,11 @@ one_shot = true
 
 [node name="AudioSalto" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_un7wi")
+bus = &"SFX"
 
 [node name="AudioHerirse" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fh7c2")
+bus = &"SFX"
 
 [node name="RecibirDanio" type="Area2D" parent="." groups=["AreaPlayer"]]
 collision_mask = 6
@@ -487,6 +482,7 @@ collision_mask = 4
 
 [node name="GameLevelMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_5tm0l")
+bus = &"Music"
 
 [connection signal="timeout" from="StateMachine/takeDamage/Timer" to="StateMachine/takeDamage" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]

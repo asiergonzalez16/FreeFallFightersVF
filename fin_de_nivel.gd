@@ -37,8 +37,10 @@ func _on_body_entered(body):
 		Global.start = true #make variable start on true, if its true, it means there is no checkpoint cause we end level
 		$LevelComplete.show()
 		body.speed = 0
+		set_process_unhandled_input(false)
 		$AudioStreamPlayer2D.play()
 		await $AudioStreamPlayer2D.finished
+		
 	
 		
 		
