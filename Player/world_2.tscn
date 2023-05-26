@@ -458,7 +458,7 @@ position = Vector2(-2.50073, 9.76517)
 rotation = 406221.0
 
 [node name="PathFollow2D" parent="Cosos/Sierra/Path2D" index="0"]
-position = Vector2(-1.99684, -0.564698)
+position = Vector2(-1.99685, -0.564664)
 progress = 59.5891
 
 [node name="FallingPlatforms" parent="." instance=ExtResource("25_ylstw")]
