@@ -19,7 +19,6 @@ var counterUnlockedLevels = 0
 @onready var rayLeft = $RaysChoque/RayCastLeft
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
-@onready var frutasLabel := $PlayerGUI/HBoxContainer/FrutasLabel
 @onready var raycastDmg := $RaycastDmg
 @onready var state_machine := $StateMachine
 @onready var dmgColision := $RecibirDanio/CollisionShape2D
@@ -81,12 +80,6 @@ func _process(delta): #This runs all the time
 		$PlayerGUI/HBoxContainer2/Label.text = str(Global.actualPointsLevel3)
 	
 	#If player recolect 10 fruits, you get 1 live and reset fruits to 0
-	if Global.fruits >= 10:
-		Global.fruits = 0
-		Global.lives += 1
-		Save.game_data.VidasJugador += 1
-		Save.save_data()
-		vidas_label.text = "x"+str(Save.game_data.VidasJugador)
 	
 	if is_on_floor() and numJumps != 2 and state_machine.state.name !="enAire":
 		reiniciaSaltos()
@@ -115,7 +108,12 @@ func _process(delta): #This runs all the time
 		canDash = true
 
 func actualizaInterfazFrutas():
-	frutasLabel.text = str(Global.fruits)
+	if Global.lastButtonPressed == 1:
+		Global.time += 10
+	elif Global.lastButtonPressed == 2:
+		Global.time += 10
+	else:
+		Global.time += 10
 
 func takeDamage(dmg):
 	vida-=dmg

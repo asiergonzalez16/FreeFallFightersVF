@@ -10,11 +10,15 @@ func _process(delta):
 		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top.text = "Top Score: "
 		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top/Label2.text = str(Save.game_data.topScoreLevel1)
 	elif Global.lastButtonPressed == 2:
-		$Control/MarginContainer/VBoxContainer/Current.text = "Current Score: " + str(Global.actualPointsLevel2)
-		$Control/MarginContainer/VBoxContainer/Top.text = "Top Score: " + str(Save.game_data.topScoreLevel2)
+		$Control/MarginContainer/VBoxContainer/HBoxContainer2/Current.text = "Current Score: "
+		$Control/MarginContainer/VBoxContainer/HBoxContainer2/Current/Label.text = str(Global.actualPointsLevel2)
+		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top.text = "Top Score: "
+		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top/Label2.text = str(Save.game_data.topScoreLevel2)
 	elif Global.lastButtonPressed == 3:
-		$Control/MarginContainer/VBoxContainer/Current.text = "Current Score: " + str(Global.actualPointsLevel3)
-		$Control/MarginContainer/VBoxContainer/Top.text = "Top Score: " + str(Save.game_data.topScoreLevel3)
+		$Control/MarginContainer/VBoxContainer/HBoxContainer2/Current.text = "Current Score: "
+		$Control/MarginContainer/VBoxContainer/HBoxContainer2/Current/Label.text = str(Global.actualPointsLevel3)
+		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top.text = "Top Score: "
+		$Control/MarginContainer/VBoxContainer/HBoxContainer3/Top/Label2.text = str(Save.game_data.topScoreLevel3)
 
 
 
