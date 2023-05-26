@@ -11,7 +11,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4qte"]
 font = ExtResource("2_siv8g")
-font_size = 8
+font_size = 12
 outline_size = 6
 outline_color = Color(0.121569, 0.113725, 0.0627451, 1)
 
@@ -52,11 +52,11 @@ _data = {
 script = ExtResource("1_r2ov7")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 171.0
-offset_top = 25.0
-offset_right = 297.0
-offset_bottom = 38.0
-text = "FreeFall Fighters "
+offset_left = 183.0
+offset_top = 24.0
+offset_right = 309.0
+offset_bottom = 42.0
+text = "FreeFall"
 label_settings = SubResource("LabelSettings_e4qte")
 
 [node name="levels" type="GridContainer" parent="."]
