@@ -10,7 +10,7 @@
 [node name="EnemigoCerdito" groups=["Enemigos"] instance=ExtResource("1_3ja0e")]
 process_mode = 1
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("2_31ica")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -33,7 +33,7 @@ collision_mask = 4
 
 [node name="RayCastMuro" type="RayCast2D" parent="Raycasts" index="1"]
 target_position = Vector2(-20, 0)
-collision_mask = 4
+collision_mask = 6
 
 [node name="RayTimer" type="Timer" parent="Raycasts" index="2"]
 
@@ -46,6 +46,6 @@ target_position = Vector2(-50, 0)
 position = Vector2(0, 2.5)
 
 [connection signal="timeout" from="Raycasts/RayTimer" to="." method="_on_ray_timer_timeout"]
-[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
+[connection signal="IMadeDamage" from="dmgPlayer" to="." method="_on_dmg_player_i_made_damage"]
 
 [editable path="dmgPlayer"]

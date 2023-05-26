@@ -175,6 +175,6 @@ position = Vector2(1.5, 3.5)
 shape = SubResource("RectangleShape2D_4wehs")
 
 [connection signal="timeout" from="rayos/RayTimer" to="." method="_on_ray_timer_timeout"]
-[connection signal="heHechoDanio" from="dmgPlayer" to="." method="_on_dmg_player_he_hecho_danio"]
+[connection signal="IMadeDamage" from="dmgPlayer" to="." method="_on_dmg_player_i_made_damage"]
 
 [editable path="dmgPlayer"]

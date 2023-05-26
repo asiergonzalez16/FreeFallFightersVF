@@ -69,6 +69,7 @@ _data = {
 size = Vector2(16, 4)
 
 [node name="Trampoline" type="Area2D"]
+process_mode = 1
 script = ExtResource("1_5vjrd")
 
 [node name="jump" type="Sprite2D" parent="."]

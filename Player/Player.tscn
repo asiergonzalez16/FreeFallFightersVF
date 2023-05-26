@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cioeiq2ketrp7"]
+[gd_scene load_steps=39 format=3 uid="uid://cioeiq2ketrp7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nuxl"]
 [ext_resource type="Script" path="res://Player/StateMachine/stateMachine.gd" id="2_owes5"]
@@ -15,11 +15,12 @@
 [ext_resource type="Script" path="res://Player/dash.gd" id="9_b34bb"]
 [ext_resource type="Texture2D" uid="uid://bvkajrdp7d7s7" path="res://Assets_PixelAdventure/Main Characters/Pink Man.png" id="10_n7gsu"]
 [ext_resource type="Texture2D" uid="uid://ckaore37h130l" path="res://Assets_PixelAdventure/Menu/UI/lifebar-1.png" id="12_1et8m"]
-[ext_resource type="Texture2D" uid="uid://c6c4rsfbmm6v4" path="res://Assets_PixelAdventure/Items/Fruits/StrawberrySola.png" id="12_2t8j7"]
+[ext_resource type="Texture2D" uid="uid://b6hw0rcxxjcqi" path="res://Assets_PixelAdventure/Menu/Buttons/medalla.png" id="12_o5ulw"]
 [ext_resource type="Texture2D" uid="uid://53mh0rvj54b1" path="res://Assets_PixelAdventure/Menu/UI/lifebar-2.png" id="13_bivo4"]
 [ext_resource type="Texture2D" uid="uid://bg3msc341myox" path="res://Assets_PixelAdventure/Main Characters/PinkGUI.png" id="14_s4ki2"]
 [ext_resource type="Shader" path="res://Player/TransitionShader.gdshader" id="15_5lxgt"]
 [ext_resource type="Script" path="res://Maps/pausemenu.gd" id="20_cm4ay"]
+[ext_resource type="AudioStream" uid="uid://dkra4csj5ext1" path="res://Assets_PixelAdventure/Sounds/music.mp3" id="22_5tm0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slqit"]
 size = Vector2(19.25, 22)
@@ -226,12 +227,6 @@ process_mode = 1
 collision_mask = 6
 script = ExtResource("1_1nuxl")
 
-[node name="LabelState" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -51.0
-offset_right = 108.0
-offset_bottom = -25.0
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_owes5")
 estado_inicial = NodePath("Idle")
@@ -302,26 +297,25 @@ script = ExtResource("3_7ed6p")
 
 [node name="PlayerGUI" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI"]
-offset_left = 1.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerGUI"]
+offset_left = 3.0
 offset_top = 25.0
-offset_right = 46.0
+offset_right = 57.0
 offset_bottom = 57.0
 
-[node name="FrutasTexture" type="TextureRect" parent="PlayerGUI/HBoxContainer"]
-texture_filter = 2
+[node name="TextureRect" type="TextureRect" parent="PlayerGUI/HBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("12_2t8j7")
+texture = ExtResource("12_o5ulw")
 
-[node name="FrutasLabel" type="Label" parent="PlayerGUI/HBoxContainer"]
+[node name="Label" type="Label" parent="PlayerGUI/HBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "0"
-label_settings = ExtResource("4_tq876")
 
 [node name="VidasHBoxContainer" type="HBoxContainer" parent="PlayerGUI"]
-offset_left = 48.0
+offset_left = 67.0
 offset_top = 26.0
-offset_right = 97.0
+offset_right = 116.0
 offset_bottom = 58.0
 
 [node name="VidasTexture" type="TextureRect" parent="PlayerGUI/VidasHBoxContainer"]
@@ -331,6 +325,7 @@ texture = ExtResource("14_s4ki2")
 
 [node name="VidasLabel" type="Label" parent="PlayerGUI/VidasHBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "0
 "
 label_settings = ExtResource("4_tq876")
@@ -385,9 +380,11 @@ one_shot = true
 
 [node name="AudioSalto" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_un7wi")
+bus = &"SFX"
 
 [node name="AudioHerirse" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fh7c2")
+bus = &"SFX"
 
 [node name="RecibirDanio" type="Area2D" parent="." groups=["AreaPlayer"]]
 collision_mask = 6
@@ -467,6 +464,10 @@ collision_mask = 4
 position = Vector2(0, -11)
 target_position = Vector2(-15, 0)
 collision_mask = 4
+
+[node name="GameLevelMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_5tm0l")
+bus = &"Music"
 
 [connection signal="timeout" from="StateMachine/takeDamage/Timer" to="StateMachine/takeDamage" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/dash/DashTimer" to="StateMachine/dash" method="_on_dash_timer_timeout"]

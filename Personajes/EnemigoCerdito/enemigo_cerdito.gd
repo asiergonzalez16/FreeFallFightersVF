@@ -1,9 +1,9 @@
 extends Personajes
-var direccion = -1:
+var direction = -1:
 	set(value):
-		if value != direccion:
-			darseVuelta()
-		direccion = value
+		if value != direction:
+			turnAround()
+		direction = value
 		
 
 @onready var raySuelo : RayCast2D = $Raycasts/RayCastSuelo
@@ -16,15 +16,15 @@ var player
 var canChangeDirection = true
 var gravity = 9
 
-enum estados {ANGRY,PATRULLAR, MORIRSE}
-var estadoActual = estados.PATRULLAR :
+enum states {ANGRY,PATROL, DIE}
+var actualState = states.PATROL :
 	set(value):
-		estadoActual = value
+		actualState = value
 		match value:
-			estados.ANGRY:
+			states.ANGRY:
 				anim.play("runAngry")
 				speed = 90
-			estados.PATRULLAR:
+			states.PATROL:
 				anim.play("walk")
 				speed = 60
 
@@ -33,8 +33,8 @@ func _ready():
 	speed = 60
 
 func _physics_process(delta):
-	velocity.x = direccion * speed
-	if !is_on_floor():
+	velocity.x = direction * speed
+	if !is_on_floor(): #if enemy is not on the floor, we apply gravity
 		velocity.y += gravity
 	move_and_slide()
 
@@ -42,56 +42,59 @@ func _physics_process(delta):
 func _process(delta):
 	if player == null and raycastPlayer.is_colliding():
 		var colision = raycastPlayer.get_collider()
-		if colision.is_in_group("Player"):
+		if colision.is_in_group("Player"): #if the raycast detect a Player:
 			player = colision
-			estadoActual = estados.ANGRY
-			
-	
-	if estadoActual == estados.ANGRY and player != null:
+			actualState = states.ANGRY
+	if actualState == states.ANGRY and player != null: #if state is ANGRY we change animation to runAngry
 		anim.play("runAngry")
-		var directionPlayer = global_position.direction_to(player.global_position)
+		var directionPlayer = global_position.direction_to(player.global_position) #the position of the enemy will follow the position of player
 		if directionPlayer.x < 0:
-			direccion = -1
+			direction = -1
 		elif  directionPlayer.x > 0:
-			direccion = 1
+			direction = 1
 		
-	if estadoActual == estados.PATRULLAR:
-		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()):
-			direccion*=-1
-	$Sprite2D.flip_h = true if direccion == 1 else false
+	if actualState == states.PATROL:
+		if canChangeDirection and (rayMuro.is_colliding() or !raySuelo.is_colliding()): #is state is patrol and colision with wall or enemy, change direction
+			direction*=-1
+	$Sprite2D.flip_h = true if direction == 1 else false
+	
+	if rayMuro.is_colliding():
+		turnAround()
 	
 func takeDmg(damage):
 	player = null
-	vida -= damage
-	if vida <= 0:
+	life -= damage
+	if life <= 0: #if he has no more lives, make animation of die and remove from scene
 		$dmgPlayer/CollisionShape2D.set_deferred("disabled",true)
-		estadoActual = estados.MORIRSE
+		actualState = states.DIE
 		anim.play("hurt")
 		$CollisionShape2D.set_deferred("disabled",true)
 		await (anim.animation_finished)
 		queue_free()
-	else:
+	else: #if have more lives, make him animation of hurt and change state to Patrol
 		gravity = 0
 		$CollisionShape2D.set_deferred("disabled",true)
 		anim.play("hurt")
 		await (anim.animation_finished)
 		$CollisionShape2D.set_deferred("disabled",false)
 		gravity = 9
-		estadoActual = estados.PATRULLAR
+		actualState = states.PATROL
 
 func _on_ray_timer_timeout():
 	canChangeDirection = true
 
-func darseVuelta():
+func turnAround():
 	canChangeDirection = false
 	$Raycasts/RayTimer.start()
 	rayos.scale.x *= -1
 	raycastPlayer.scale.x *=-1
 
-func _on_dmg_player_he_hecho_danio():
-	estadoActual = estados.PATRULLAR
-	player = null
-	direccion *=-1
 	
-func morir():
+func morir(): #if dead, remove from scene
 	queue_free()
+
+
+func _on_dmg_player_i_made_damage(): #if he made damage, we change direction of the enemy and change state to Patrol
+	actualState = states.PATROL
+	player = null
+	direction *=-1

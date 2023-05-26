@@ -13,16 +13,18 @@ point_count = 3
 size = Vector2(45, 8)
 
 [node name="Platform" type="Path2D"]
+process_mode = 1
 curve = SubResource("Curve2D_m4v0t")
 script = ExtResource("1_ks63l")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(195.723, -104.856)
+position = Vector2(166.847, -90.3525)
 rotation = -0.465472
-progress = 242.499
+progress = 210.197
 
 [node name="PlatformCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(193.237, -103.607)
+process_mode = 1
+position = Vector2(164.851, -89.3498)
 collision_layer = 4
 
 [node name="BrownOff" type="Sprite2D" parent="PlatformCharacter"]

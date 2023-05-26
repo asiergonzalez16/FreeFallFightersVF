@@ -8,3 +8,4 @@ script = ExtResource("1_jxgwe")
 
 [node name="frutasSonido" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vcvxy")
+bus = &"SFX"
