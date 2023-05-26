@@ -67,8 +67,8 @@ func _process(delta):
 				state_machine.transition_to("enAire",{Salto = true})
 				numSaltos+=1
 				break
-	if is_on_floor() or is_on_wall():
-		canDash = true
+#	if is_on_floor() or is_on_wall():
+#		canDash = true
 	
 #func _physics_process(delta):
 #	if estadoActual == estados.NORMAL:
